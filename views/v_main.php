@@ -32,4 +32,6 @@
             Все права защищены.
         </div>
     </body>
+
+    <script src="js/calendar.js"></script>
 </html>

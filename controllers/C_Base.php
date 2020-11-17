@@ -21,7 +21,7 @@ abstract class C_Base extends Controller
 	public function render()
 	{
 		$vars = array('title' => $this->title, 'content' => $this->content);	
-		$page = $this->Template('../views/main.php', $vars);
+		$page = $this->Template('../views/v_main.php', $vars);
 		echo $page;
 	}	
 }

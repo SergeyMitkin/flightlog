@@ -15,12 +15,23 @@ class C_Page extends C_Base
 	
 	public function action_generalTraining(){
 
-		$this->title .= '';
-		$text = 'general training';
+        $year_array = range(2000, 2050);
+        $current_year = date('Y');
+        $month_array = range(1,12);
+        $formatted_month_array = array(
+            "01" => "Январь", "02" => "Февраль", "03" => "Март", "04" => "Апрель",
+            "05" => "Май", "06" => "Июнь", "07" => "Июль", "08" => "Август",
+            "09" => "Сентябрь", "10" => "Октябрь", "11" => "Ноябрь", "12" => "Декабрь",
+        );
+        $current_month = date('m');
 		$general_tasks = getGeneralTasks();
-		$tasks_count = count($general_tasks);
-		$this->content = $this->Template(VIEW_DIR . '/general_training.php', array(
-		        'text' => $text,
+
+		$this->content = $this->Template(VIEW_DIR . '/v_general_training.php', array(
+		        'year_array' => $year_array,
+                'current_year' => $current_year,
+                'month_array' => $month_array,
+                'formatted_month_array' => $formatted_month_array,
+                'current_month' => $current_month,
                 'general_tasks' => $general_tasks,
             )
         );
@@ -30,6 +41,6 @@ class C_Page extends C_Base
 
         $this->title .= '';
         $text = 'training';
-        $this->content = $this->Template(VIEW_DIR . '/training.php', array('text' => $text));
+        $this->content = $this->Template(VIEW_DIR . '/v_training.php', array('text' => $text));
     }
 }
