@@ -27,53 +27,41 @@ elTaskCalendarDiv.addEventListener('change', event => {
         getTasksByMonth();
     }
 })
+
+// Получаем задачи на предыдущий месяц
 elTaskButtonBack.addEventListener('click', event => {
-    //var month_number = elSelectMonth.value -1;
-
-    /*
-    // var myNode = document.getElementById("foo");
-    while (elSelectMonth.firstChild) {
-        elSelectMonth.removeChild(elSelectMonth.firstChild);
-    }
-    */
-
-    var elSelectedOption = elSelectMonth.querySelector('option[selected=""]');
-    console.log(elSelectedOption);
-
-    var n = elSelectedOption.value;
-
-    var new_value = n - 1 + ""; // Уменьшаем значение месяца и преобразовываем встроку
+    var n = elSelectMonth.value;
+    var new_value = n - 1 + ""; // Уменьшаем значение месяца и преобразовываем в строку
 
     if(typeof new_value[1] == "undefined"){
         new_value = "0" + new_value;
-        console.log(new_value);
+        // Переходим с января на декабрь
         if (new_value == "00"){
             new_value = "12";
         }
     }
 
+    elSelectMonth.value = new_value;
+    getTasksByMonth();
+});
 
-    elSelectedOption.removeAttribute("selected");
+// Получаем задачи на следующий месяц
+elTaskButtonForward.addEventListener('click', event => {
+    var n = elSelectMonth.value;
+    var new_value = n;
+    new_value = Number.parseInt(new_value) + 1 + ""; // Преобразовываем в число, увеличиваем на единицу и преобразовываем в строку
 
-    var elPreviousOption = elSelectMonth.querySelector('option[value="' + new_value + '"]')
-    elPreviousOption.setAttribute("selected", "");
+    // Ставим 0 перед значением месяца, если нужно
+    if(typeof new_value[1] == "undefined"){
+        new_value = "0" + new_value;
+        console.log(new_value);
+    }
 
-    //console.log(elPreviousOption);
-    //var previous_month_number;
+    if (new_value == "13"){
+        new_value = "01";
+    }
 
-    //elSelectMonth.value = month_number;
-
-    // previous_month_number = month_number - 1;
-    // elSelectMonth.value = previous_month_number;
-    //console.log(elSelectMonth.value);
-
-    /*
-   if (month_number[0] == 0){
-       previous_month_number = month_number[1] - 1;
-       console.log(previous_month_number);
-   }
-
-    console.log(elSelectMonth.value);
-    */
+    elSelectMonth.value = new_value;
+    getTasksByMonth();
 });
 
