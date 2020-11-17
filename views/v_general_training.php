@@ -3,7 +3,7 @@
 
 <div id="task-calendar-div">
 
-    <button><</button>
+    <button id="task-button-back"><</button>
 
     <!-- выводим выпадающий список -->
     <select class="general-task-select" id="month-task-select" name="month">
@@ -28,7 +28,7 @@
         ?>
     </select>
 
-    <button>></button>
+    <button id="task-button-forward">></button>
 </div>
 
 <!-- Выводим основные задачи -->
