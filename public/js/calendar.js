@@ -14,10 +14,12 @@ elTaskCalendarDiv.addEventListener('change', event =>{
         m=elTaskRow.querySelectorAll(".general-task-item");
         k=m.length;
         while(k--){
-            if (m[k].getAttribute('data-sort-date') !== task_date){
-                console.log(m[k].setAttribute('hidden', ''));
-                //m[k].classList.add('hide');
+            m[k].setAttribute('hidden', '');
+
+            if (m[k].getAttribute('data-sort-date') == task_date){
+                m[k].removeAttribute('hidden');
             }
+
             //console.log(m[k].getAttribute('data-sort-date'));
         }
 //if(m[k].parentNode.parentNode.tagName.search(/div/i)<0){
