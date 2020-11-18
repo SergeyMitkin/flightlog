@@ -12,3 +12,24 @@ function getGeneralTasks(){
     }
     return $sql;
 }
+
+function setGeneralTask($task_name, $description, $author_id, $date){
+
+    try {
+        $t = 'general_tasks';
+        $v = array(
+            'name' => $task_name,
+            'description' => $description,
+            'author_id' => $author_id,
+            'date' => $date,
+        );
+
+        $sql = SQL::getInstance()->Insert($t, $v);
+        $response = 'Задача добавлена';
+
+    }
+    catch(PDOException $e){
+        die("Error: ".$e->getMessage());
+    }
+    return $response;
+}

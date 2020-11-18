@@ -4,7 +4,7 @@ include_once('../controllers/C_Page.php'); // Контроллер страни�
 
 // Получаем страницу из url
 $url_array = explode("/", $_SERVER['REQUEST_URI']);
-$page_name = $url_array[1];// --- ОТЛАДКА НАЧАЛО
+$page_name = $url_array[1];
 
 // Если url пустой, переходим на главную
 if($url_array[1] == ""){

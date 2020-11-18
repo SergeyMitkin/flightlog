@@ -15,6 +15,15 @@ class C_Page extends C_Base
 	
 	public function action_generalTraining(){
 
+       if (isset($_POST['task-name'])){
+           $task_name = $_POST['task-name'];
+           $description = $_POST['description'];
+           $author_id = $_POST['author'];
+           $date = $_POST['date'];
+
+           setGeneralTask($task_name, $description, $author_id, $date);
+       }
+
         $year_array = range(2000, 2050);
         $current_year = date('Y');
         $month_array = range(1,12);
