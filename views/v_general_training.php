@@ -49,7 +49,7 @@
     ?>
 </div>
 
-<div id="div-task-create-form" class="div-edit-form">
+<div id="div-task-create-form" class="div-edit-form" hidden>
     <form role="form" action="" method="post" class="form-horizontal" id="task-create-form">
 
         <div class="form-group">

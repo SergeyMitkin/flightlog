@@ -20,8 +20,8 @@ class C_Page extends C_Base
            $description = $_POST['description'];
            $author_id = $_POST['author'];
            $date = $_POST['date'];
-
            setGeneralTask($task_name, $description, $author_id, $date);
+
        }
 
         $year_array = range(2000, 2050);

@@ -25,11 +25,10 @@ function setGeneralTask($task_name, $description, $author_id, $date){
         );
 
         $sql = SQL::getInstance()->Insert($t, $v);
-        $response = 'Задача добавлена';
 
     }
     catch(PDOException $e){
         die("Error: ".$e->getMessage());
     }
-    return $response;
+    header("Location: /");
 }
