@@ -1,3 +1,4 @@
+// Элементы календаря
 var elTaskRow = document.getElementById("row-tasks");
 var elTaskCalendarDiv = document.getElementById("task-calendar-div");
 var elTaskButtonBack = document.getElementById("task-button-back");
@@ -5,6 +6,19 @@ var elTaskButtonForward = document.getElementById("task-button-forward");
 var elSelectYear = document.getElementById("year-task-select");
 var elSelectMonth = document.getElementById("month-task-select");
 
+// Делаем неактивными кнопки "вперёд" и "назад" при крайних датах
+if (elSelectYear.value == "2000"){
+    if (elSelectMonth.value == "01"){
+        elTaskButtonBack.setAttribute("disabled", "");
+    }
+}
+if (elSelectYear.value == "2050"){
+    if (elSelectMonth.value == "12"){
+        elTaskButtonForward.setAttribute("disabled", "");
+    }
+}
+
+// Получаем задачи на определённый месяц
 function getTasksByMonth(){
     var task_date = elSelectYear.value + '-' + elSelectMonth.value;
 
@@ -30,25 +44,48 @@ elTaskCalendarDiv.addEventListener('change', event => {
 
 // Получаем задачи на предыдущий месяц
 elTaskButtonBack.addEventListener('click', event => {
-    var n = elSelectMonth.value;
-    var new_value = n - 1 + ""; // Уменьшаем значение месяца и преобразовываем в строку
+
+    if (elTaskButtonForward.hasAttribute("disabled")){
+        elTaskButtonForward.removeAttribute("disabled");
+    }
+
+    var m = elSelectMonth.value;
+    var new_value = m - 1 + ""; // Уменьшаем значение месяца и преобразовываем в строку
 
     if(typeof new_value[1] == "undefined"){
+
         new_value = "0" + new_value;
         // Переходим с января на декабрь
         if (new_value == "00"){
             new_value = "12";
+
+            var y = elSelectYear.value;
+            var new_y = y - 1;
+            if (new_y == "1999"){
+                new_y = "2000";
+            }
         }
     }
 
     elSelectMonth.value = new_value;
     getTasksByMonth();
+
+    if (elSelectYear.value == "2000"){
+        if (elSelectMonth.value == "01"){
+            elTaskButtonBack.setAttribute("disabled", "");
+        }
+    }
 });
 
 // Получаем задачи на следующий месяц
 elTaskButtonForward.addEventListener('click', event => {
-    var n = elSelectMonth.value;
-    var new_value = n;
+
+    if (elTaskButtonBack.hasAttribute("disabled")){
+        elTaskButtonBack.removeAttribute("disabled");
+    }
+
+    var m = elSelectMonth.value;
+    var new_value = m;
     new_value = Number.parseInt(new_value) + 1 + ""; // Преобразовываем в число, увеличиваем на единицу и преобразовываем в строку
 
     // Ставим 0 перед значением месяца, если нужно
@@ -63,5 +100,11 @@ elTaskButtonForward.addEventListener('click', event => {
 
     elSelectMonth.value = new_value;
     getTasksByMonth();
+
+    if (elSelectYear.value == "2050"){
+        if (elSelectMonth.value == "12"){
+            elTaskButtonForward.setAttribute("disabled", "");
+        }
+    }
 });
 
