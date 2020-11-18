@@ -35,7 +35,13 @@
 <div id="row-tasks" class="row">
     <?php
     foreach($general_tasks as $task){
-        ?><p class="general-task-item" data-sort-date="<?php echo substr($task['date'], 0, 7);?>"><?php echo $task['name'];?></p>
+        ?><div class="general-task-item" data-sort-date="<?php echo substr($task['date'], 0, 7);?>">
+        <h4><?php echo $task['task_name'];?></h4>
+        <p><?php echo $task['description']?></p>
+        <p>Автор: <?php echo $task['author_name']?></p>
+        <p>Дата: <?php echo $task['date']?></p>
+        </div>
+
     <?php
     }
     ?>

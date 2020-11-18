@@ -45,3 +45,9 @@ textarea
     padding: 10px;
     background: #ccc;
 }
+
+.general-task-item{
+    margin: 5px;
+    padding: 0px 10px 10px 10px;
+    border: 1px solid black;
+}
