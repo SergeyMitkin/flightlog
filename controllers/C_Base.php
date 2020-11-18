@@ -13,7 +13,7 @@ abstract class C_Base extends Controller
 	//
 	function __construct()
 	{		
-		$this->title = 'Журнал подготовки к полетам беспилотной авиационной системы';
+		$this->title = 'Журнал подготовки к полётам беспилотной авиационной системы';
 		$this->content = '';
 	}
 

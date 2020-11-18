@@ -1,8 +1,8 @@
 <?php
 
-// include_once('inc/model.php');
 include_once('C_Base.php');
 include_once ('../models/m_tasks.php');
+include_once ('../models/m_authors.php');
 
 // Конттроллер страниц
 
@@ -25,6 +25,7 @@ class C_Page extends C_Base
         );
         $current_month = date('m');
 		$general_tasks = getGeneralTasks();
+		$authors = getAuthors();
 
 		$this->content = $this->Template(VIEW_DIR . '/v_general_training.php', array(
 		        'year_array' => $year_array,
@@ -33,6 +34,7 @@ class C_Page extends C_Base
                 'formatted_month_array' => $formatted_month_array,
                 'current_month' => $current_month,
                 'general_tasks' => $general_tasks,
+                'authors' => $authors
             )
         );
 	}
