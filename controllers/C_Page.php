@@ -34,14 +34,12 @@ class C_Page extends C_Base
         );
         $current_month = date('m');
 		$general_tasks = getGeneralTasks();
-		$aviation_technology_topics = getGeneralTopics('aviation technology');
+		$aviation_technology_topics = getGeneralTopics('aviation_technology');
 		$aerodynamics_topics = getGeneralTopics('aerodynamics');
 		$navigation_topics = getGeneralTopics('navigation');
 		$guidelines_topics = getGeneralTopics('guidelines');
 		$tactics_topics = getGeneralTopics('tactics');
 		$authors = getAuthors();
-
-
 
 		$this->content = $this->Template(VIEW_DIR . '/v_general_training.php', array(
 		        'year_array' => $year_array,

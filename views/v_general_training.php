@@ -168,5 +168,59 @@
     ?>
 </div>
 
+<div id="div-topic-create-form" class="div-edit-form" hidden>
+    <form role="form" action="" method="post" class="form-horizontal" id="topic-create-form">
+
+        <div class="form-group">
+            <label for="topic-name">Введите название темы</label>
+            <input required type="text" class="form-control" id="topic-title-input"
+                   placeholder="Название темы" name="topic-name">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Введите описание темы</label>
+            <textarea class="form-control" id="topic-description-textarea" name="description"
+                      placeholder="Описание задачи">
+            </textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="">Выберите тип</label>
+            <select required id="topic-type-select" name="type">
+                <option value="aviation_technology">Авиационная техника</option>
+                <option value="aerodynamics">Аэродинамика</option>
+                <option value="navigation">Навигация</option>
+                <option value="guidelines">Руководящие докуиенты</option>
+                <option value="tactics">Тактика</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="">Выберите автора</label>
+            <select required id="task-author-select" name="author">
+                <?php
+                foreach ($authors as $author) {
+                    echo '<option value="' . $author['id'] . '">'
+                        . $author['name'] . '</option>';
+                }
+                ?>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Введите дату: </label>
+            <input class="form-control" type="date" id="task-date-input" name="date" required/>
+        </div>
+
+        <div class="form-footer">
+            <button id="task-create-submit-button" type="submit" class="button">Отправить</button>
+        </div>
+    </form>
+</div>
+
+<div id="div-topic-create-button">
+    <button type="button" class="btn" id="topic-create-form-button">Создать задачу</button>
+</div>
+
 
 
