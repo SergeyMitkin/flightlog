@@ -168,7 +168,7 @@
     ?>
 </div>
 
-<div id="div-topic-create-form" class="div-edit-form" hidden>
+<div id="div-topic-create-form" class="div-edit-form">
     <form role="form" action="" method="post" class="form-horizontal" id="topic-create-form">
 
         <div class="form-group">

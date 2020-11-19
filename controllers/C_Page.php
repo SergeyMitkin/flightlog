@@ -24,6 +24,15 @@ class C_Page extends C_Base
            setGeneralTask($task_name, $description, $author_id, $date);
        }
 
+        if (isset($_POST['topic-name'])){
+            $topic_name = $_POST['topic-name'];
+            $description = $_POST['description'];
+            $topic_type = $_POST['type'];
+            $author_id = $_POST['author'];
+            $date = $_POST['date'];
+            setGeneralTopic($topic_name, $description, $topic_type, $author_id, $date);
+        }
+
         $year_array = range(2000, 2050);
         $current_year = date('Y');
         $month_array = range(1,12);
