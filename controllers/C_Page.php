@@ -34,8 +34,11 @@ class C_Page extends C_Base
         );
         $current_month = date('m');
 		$general_tasks = getGeneralTasks();
-		$aviation_technology_topics = getAviationTechnologyTopics();
-		$aerodynamics_topics = getAerodynamicsTopics();
+		$aviation_technology_topics = getGeneralTopics('aviation technology');
+		$aerodynamics_topics = getGeneralTopics('aerodynamics');
+		$navigation_topics = getGeneralTopics('navigation');
+		$guidelines_topics = getGeneralTopics('guidelines');
+		$tactics_topics = getGeneralTopics('tactics');
 		$authors = getAuthors();
 
 
@@ -49,6 +52,9 @@ class C_Page extends C_Base
                 'general_tasks' => $general_tasks,
                 'aviation_technology_topics' => $aviation_technology_topics,
                 'aerodynamics_topics' => $aerodynamics_topics,
+                'navigation_topics' => $navigation_topics,
+                'guidelines_topics' => $guidelines_topics,
+                'tactics_topics' => $tactics_topics,
                 'authors' => $authors
             )
         );

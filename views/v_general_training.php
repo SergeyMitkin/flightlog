@@ -91,7 +91,6 @@
     <button type="button" class="btn" id="task-create-form-button">Создать задачу</button>
 </div>
 
-
 <!-- Выводим темы общей подготовки -->
 <h2>Темы общей подготовки:</h2>
 <h3>Авиационная техника:</h3>
@@ -118,6 +117,51 @@
             <p><?php echo $topic['description']?></p>
             <p>Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <?php echo $topic['date']?></p>
+        </div>
+        <?php
+    }
+    ?>
+</div>
+
+<h3>Навигация:</h3>
+<div id="row-topics-navigation" class="row">
+    <?php
+    foreach($navigation_topics as $topic){
+        ?><div class="general-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        <h4><?php echo $topic['topic_name'];?></h4>
+        <p><?php echo $topic['description']?></p>
+        <p>Автор: <?php echo $topic['author_name']?></p>
+        <p>Дата: <?php echo $topic['date']?></p>
+        </div>
+        <?php
+    }
+    ?>
+</div>
+
+<h3>Руководящие документы:</h3>
+<div id="row-topics-guidelines" class="row">
+    <?php
+    foreach($guidelines_topics as $topic){
+        ?><div class="general-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        <h4><?php echo $topic['topic_name'];?></h4>
+        <p><?php echo $topic['description']?></p>
+        <p>Автор: <?php echo $topic['author_name']?></p>
+        <p>Дата: <?php echo $topic['date']?></p>
+        </div>
+        <?php
+    }
+    ?>
+</div>
+
+<h3>Тактика:</h3>
+<div id="row-topics-tactics" class="row">
+    <?php
+    foreach($tactics_topics as $topic){
+        ?><div class="general-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        <h4><?php echo $topic['topic_name'];?></h4>
+        <p><?php echo $topic['description']?></p>
+        <p>Автор: <?php echo $topic['author_name']?></p>
+        <p>Дата: <?php echo $topic['date']?></p>
         </div>
         <?php
     }

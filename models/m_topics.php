@@ -1,12 +1,13 @@
 <?php
 include_once 'db.php';
 
-function getAviationTechnologyTopics(){
+function getGeneralTopics($type){
     try {
         $q = "SELECT g.name AS topic_name, g.description, a.name AS author_name, g.date 
         FROM general_topics g 
         LEFT JOIN authors a on g.author_id = a.id
-        WHERE type = 'aviation technology'";
+        WHERE type = '" . $type . "'";
+
         $sql = SQL::getInstance()->Select($q);
     } catch (PDOException $e) {
         die("Error: " . $e->getMessage());
@@ -14,6 +15,7 @@ function getAviationTechnologyTopics(){
     return $sql;
 }
 
+/*
 function getAerodynamicsTopics(){
     try {
         $q = "SELECT g.name AS topic_name, g.description, a.name AS author_name, g.date 
@@ -27,6 +29,32 @@ function getAerodynamicsTopics(){
     return $sql;
 }
 
+function getNavigationTopics(){
+    try {
+        $q = "SELECT g.name AS topic_name, g.description, a.name AS author_name, g.date 
+        FROM general_topics g 
+        LEFT JOIN authors a on g.author_id = a.id
+        WHERE type = 'navigation'";
+        $sql = SQL::getInstance()->Select($q);
+    } catch (PDOException $e) {
+        die("Error: " . $e->getMessage());
+    }
+    return $sql;
+}
+
+function getGuidelinesTopics(){
+    try {
+        $q = "SELECT g.name AS topic_name, g.description, a.name AS author_name, g.date 
+        FROM general_topics g 
+        LEFT JOIN authors a on g.author_id = a.id
+        WHERE type = 'navigation'";
+        $sql = SQL::getInstance()->Select($q);
+    } catch (PDOException $e) {
+        die("Error: " . $e->getMessage());
+    }
+    return $sql;
+}
+*/
 function setGeneralTopic($task_name, $description, $author_id, $date){
 
     try {
