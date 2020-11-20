@@ -1,5 +1,4 @@
 // Элементы календаря
-var elTaskRow = document.getElementById("row-tasks");
 var elTaskCalendarDiv = document.getElementById("task-calendar-div");
 var elTaskButtonBack = document.getElementById("task-button-back");
 var elTaskButtonForward = document.getElementById("task-button-forward");
@@ -18,12 +17,12 @@ if (elSelectYear.value == "2050"){
     }
 }
 
-// Получаем задачи на определённый месяц
+// Получаем задачи и темы на определённый месяц
 function getTasksByMonth(){
     var task_date = elSelectYear.value + '-' + elSelectMonth.value;
 
     var m, k;
-    m=elTaskRow.querySelectorAll(".general-task-item");
+    m=document.querySelectorAll(".task-or-topic-item");
     k=m.length;
     while(k--){
         m[k].setAttribute('hidden', '');

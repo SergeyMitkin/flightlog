@@ -34,10 +34,10 @@
 </div>
 
 <!-- Выводим основные задачи -->
-<div id="row-tasks" class="row">
+<div id="row-tasks" class="row-tasks-and-topics">
     <?php
     foreach($general_tasks as $task){
-        ?><div class="general-task-item" data-sort-date="<?php echo substr($task['date'], 0, 7);?>">
+        ?><div class="task-or-topic-item" data-sort-date="<?php echo substr($task['date'], 0, 7);?>">
             <h4><?php echo $task['task_name'];?></h4>
             <p><?php echo $task['description']?></p>
             <p>Автор: <?php echo $task['author_name']?></p>
@@ -94,10 +94,10 @@
 <!-- Выводим темы общей подготовки -->
 <h2>Темы общей подготовки:</h2>
 <h3>Авиационная техника:</h3>
-<div id="row-topics-aviation-technology" class="row">
+<div id="row-topics-aviation-technology" class="row-tasks-and-topics">
     <?php
     foreach($aviation_technology_topics as $topic){
-        ?><div class="general-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        ?><div class="task-or-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
             <h4><?php echo $topic['topic_name'];?></h4>
             <p><?php echo $topic['description']?></p>
             <p>Автор: <?php echo $topic['author_name']?></p>
@@ -109,10 +109,10 @@
 </div>
 
 <h3>Аэродинамика:</h3>
-<div id="row-topics-aerodynamics" class="row">
+<div id="row-topics-aerodynamics" class="row-tasks-and-topics">
     <?php
     foreach($aerodynamics_topics as $topic){
-        ?><div class="general-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        ?><div class="task-or-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
             <h4><?php echo $topic['topic_name'];?></h4>
             <p><?php echo $topic['description']?></p>
             <p>Автор: <?php echo $topic['author_name']?></p>
@@ -124,10 +124,10 @@
 </div>
 
 <h3>Навигация:</h3>
-<div id="row-topics-navigation" class="row">
+<div id="row-topics-navigation" class="row-tasks-and-topics">
     <?php
     foreach($navigation_topics as $topic){
-        ?><div class="general-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        ?><div class="task-or-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
         <h4><?php echo $topic['topic_name'];?></h4>
         <p><?php echo $topic['description']?></p>
         <p>Автор: <?php echo $topic['author_name']?></p>
@@ -139,10 +139,10 @@
 </div>
 
 <h3>Руководящие документы:</h3>
-<div id="row-topics-guidelines" class="row">
+<div id="row-topics-guidelines" class="row-tasks-and-topics">
     <?php
     foreach($guidelines_topics as $topic){
-        ?><div class="general-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        ?><div class="task-or-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
         <h4><?php echo $topic['topic_name'];?></h4>
         <p><?php echo $topic['description']?></p>
         <p>Автор: <?php echo $topic['author_name']?></p>
@@ -154,10 +154,10 @@
 </div>
 
 <h3>Тактика:</h3>
-<div id="row-topics-tactics" class="row">
+<div id="row-topics-tactics" class="row-tasks-and-topics">
     <?php
     foreach($tactics_topics as $topic){
-        ?><div class="general-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        ?><div class="task-or-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
         <h4><?php echo $topic['topic_name'];?></h4>
         <p><?php echo $topic['description']?></p>
         <p>Автор: <?php echo $topic['author_name']?></p>
