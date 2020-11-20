@@ -168,7 +168,7 @@
     ?>
 </div>
 
-<div id="div-topic-create-form" class="div-edit-form">
+<div id="div-topic-create-form" class="div-edit-form" hidden>
     <form role="form" action="" method="post" class="form-horizontal" id="topic-create-form">
 
         <div class="form-group">
@@ -219,7 +219,7 @@
 </div>
 
 <div id="div-topic-create-button">
-    <button type="button" class="btn" id="topic-create-form-button">Создать задачу</button>
+    <button type="button" class="btn" id="topic-create-form-button">Создать тему</button>
 </div>
 
 
