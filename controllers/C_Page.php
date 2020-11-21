@@ -4,6 +4,7 @@ include_once('C_Base.php');
 include_once ('../models/m_tasks.php');
 include_once ('../models/m_topics.php');
 include_once ('../models/m_authors.php');
+include_once ('../models/m_print_docx.php');
 
 // Конттроллер страниц
 
@@ -15,6 +16,8 @@ class C_Page extends C_Base
 	}
 	
 	public function action_generalTraining(){
+
+	    saveDocx();
 
        if (isset($_POST['task-name'])){
            $task_name = $_POST['task-name'];

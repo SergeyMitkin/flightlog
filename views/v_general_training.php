@@ -1,7 +1,7 @@
 <?php
 ?>
 
-<h2>Основные задачи на месяц</h2>
+<h1>План общей подготовки на месяц</h1>
 
 <div id="task-calendar-div">
 
@@ -34,6 +34,7 @@
 </div>
 
 <!-- Выводим основные задачи -->
+<h2>Основные задачи на месяц</h2>
 <div id="row-tasks" class="row-tasks-and-topics">
     <?php
     foreach($general_tasks as $task){
@@ -49,7 +50,7 @@
 </div>
 
 <div id="div-task-create-form" class="div-edit-form" hidden>
-    <form role="form" action="" method="post" class="form-horizontal" id="task-create-form">
+    <form role="form" action="" method="post" class="form-horizontal" id="task-create-form" enctype="multipart/form-data">
 
         <div class="form-group">
             <label for="task-name">Введите название задачи</label>
