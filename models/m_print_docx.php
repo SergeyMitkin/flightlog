@@ -3,15 +3,21 @@ require '../vendor/autoload.php';
 
 $filename = 'files/doc.docx';
 
-editDocx($filename);
+// editDocx($filename);
 
 function editDocx($filename){
     $document = new \PhpOffice\PhpWord\TemplateProcessor($filename);
 
     $output_file = 'files/outputfile.docx';
-    $var1 = 'переменная 1';
+    $var1 = array();
+    $var1[0] = 'один';
+    $var1[1] = 'два';
+
+    //var_dump($var1);
 
     $document->setValue('var1', $var1);
+
+    //$document->setValues;
 
     $document->saveAs($output_file);
 

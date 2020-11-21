@@ -34,7 +34,7 @@
 </div>
 
 <!-- Выводим основные задачи -->
-<h2>Основные задачи на месяц</h2>
+<h2 id = "general-tasks-title">Основные задачи на</h2>
 <div id="row-tasks" class="row-tasks-and-topics">
     <?php
     foreach($general_tasks as $task){

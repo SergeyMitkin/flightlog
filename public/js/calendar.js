@@ -19,6 +19,13 @@ if (elSelectYear.value == "2050"){
 
 // Получаем задачи и темы на определённый месяц
 function getTasksByMonth(){
+
+    // Вставляем в заголовок название месяца и год
+    var month_name = elSelectMonth.querySelector('option[value="' + elSelectMonth.value + '"]').textContent;
+    var year = elSelectYear.querySelector('option[value="' + elSelectYear.value + '"]').textContent;
+    var elTaskTitle = document.getElementById("general-tasks-title");
+    elTaskTitle.innerText += " " + month_name.toLowerCase() + ' ' + year;
+
     var task_date = elSelectYear.value + '-' + elSelectMonth.value;
 
     var m, k;
