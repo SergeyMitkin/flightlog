@@ -17,7 +17,7 @@ class C_Page extends C_Base
 	
 	public function action_generalTraining(){
 
-	    saveDocx();
+	    //saveDocx();
 
        if (isset($_POST['task-name'])){
            $task_name = $_POST['task-name'];

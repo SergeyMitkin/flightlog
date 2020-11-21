@@ -1,6 +1,7 @@
 <?php
 require '../vendor/autoload.php';
 
+saveDocx();
 // Сохраняем файл на компьютер
 function saveDocx(){
 
@@ -23,19 +24,36 @@ function saveDocx(){
     $sectionStyle = array();
     $section = $phpWord->addSection($sectionStyle);
 
-    $text = 'ТЕТРАДЬ общей подготовки к полётам';
+    $text = 'ТЕТРАДЬ общей подготовки к полётам 9';
     $section->addText(htmlspecialchars($text),
         array('size' => 18),
         array('align' => 'center', 'spaceBefore' => 6000)
     );
 
     $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-    $filename = 'files/doc.docx';
-    if ($objWriter->save('files/doc.docx')){
-        uploadDocx($filename);
-    }
+    $file = 'files/doc.docx';
+
+    $objWriter->save($file);
+    uploadDocx($file);
 }
 
-function uploadDocx($filename){
-    echo 'upload';
+function uploadDocx($file){
+
+    if (ob_get_length()) ob_end_clean();
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename="files/doc.docx"');
+    header('Content-Transfer-Encoding: binary');
+    header('Connection: Keep-Alive');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+    header('Pragma: public');
+    header('Content-Length: ' . filesize($file->path));
+    if ($fd = fopen("files/doc.docx", 'rb')) {
+        while (!feof($fd)) {
+            print fread($fd, 1024);
+        }
+        fclose($fd);
+    }
+    exit;
 }
