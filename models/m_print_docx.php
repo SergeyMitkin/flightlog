@@ -1,8 +1,30 @@
 <?php
 require '../vendor/autoload.php';
 
-saveDocx();
-// Сохраняем файл на компьютер
+$filename = 'files/doc.docx';
+
+editDocx($filename);
+
+function editDocx($filename){
+    $document = new \PhpOffice\PhpWord\TemplateProcessor($filename);
+
+    $output_file = 'files/outputfile.docx';
+    $var1 = 'переменная 1';
+
+    $document->setValue('var1', $var1);
+
+    $document->saveAs($output_file);
+
+   // $fileName = $templateObject->save();
+   // $phpWordObject = \PhpOffice\PhpWord\IOFactory::load($fileName);
+
+
+   // return $phpWordObject;
+
+}
+
+
+// Сохраняем файл на сервер
 function saveDocx(){
 
     $phpWord = new \PhpOffice\PhpWord\PhpWord();
@@ -24,7 +46,8 @@ function saveDocx(){
     $sectionStyle = array();
     $section = $phpWord->addSection($sectionStyle);
 
-    $text = 'ТЕТРАДЬ общей подготовки к полётам 9';
+    $text = 'ТЕТРАДЬ общей подготовки к полётам 9 /n
+    ${var1}';
     $section->addText(htmlspecialchars($text),
         array('size' => 18),
         array('align' => 'center', 'spaceBefore' => 6000)
@@ -37,8 +60,8 @@ function saveDocx(){
     uploadDocx($file);
 }
 
+// Скачиваем файл
 function uploadDocx($file){
-
     if (ob_get_length()) ob_end_clean();
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');

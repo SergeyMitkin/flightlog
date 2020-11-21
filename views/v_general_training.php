@@ -223,5 +223,9 @@
     <button type="button" class="btn" id="topic-create-form-button">Создать тему</button>
 </div>
 
+<form role="form" action="" method="post" id="print_docx">
+
+</form>
+
 
 
