@@ -24,7 +24,7 @@ function getTasksByMonth(){
     var month_name = elSelectMonth.querySelector('option[value="' + elSelectMonth.value + '"]').textContent;
     var year = elSelectYear.querySelector('option[value="' + elSelectYear.value + '"]').textContent;
     var elTaskTitle = document.getElementById("general-tasks-title");
-    elTaskTitle.innerText += " " + month_name.toLowerCase() + ' ' + year;
+    elTaskTitle.innerText = "Основные задачи на " + month_name.toLowerCase() + ' ' + year;
 
     var task_date = elSelectYear.value + '-' + elSelectMonth.value;
 
