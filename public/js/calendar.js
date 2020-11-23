@@ -24,8 +24,36 @@ function getCurrentMonthAndYear(){
     return task_date;
 }
 
+function getItemsByMonth(classname = "task-or-topic-item"){
+
+    var task_date = getCurrentMonthAndYear();
+    // var elGeneralTasksPrintTextarea = document.getElementById("general-tasks-print-textarea");
+
+    var m, k;
+    m=document.querySelectorAll("." + classname);
+    k=m.length;
+    while(k--){
+        m[k].setAttribute('hidden', '');
+        // Удаляем удаляем элементы из textarea
+
+        if (m[k].getAttribute('data-sort-date') == task_date){
+            m[k].removeAttribute('hidden');
+            //console.log(m[k]);
+            // Вставляем нескрытые элементы в textarea для распечтки
+            /*
+            if (m[k].classList.contains("general-task-item")){
+                console.log(m[k]);
+            }
+           */
+        }
+    }
+}
+
 // Получаем задачи и темы на определённый месяц
+/*
 function getTasksByMonth(){
+
+    getItemsByMonth('items');
 
     var task_date = getCurrentMonthAndYear();
    // var elGeneralTasksPrintTextarea = document.getElementById("general-tasks-print-textarea");
@@ -35,28 +63,26 @@ function getTasksByMonth(){
     k=m.length;
     while(k--){
         m[k].setAttribute('hidden', '');
+        // Удаляем удаляем элементы из textarea
 
         if (m[k].getAttribute('data-sort-date') == task_date){
             m[k].removeAttribute('hidden');
-           // console.log(m[k]);
+            //console.log(m[k]);
             // Вставляем нескрытые элементы в textarea для распечтки
-            /*
+
             if (m[k].classList.contains("general-task-item")){
                 console.log(m[k]);
             }
-           */
-
         }
     }
 }
-
-
+*/
 
 // При загрузке страницы и при смене select года или месяца, выводим задачи по дате
-document.addEventListener("DOMContentLoaded", getTasksByMonth);
+document.addEventListener("DOMContentLoaded", getItemsByMonth());
 elTaskCalendarDiv.addEventListener('change', event => {
     if (event.target.className == 'general-task-select'){
-        getTasksByMonth();
+        getItemsByMonth();
     }
 })
 
@@ -76,13 +102,13 @@ elTaskButtonBack.addEventListener('click', event => {
         // Переходим с января на декабрь
         if (new_value == "00"){
             new_value = "12";
-          // Уменьшаемгод на 1
+          // Уменьшаем год на 1
             elSelectYear.value--;
         }
     }
 
     elSelectMonth.value = new_value;
-    getTasksByMonth();
+    getItemsByMonth();
 
     // Делаем неактивной ссылку "назад" при крайней дате
     if (elSelectYear.value == "2000"){
@@ -115,7 +141,7 @@ elTaskButtonForward.addEventListener('click', event => {
     }
 
     elSelectMonth.value = new_value;
-    getTasksByMonth();
+    getItemsByMonth();
 
     // Делаем неактивной ссылку "вперёд" при крайней дате
     if (elSelectYear.value == "2050"){
