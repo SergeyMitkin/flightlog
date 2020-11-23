@@ -24,7 +24,7 @@ function getCurrentMonthAndYear(){
     return task_date;
 }
 
-function getItemsByMonth(classname = "task-or-topic-item"){
+function getItemsByMonth(classname = "task-and-topic-item"){
 
     var task_date = getCurrentMonthAndYear();
     // var elGeneralTasksPrintTextarea = document.getElementById("general-tasks-print-textarea");
@@ -34,7 +34,7 @@ function getItemsByMonth(classname = "task-or-topic-item"){
     k=m.length;
     while(k--){
         m[k].setAttribute('hidden', '');
-        // Удаляем удаляем элементы из textarea
+        // Удаляем элементы из textarea
 
         if (m[k].getAttribute('data-sort-date') == task_date){
             m[k].removeAttribute('hidden');
