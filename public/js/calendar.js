@@ -4,7 +4,8 @@ var elTaskButtonBack = document.getElementById("task-button-back");
 var elTaskButtonForward = document.getElementById("task-button-forward");
 var elSelectYear = document.getElementById("year-task-select");
 var elSelectMonth = document.getElementById("month-task-select");
-var elGeneralTrainingPrintButton = document.getElementById("general-training-print-button");
+var elGeneralTrainingPrintForm = document.getElementById("general-training-print-form");
+//var elGeneralTrainingPrintButton = document.getElementById("general-training-print-button");
 
 // Делаем неактивными кнопки "вперёд" и "назад" при крайних датах
 if (elSelectYear.value == "2000"){
@@ -26,6 +27,10 @@ function getTasksByMonth(){
     var year = elSelectYear.querySelector('option[value="' + elSelectYear.value + '"]').textContent;
     var elTaskTitle = document.getElementById("general-tasks-title");
     elTaskTitle.innerText = "Основные задачи на  " + month_name.toLowerCase() + ' ' + year;
+
+    // Вставляем месяц и год в input формы распечатки файла
+    var elMonthYearInput = document.getElementById("month-year-input");
+    elMonthYearInput.value = month_name.toLowerCase() + ' ' + year;
 
     var task_date = elSelectYear.value + '-' + elSelectMonth.value;
 

@@ -7,7 +7,7 @@
 
     <button id="task-button-back"><</button>
 
-    <!-- выводим выпадающий список -->
+    <!-- Выводим выпадающий список -->
     <select class="general-task-select" id="month-task-select" name="month">
         <?php
         foreach ($month_array as $month) {
@@ -19,7 +19,7 @@
         ?>
     </select>
 
-    <!-- выводим выпадающий список -->
+    <!-- Выводим выпадающий список -->
     <select class="general-task-select" id="year-task-select" name="year">
         <?php
         foreach ($year_array as $year) {
