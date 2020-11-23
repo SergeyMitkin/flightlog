@@ -4,23 +4,10 @@ var elTaskButtonBack = document.getElementById("task-button-back");
 var elTaskButtonForward = document.getElementById("task-button-forward");
 var elSelectYear = document.getElementById("year-task-select");
 var elSelectMonth = document.getElementById("month-task-select");
-var elGeneralTrainingPrintForm = document.getElementById("general-training-print-form");
-//var elGeneralTrainingPrintButton = document.getElementById("general-training-print-button");
+// var elGeneralTrainingPrintForm = document.getElementById("general-training-print-form");
+// var elGeneralTrainingPrintButton = document.getElementById("general-training-print-button");
 
-// Делаем неактивными кнопки "вперёд" и "назад" при крайних датах
-if (elSelectYear.value == "2000"){
-    if (elSelectMonth.value == "01"){
-        elTaskButtonBack.setAttribute("disabled", "");
-    }
-}
-if (elSelectYear.value == "2050"){
-    if (elSelectMonth.value == "12"){
-        elTaskButtonForward.setAttribute("disabled", "");
-    }
-}
-
-// Получаем задачи и темы на определённый месяц
-function getTasksByMonth(){
+function getCurrentMonthAndYear(){
 
     // Вставляем в заголовок название месяца и год
     var month_name = elSelectMonth.querySelector('option[value="' + elSelectMonth.value + '"]').textContent;
@@ -28,11 +15,20 @@ function getTasksByMonth(){
     var elTaskTitle = document.getElementById("general-tasks-title");
     elTaskTitle.innerText = "Основные задачи на  " + month_name.toLowerCase() + ' ' + year;
 
-    // Вставляем месяц и год в input формы распечатки файла
+    // Вставляем месяц и год в input форму распечатки файла
     var elMonthYearInput = document.getElementById("month-year-input");
     elMonthYearInput.value = month_name.toLowerCase() + ' ' + year;
 
     var task_date = elSelectYear.value + '-' + elSelectMonth.value;
+
+    return task_date;
+}
+
+// Получаем задачи и темы на определённый месяц
+function getTasksByMonth(){
+
+    var task_date = getCurrentMonthAndYear();
+   // var elGeneralTasksPrintTextarea = document.getElementById("general-tasks-print-textarea");
 
     var m, k;
     m=document.querySelectorAll(".task-or-topic-item");
@@ -42,9 +38,19 @@ function getTasksByMonth(){
 
         if (m[k].getAttribute('data-sort-date') == task_date){
             m[k].removeAttribute('hidden');
+           // console.log(m[k]);
+            // Вставляем нескрытые элементы в textarea для распечтки
+            /*
+            if (m[k].classList.contains("general-task-item")){
+                console.log(m[k]);
+            }
+           */
+
         }
     }
 }
+
+
 
 // При загрузке страницы и при смене select года или месяца, выводим задачи по дате
 document.addEventListener("DOMContentLoaded", getTasksByMonth);
@@ -70,18 +76,15 @@ elTaskButtonBack.addEventListener('click', event => {
         // Переходим с января на декабрь
         if (new_value == "00"){
             new_value = "12";
-
-            var y = elSelectYear.value;
-            var new_y = y - 1;
-            if (new_y == "1999"){
-                new_y = "2000";
-            }
+          // Уменьшаемгод на 1
+            elSelectYear.value--;
         }
     }
 
     elSelectMonth.value = new_value;
     getTasksByMonth();
 
+    // Делаем неактивной ссылку "назад" при крайней дате
     if (elSelectYear.value == "2000"){
         if (elSelectMonth.value == "01"){
             elTaskButtonBack.setAttribute("disabled", "");
@@ -103,16 +106,18 @@ elTaskButtonForward.addEventListener('click', event => {
     // Ставим 0 перед значением месяца, если нужно
     if(typeof new_value[1] == "undefined"){
         new_value = "0" + new_value;
-        console.log(new_value);
     }
 
     if (new_value == "13"){
         new_value = "01";
+        // Увеличиваем год на 1
+        elSelectYear.value++;
     }
 
     elSelectMonth.value = new_value;
     getTasksByMonth();
 
+    // Делаем неактивной ссылку "вперёд" при крайней дате
     if (elSelectYear.value == "2050"){
         if (elSelectMonth.value == "12"){
             elTaskButtonForward.setAttribute("disabled", "");

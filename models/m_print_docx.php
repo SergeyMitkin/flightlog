@@ -1,14 +1,15 @@
 <?php
 require '../vendor/autoload.php';
 
-function editDocx($file_template, $output_file, $month_year){
+function editDocx($file_template, $output_file, $month_year, $general_tasks){
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
 
     $document->setValue('month_year_plan_title', $month_year);
+    $document->setValue('general_tasks', $general_tasks);
     $document->saveAs($output_file);
 
     uploadDocx($output_file);
-    //header("Location: /");
+    header("Location: /");
 }
 
 // uploadDocx('files/doc.docx');

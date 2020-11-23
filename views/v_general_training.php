@@ -38,7 +38,7 @@
 <div id="row-tasks" class="row-tasks-and-topics">
     <?php
     foreach($general_tasks as $task){
-        ?><div class="task-or-topic-item" data-sort-date="<?php echo substr($task['date'], 0, 7);?>">
+        ?><div class="task-or-topic-item general-task-item" data-sort-date="<?php echo substr($task['date'], 0, 7);?>">
             <h4><?php echo $task['task_name'];?></h4>
             <p><?php echo $task['description']?></p>
             <p>Автор: <?php echo $task['author_name']?></p>
@@ -49,7 +49,7 @@
     ?>
 </div>
 
-<div id="div-task-create-form" class="div-edit-form" hidden>
+<div id="div-task-create-form" class="div-create-form" hidden>
     <form role="form" action="" method="post" class="form-horizontal" id="task-create-form" enctype="multipart/form-data">
 
         <div class="form-group">
@@ -169,7 +169,7 @@
     ?>
 </div>
 
-<div id="div-topic-create-form" class="div-edit-form" hidden>
+<div id="div-topic-create-form" class="div-create-form" hidden>
     <form role="form" action="" method="post" class="form-horizontal" id="topic-create-form">
 
         <div class="form-group">
@@ -228,7 +228,12 @@
         <div class="form-group">
             <label for="month-year-input">Месяц и год</label>
             <input required type="text" class="form-control" id="month-year-input"
-                   placeholder="Название темы" name="month-year" value="2020">
+                   name="month-year">
+        </div>
+
+        <div class="form-group">
+            <textarea type="text" class="form-control" id="general-tasks-print-textarea"
+                      name="general-tasks"></textarea>
         </div>
 
         <div class="form-footer">
