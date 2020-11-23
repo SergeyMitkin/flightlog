@@ -223,9 +223,19 @@
     <button type="button" class="btn" id="topic-create-form-button">Создать тему</button>
 </div>
 
-<form role="form" action="" method="post" id="print_docx">
+<div id="div-general-training-print-form">
+    <form role="form" action="" method="post" id="general-training-print-form">
+        <div class="form-group">
+            <label for="month-year-input">Месяц и год</label>
+            <input required type="text" class="form-control" id="month-year-input"
+                   placeholder="Название темы" name="month-year" value="2020">
+        </div>
 
-</form>
+        <div class="form-footer">
+            <button id="general-training-print-button" type="submit" class="button">Распечатать</button>
+        </div>
+    </form>
+</div>
 
 
 

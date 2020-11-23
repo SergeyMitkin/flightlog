@@ -17,7 +17,12 @@ class C_Page extends C_Base
 	
 	public function action_generalTraining(){
 
-	    //saveDocx();
+       if (isset($_POST['month-year'])){
+           $file_template = 'files/doc.docx';
+           $month_year = $_POST['month-year'];
+           $output_file = 'files/outputfile.docx';
+           editDocx($file_template, $output_file, $month_year);
+       }
 
        if (isset($_POST['task-name'])){
            $task_name = $_POST['task-name'];

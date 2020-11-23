@@ -4,6 +4,7 @@ var elTaskButtonBack = document.getElementById("task-button-back");
 var elTaskButtonForward = document.getElementById("task-button-forward");
 var elSelectYear = document.getElementById("year-task-select");
 var elSelectMonth = document.getElementById("month-task-select");
+var elGeneralTrainingPrintButton = document.getElementById("general-training-print-button");
 
 // Делаем неактивными кнопки "вперёд" и "назад" при крайних датах
 if (elSelectYear.value == "2000"){

@@ -1,36 +1,19 @@
 <?php
 require '../vendor/autoload.php';
 
-$filename = 'files/doc.docx';
+function editDocx($file_template, $output_file, $month_year){
+    $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
 
-// editDocx($filename);
-
-function editDocx($filename){
-    $document = new \PhpOffice\PhpWord\TemplateProcessor($filename);
-
-    $output_file = 'files/outputfile.docx';
-    $var1 = array();
-    $var1[0] = 'один';
-    $var1[1] = 'два';
-
-    //var_dump($var1);
-
-    $document->setValue('var1', $var1);
-
-    //$document->setValues;
-
+    $document->setValue('month_year_plan_title', $month_year);
     $document->saveAs($output_file);
 
-   // $fileName = $templateObject->save();
-   // $phpWordObject = \PhpOffice\PhpWord\IOFactory::load($fileName);
-
-
-   // return $phpWordObject;
-
+    uploadDocx($output_file);
+    //header("Location: /");
 }
 
-
+// uploadDocx('files/doc.docx');
 // Сохраняем файл на сервер
+/*
 function saveDocx(){
 
     $phpWord = new \PhpOffice\PhpWord\PhpWord();
@@ -56,7 +39,7 @@ function saveDocx(){
     ${var1}';
     $section->addText(htmlspecialchars($text),
         array('size' => 18),
-        array('align' => 'center', 'spaceBefore' => 6000)
+        array('align' => 'center')
     );
 
     $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
@@ -65,24 +48,26 @@ function saveDocx(){
     $objWriter->save($file);
     uploadDocx($file);
 }
+*/
 
 // Скачиваем файл
 function uploadDocx($file){
-    if (ob_get_length()) ob_end_clean();
-    header('Content-Description: File Transfer');
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="files/doc.docx"');
-    header('Content-Transfer-Encoding: binary');
-    header('Connection: Keep-Alive');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($file->path));
-    if ($fd = fopen("files/doc.docx", 'rb')) {
-        while (!feof($fd)) {
-            print fread($fd, 1024);
-        }
-        fclose($fd);
-    }
-    exit;
+
+    // Имя скачиваемого файла
+    //$file = "files/doc.docx";
+
+// Контент-тип означающий скачивание
+    header("Content-Type: application/octet-stream");
+
+// Размер в байтах
+    header("Accept-Ranges: bytes");
+
+// Размер файла
+    header("Content-Length: ".filesize($file));
+
+// Расположение скачиваемого файла
+    header("Content-Disposition: attachment; filename=".$file);
+
+// Прочитать файл
+    readfile($file);
 }
