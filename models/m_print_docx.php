@@ -1,11 +1,10 @@
 <?php
 require '../vendor/autoload.php';
 
-function editDocx($file_template, $output_file, $month_year, $general_tasks, $aviation_topics){
+function editDocx($file_template, $output_file, $month_year, $general_tasks, $aviation_topics,
+                    $aerodynamics_topics){
 
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
-
-    //$document->setValue('month_year_plan_title', $month_year);
 
     //print_r($aviation_topics);
     /*
@@ -28,7 +27,8 @@ function editDocx($file_template, $output_file, $month_year, $general_tasks, $av
     $document->setValue('date', $month_year);
     $document->cloneRowAndSetValues('gt', $general_tasks);
     $document->cloneRowAndSetValues('av', $aviation_topics);
-    //$document->setValue('av', 'avvvv');
+    $document->cloneRowAndSetValues('aer', $aerodynamics_topics);
+
     $document->saveAs($output_file);
     uploadDocx($output_file);
     header("Location: /");

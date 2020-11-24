@@ -46,6 +46,7 @@ function getItemsByMonth(classname = "task-and-topic-item"){
     // Выводим на печть элементы сисков
     printGeneralTasks();
     printAviationTopics();
+    printAerodynamicsTopics();
 }
 
 // При загрузке страницы и при смене select года или месяца, выводим задачи по дате
