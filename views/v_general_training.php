@@ -99,7 +99,7 @@
     <?php
     foreach($aviation_technology_topics as $topic){
         ?><div class="task-and-topic-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-            <h4><?php echo $topic['topic_name'];?></h4>
+            <h4 class="task-title"><?php echo $topic['topic_name'];?></h4>
             <p><?php echo $topic['description']?></p>
             <p>Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <?php echo $topic['date']?></p>
@@ -223,18 +223,22 @@
     <button type="button" class="btn" id="topic-create-form-button">Создать тему</button>
 </div>
 
-<div id="div-general-training-print-form">
+<div id="div-items-print-form">
     <form role="form" action="" method="post" id="general-training-print-form">
-        <div class="form-group">
+        <div class="form-group date-input">
             <label for="month-year-input">Месяц и год</label>
             <input required type="text" class="form-control" id="month-year-input"
                    name="month-year">
         </div>
 
+        <div id="print-form-items"></div>
+
+        <!--
         <div class="form-group">
-            <textarea type="text" class="form-control" id="general-tasks-print-textarea"
-                      name="general-tasks"></textarea>
+            <input type="text" class="form-control" id="general-tasks-print-textarea"
+                      name="general-tasks[]">
         </div>
+        -->
 
         <div class="form-footer">
             <button id="general-training-print-button" type="submit" class="button">Распечатать</button>

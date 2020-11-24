@@ -4,7 +4,7 @@ var elTaskButtonBack = document.getElementById("task-button-back");
 var elTaskButtonForward = document.getElementById("task-button-forward");
 var elSelectYear = document.getElementById("year-task-select");
 var elSelectMonth = document.getElementById("month-task-select");
-// var elGeneralTrainingPrintForm = document.getElementById("general-training-print-form");
+var elPrintFormItems = document.getElementById("print-form-items");
 // var elGeneralTrainingPrintButton = document.getElementById("general-training-print-button");
 
 function getCurrentMonthAndYear(){
@@ -15,7 +15,7 @@ function getCurrentMonthAndYear(){
     var elTaskTitle = document.getElementById("general-tasks-title");
     elTaskTitle.innerText = "Основные задачи на  " + month_name.toLowerCase() + ' ' + year;
 
-    // Вставляем месяц и год в input форму распечатки файла
+    // Вставляем месяц и год в input формы распечатки файла
     var elMonthYearInput = document.getElementById("month-year-input");
     elMonthYearInput.value = month_name.toLowerCase() + ' ' + year;
 
@@ -24,29 +24,54 @@ function getCurrentMonthAndYear(){
     return task_date;
 }
 
+function printGeneralTasks() {
+    var elGeneralTasksRow = document.getElementById("row-tasks");
+    var m = elGeneralTasksRow.querySelectorAll('div:not([hidden])');
+    // console.log(m[0].children[0].textContent);
+
+    //var k = m.length;
+    for (var i = 0; i < elGeneralTasksRow.querySelectorAll('div:not([hidden])').length; i++){
+        var n = i+1;// Порядковый номер задачи в списке
+        elPrintFormItems.innerHTML += '<input name="general-task-item[' + i + '][general_tasks]" value="' + n + '">'
+            + '<input name="general-task-item[' + i + '][task-title]" value="' + m[i].children[0].textContent + '">'
+            + '<input name="general-task-item[' + i + '][task-description]" value="' + m[i].children[1].textContent + '" >'
+            + '<input name="general-task-item[' + i + '][task-author]" value="' + m[i].children[2].textContent + '" >'
+            + '<input name="general-task-item[' + i + '][task-date]" value="' + m[i].children[3].textContent + '" >'
+    }
+}
+
 function getItemsByMonth(classname = "task-and-topic-item"){
 
     var task_date = getCurrentMonthAndYear();
-    // var elGeneralTasksPrintTextarea = document.getElementById("general-tasks-print-textarea");
+
+    // Очищаем форму распечатки файла
+    while (elPrintFormItems.firstChild) {
+        elPrintFormItems.removeChild(elPrintFormItems.firstChild);
+    }
 
     var m, k;
     m=document.querySelectorAll("." + classname);
     k=m.length;
     while(k--){
         m[k].setAttribute('hidden', '');
-        // Удаляем элементы из textarea
 
         if (m[k].getAttribute('data-sort-date') == task_date){
             m[k].removeAttribute('hidden');
-            //console.log(m[k]);
-            // Вставляем нескрытые элементы в textarea для распечтки
             /*
+            // Вставляем инпуты для нескрытых задач и тем
             if (m[k].classList.contains("general-task-item")){
-                console.log(m[k]);
+                //elGeneralTasksPrintTextarea.textContent += m[k].textContent;
+                // console.log(m[k].children[0].textContent);
+                    elPrintFormItems.innerHTML += '<input name="general-task-item[task-title]" value="' + m[k].children[0].textContent + '">'
+                    + '<input name="general-task-item[task-description]" value="' + m[k].children[1].textContent + '" >'
+                    + '<input name="general-task-item[task-author]" value="' + m[k].children[2].textContent + '" >'
+                    + '<input name="general-task-item[task-date]" value="' + m[k].children[3].textContent + '" >'
+                ;
             }
-           */
+            */
         }
     }
+    printGeneralTasks();
 }
 
 // Получаем задачи и темы на определённый месяц

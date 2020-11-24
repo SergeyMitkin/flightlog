@@ -19,7 +19,8 @@ class C_Page extends C_Base
 
        if (isset($_POST['month-year'])){
            $month_year = $_POST['month-year'];
-           $general_tasks = $_POST['general-tasks'];
+
+           $general_tasks = $_POST['general-task-item'];
 
            $file_template = 'files/doc.docx';
            $output_file = 'files/outputfile.docx';
