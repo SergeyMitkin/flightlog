@@ -24,22 +24,6 @@ function getCurrentMonthAndYear(){
     return task_date;
 }
 
-function printGeneralTasks() {
-    var elGeneralTasksRow = document.getElementById("row-tasks");
-    var m = elGeneralTasksRow.querySelectorAll('div:not([hidden])');
-    // console.log(m[0].children[0].textContent);
-
-    //var k = m.length;
-    for (var i = 0; i < elGeneralTasksRow.querySelectorAll('div:not([hidden])').length; i++){
-        var n = i+1;// Порядковый номер задачи в списке
-        elPrintFormItems.innerHTML += '<input name="general-task-item[' + i + '][gt]" value="№' + n + '">'
-            + '<input name="general-task-item[' + i + '][task-title]" value="' + m[i].children[0].textContent + '">'
-            + '<input name="general-task-item[' + i + '][task-description]" value="Описание: ' + m[i].children[1].textContent + '" >'
-            + '<input name="general-task-item[' + i + '][task-author]" value="Автор: ' + m[i].children[2].textContent + '" >'
-            + '<input name="general-task-item[' + i + '][task-date]" value="Дата: ' + m[i].children[3].textContent + '" >'
-    }
-}
-
 function getItemsByMonth(classname = "task-and-topic-item"){
 
     var task_date = getCurrentMonthAndYear();
@@ -57,51 +41,12 @@ function getItemsByMonth(classname = "task-and-topic-item"){
 
         if (m[k].getAttribute('data-sort-date') == task_date){
             m[k].removeAttribute('hidden');
-            /*
-            // Вставляем инпуты для нескрытых задач и тем
-            if (m[k].classList.contains("general-task-item")){
-                //elGeneralTasksPrintTextarea.textContent += m[k].textContent;
-                // console.log(m[k].children[0].textContent);
-                    elPrintFormItems.innerHTML += '<input name="general-task-item[task-title]" value="' + m[k].children[0].textContent + '">'
-                    + '<input name="general-task-item[task-description]" value="' + m[k].children[1].textContent + '" >'
-                    + '<input name="general-task-item[task-author]" value="' + m[k].children[2].textContent + '" >'
-                    + '<input name="general-task-item[task-date]" value="' + m[k].children[3].textContent + '" >'
-                ;
-            }
-            */
         }
     }
+    // Выводим на печть элементы сисков
     printGeneralTasks();
+    printAviationTopics();
 }
-
-// Получаем задачи и темы на определённый месяц
-/*
-function getTasksByMonth(){
-
-    getItemsByMonth('items');
-
-    var task_date = getCurrentMonthAndYear();
-   // var elGeneralTasksPrintTextarea = document.getElementById("general-tasks-print-textarea");
-
-    var m, k;
-    m=document.querySelectorAll(".task-or-topic-item");
-    k=m.length;
-    while(k--){
-        m[k].setAttribute('hidden', '');
-        // Удаляем удаляем элементы из textarea
-
-        if (m[k].getAttribute('data-sort-date') == task_date){
-            m[k].removeAttribute('hidden');
-            //console.log(m[k]);
-            // Вставляем нескрытые элементы в textarea для распечтки
-
-            if (m[k].classList.contains("general-task-item")){
-                console.log(m[k]);
-            }
-        }
-    }
-}
-*/
 
 // При загрузке страницы и при смене select года или месяца, выводим задачи по дате
 document.addEventListener("DOMContentLoaded", getItemsByMonth());

@@ -1,20 +1,34 @@
 <?php
 require '../vendor/autoload.php';
 
-function editDocx($file_template, $output_file, $month_year, $general_tasks){
+function editDocx($file_template, $output_file, $month_year, $general_tasks, $aviation_topics){
 
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
-    $document->setValue('month_year_plan_title', $month_year);
 
+    //$document->setValue('month_year_plan_title', $month_year);
+
+    //print_r($aviation_topics);
+    /*
     if ($general_tasks == null){
         $general_tasks = [
             ['gt' => ' ', 'task-title' => ' ', 'task-description' => ' ', 'task-author' => ' ', 'task-date' => ' ']
         ];
     }
+    */
 
+   // if ($aviation_topics == null){
+    /*
+       $aviation_topics = [
+            ['av' => 'kkk', 'av-topic-title' => 'jjj', 'av-topic-description' => 'kkk', 'av-topic-author' => 'kkk', 'av-topic-date' => 'ooo']
+       ];
+    */
+    //}
+    //var_dump($aviation_topics);
+
+    $document->setValue('date', $month_year);
     $document->cloneRowAndSetValues('gt', $general_tasks);
-    $document->setValue('month_year_plan_title', $month_year);
-
+    $document->cloneRowAndSetValues('av', $aviation_topics);
+    //$document->setValue('av', 'avvvv');
     $document->saveAs($output_file);
     uploadDocx($output_file);
     header("Location: /");

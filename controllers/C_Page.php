@@ -21,10 +21,11 @@ class C_Page extends C_Base
            $month_year = $_POST['month-year'];
 
            $general_tasks = $_POST['general-task-item'];
+           $aviation_topics = $_POST['aviation-topic-item'];
 
-           $file_template = 'files/doc.docx';
+           $file_template = 'files/f_4465fad8d613a549.docx';
            $output_file = 'files/outputfile.docx';
-           editDocx($file_template, $output_file, $month_year, $general_tasks);
+           editDocx($file_template, $output_file, $month_year, $general_tasks, $aviation_topics);
        }
 
        if (isset($_POST['task-name'])){
