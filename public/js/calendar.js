@@ -32,11 +32,11 @@ function printGeneralTasks() {
     //var k = m.length;
     for (var i = 0; i < elGeneralTasksRow.querySelectorAll('div:not([hidden])').length; i++){
         var n = i+1;// Порядковый номер задачи в списке
-        elPrintFormItems.innerHTML += '<input name="general-task-item[' + i + '][general_tasks]" value="' + n + '">'
+        elPrintFormItems.innerHTML += '<input name="general-task-item[' + i + '][gt]" value="№' + n + '">'
             + '<input name="general-task-item[' + i + '][task-title]" value="' + m[i].children[0].textContent + '">'
-            + '<input name="general-task-item[' + i + '][task-description]" value="' + m[i].children[1].textContent + '" >'
-            + '<input name="general-task-item[' + i + '][task-author]" value="' + m[i].children[2].textContent + '" >'
-            + '<input name="general-task-item[' + i + '][task-date]" value="' + m[i].children[3].textContent + '" >'
+            + '<input name="general-task-item[' + i + '][task-description]" value="Описание: ' + m[i].children[1].textContent + '" >'
+            + '<input name="general-task-item[' + i + '][task-author]" value="Автор: ' + m[i].children[2].textContent + '" >'
+            + '<input name="general-task-item[' + i + '][task-date]" value="Дата: ' + m[i].children[3].textContent + '" >'
     }
 }
 

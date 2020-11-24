@@ -5,31 +5,19 @@ function editDocx($file_template, $output_file, $month_year, $general_tasks){
 
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
     $document->setValue('month_year_plan_title', $month_year);
-    $gt_values = array();
 
-   // var_dump($general_tasks);
+    if ($general_tasks == null){
+        $general_tasks = [
+            ['gt' => ' ', 'task-title' => ' ', 'task-description' => ' ', 'task-author' => ' ', 'task-date' => ' ']
+        ];
+    }
 
-
-
-
-
-    $values = [
-        ['general_tasks' => 1, 'task-title' => 'Batman', 'task-description' => 'Gotham City', 'task-author' => 'hhh', 'task-date' => 'hhh'],
-        ['general_tasks' => 2, 'task-title' => 'Superman', 'task-description' => 'Metropolis', 'task-author' => 'hhh', 'task-date' => 'hhh'],
-    ];
-    //print_r($gt_values);
-    //print_r($values);
-
-    $document->cloneRowAndSetValues('general_tasks', $general_tasks);
-
-    /*
+    $document->cloneRowAndSetValues('gt', $general_tasks);
     $document->setValue('month_year_plan_title', $month_year);
-    $document->setValue('general_tasks', $general_tasks);
-    */
 
-       $document->saveAs($output_file);
-       uploadDocx($output_file);
-       header("Location: /");
+    $document->saveAs($output_file);
+    uploadDocx($output_file);
+    header("Location: /");
 
 }
 
