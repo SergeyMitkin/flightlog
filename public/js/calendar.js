@@ -5,7 +5,6 @@ var elTaskButtonForward = document.getElementById("task-button-forward");
 var elSelectYear = document.getElementById("year-task-select");
 var elSelectMonth = document.getElementById("month-task-select");
 var elPrintFormItems = document.getElementById("print-form-items");
-// var elGeneralTrainingPrintButton = document.getElementById("general-training-print-button");
 
 function getCurrentMonthAndYear(){
 
@@ -47,6 +46,9 @@ function getItemsByMonth(classname = "task-and-topic-item"){
     printGeneralTasks();
     printAviationTopics();
     printAerodynamicsTopics();
+    printNavigationTopics();
+    printGuidelinesTopics();
+    printTacticsTopics();
 }
 
 // При загрузке страницы и при смене select года или месяца, выводим задачи по дате

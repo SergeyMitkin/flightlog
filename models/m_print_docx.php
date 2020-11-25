@@ -2,7 +2,7 @@
 require '../vendor/autoload.php';
 
 function editDocx($file_template, $output_file, $month_year, $general_tasks, $aviation_topics,
-                    $aerodynamics_topics){
+                    $aerodynamics_topics, $navigation_topics, $guidelines_topics, $tactics_topics){
 
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
 
@@ -28,6 +28,9 @@ function editDocx($file_template, $output_file, $month_year, $general_tasks, $av
     $document->cloneRowAndSetValues('gt', $general_tasks);
     $document->cloneRowAndSetValues('av', $aviation_topics);
     $document->cloneRowAndSetValues('aer', $aerodynamics_topics);
+    $document->cloneRowAndSetValues('nav', $navigation_topics);
+    $document->cloneRowAndSetValues('guide', $guidelines_topics);
+    $document->cloneRowAndSetValues('tac', $tactics_topics);
 
     $document->saveAs($output_file);
     uploadDocx($output_file);
