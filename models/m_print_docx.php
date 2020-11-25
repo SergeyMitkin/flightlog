@@ -7,13 +7,42 @@ function editDocx($file_template, $output_file, $month_year, $general_tasks, $av
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
 
     //print_r($aviation_topics);
-    /*
+
     if ($general_tasks == null){
         $general_tasks = [
             ['gt' => ' ', 'task-title' => ' ', 'task-description' => ' ', 'task-author' => ' ', 'task-date' => ' ']
         ];
     }
-    */
+
+    if ($aviation_topics == null){
+        $aviation_topics = [
+            ['av' => ' ', 'av-topic-title' => ' ', 'av-topic-description' => ' ', 'av-topic-author' => ' ', 'av-topic-date' => ' ']
+        ];
+    }
+
+    if ($aerodynamics_topics == null){
+        $aerodynamics_topics = [
+            ['aer' => ' ', 'aer-topic-title' => ' ', 'aer-topic-description' => ' ', 'aer-topic-author' => ' ', 'aer-topic-date' => ' ']
+        ];
+    }
+
+    if ($navigation_topics == null){
+        $navigation_topics = [
+            ['nav' => ' ', 'nav-topic-title' => ' ', 'nav-topic-description' => ' ', 'nav-topic-author' => ' ', 'nav-topic-date' => ' ']
+        ];
+    }
+
+    if ($guidelines_topics == null){
+        $guidelines_topics = [
+            ['guide' => ' ', 'guide-topic-title' => ' ', 'guide-topic-description' => ' ', 'guide-topic-author' => ' ', 'guide-topic-date' => ' ']
+        ];
+    }
+
+    if ($tactics_topics == null){
+        $tactics_topics = [
+            ['tac' => ' ', 'tac-topic-title' => ' ', 'tac-topic-description' => ' ', 'tac-topic-author' => ' ', 'tac-topic-date' => ' ']
+        ];
+    }
 
    // if ($aviation_topics == null){
     /*
