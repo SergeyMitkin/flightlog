@@ -74,4 +74,5 @@ function uploadDocx($file){
 
 // Прочитать файл
     readfile($file);
+    unlink($file);
 }
