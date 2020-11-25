@@ -224,21 +224,14 @@
 </div>
 
 <div id="div-items-print-form">
-    <form role="form" action="" method="post" id="general-training-print-form">
-        <div class="form-group date-input">
+    <form role="form" action="" method="post" id="general-training-print-form" >
+        <div class="form-group date-input" hidden>
             <label for="month-year-input">Месяц и год</label>
             <input required type="text" class="form-control" id="month-year-input"
                    name="month-year">
         </div>
 
-        <div id="print-form-items"></div>
-
-        <!--
-        <div class="form-group">
-            <input type="text" class="form-control" id="general-tasks-print-textarea"
-                      name="general-tasks[]">
-        </div>
-        -->
+        <div id="print-form-items" hidden></div>
 
         <div class="form-footer">
             <button id="general-training-print-button" type="submit" class="button">Распечатать</button>

@@ -1,4 +1,4 @@
-//  Открываем/скрываем формы добавления задач
+//  Открываем/скрываем форму добавления задач
 var elDivTaskCreateForm = document.getElementById("div-task-create-form");
 var elTaskCreateFormButton = document.getElementById("task-create-form-button");
 
@@ -7,7 +7,7 @@ elTaskCreateFormButton.addEventListener("click", event =>{
     event.target.setAttribute("hidden", "");
 })
 
-//  Открываем/скрываем формы добавления тем
+//  Открываем/скрываем форму добавления тем
 var elDivTopicCreateForm = document.getElementById("div-topic-create-form");
 var elTopicCreateFormButton = document.getElementById('topic-create-form-button');
 
