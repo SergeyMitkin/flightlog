@@ -68,6 +68,7 @@ class C_Page extends C_Base
 		$authors = getAuthors();
 
 		$this->content = $this->Template(VIEW_DIR . '/v_general_training.php', array(
+		        'title' => $title,
 		        'year_array' => $year_array,
                 'current_year' => $current_year,
                 'month_array' => $month_array,
@@ -87,7 +88,11 @@ class C_Page extends C_Base
     public function action_training(){
 
         $this->title .= '';
-        $text = 'training';
-        $this->content = $this->Template(VIEW_DIR . '/v_training.php', array('text' => $text));
+        $date = date('Y-m-d');
+
+        $this->content = $this->Template(VIEW_DIR . '/v_training.php', array(
+            'date' => $date,
+            )
+        );
     }
 }

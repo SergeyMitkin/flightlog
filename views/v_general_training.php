@@ -50,7 +50,7 @@
 </div>
 
 <div id="div-task-create-form" class="div-create-form" hidden>
-    <form role="form" action="" method="post" class="form-horizontal" id="task-create-form" enctype="multipart/form-data">
+    <form role="form" action="" method="post" class="form-horizontal" id="task-create-form">
 
         <div class="form-group">
             <label for="task-name">Введите название задачи</label>
