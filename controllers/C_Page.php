@@ -2,6 +2,7 @@
 
 include_once('C_Base.php');
 include_once ('../models/m_tasks.php');
+include_once ('../models/m_flights.php');
 include_once ('../models/m_topics.php');
 include_once ('../models/m_authors.php');
 include_once ('../models/m_print_docx.php');
@@ -68,7 +69,6 @@ class C_Page extends C_Base
 		$authors = getAuthors();
 
 		$this->content = $this->Template(VIEW_DIR . '/v_general_training.php', array(
-		        'title' => $title,
 		        'year_array' => $year_array,
                 'current_year' => $current_year,
                 'month_array' => $month_array,
@@ -89,9 +89,11 @@ class C_Page extends C_Base
 
         $this->title .= '';
         $date = date('Y-m-d');
+        $crew = getCrew();
 
         $this->content = $this->Template(VIEW_DIR . '/v_training.php', array(
-            'date' => $date,
+                'date' => $date,
+                'crew' => $crew
             )
         );
     }

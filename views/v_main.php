@@ -32,8 +32,4 @@
             Все права защищены.
         </div>
     </body>
-
-    <script src="js/general_training_print.js"></script>
-    <script src="js/calendar.js"></script>
-    <script src="js/general_training_page.js"></script>
 </html>
