@@ -87,6 +87,18 @@ class C_Page extends C_Base
 
     public function action_training(){
 
+	    if (isset($_POST['flight-name'])){
+            $flight_name = $_POST['flight-name'];
+            $date = $_POST['flight-date'];
+            $time_start = $_POST['time-start'];
+            $time_end = $_POST['time-end'];
+            $dawn_sunset = $_POST['dawn-sunset'];
+            $exercise = $_POST['flight-exercise'];
+            $crew = $_POST['crew'];
+
+            setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew);
+        }
+
         $date = date('Y-m-d');
         $crew = getCrew();
 
