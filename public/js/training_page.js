@@ -21,7 +21,7 @@ elAddFlightExerciseButton.addEventListener("click", event=>{
     var i = document.createElement("input");
     i.type = "text";
     i.id = "flight-exercise-input";
-    i.name = "flight-exercise";
+    i.name = "flight-exercise[]";
 
     var b = document.createElement("button");
     b.id = "exercise-remove-button_" + new_exercise_id;

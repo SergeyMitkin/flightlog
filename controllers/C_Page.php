@@ -87,7 +87,6 @@ class C_Page extends C_Base
 
     public function action_training(){
 
-        $this->title .= '';
         $date = date('Y-m-d');
         $crew = getCrew();
 

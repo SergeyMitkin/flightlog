@@ -1,5 +1,6 @@
 <?php
 ?>
+
 <h1>Подготовка к полётам</h1>
 
 <div id="flight-create-div">
