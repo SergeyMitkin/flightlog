@@ -12,6 +12,8 @@ function getCrew(){
 }
 
 function setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew){
+
+    // Добавляем запись в таблицу "flights"
     try {
         $t = 'flights';
         $v = array(
@@ -22,12 +24,25 @@ function setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $e
             'dawn_sunset' => $dawn_sunset,
         );
 
-        $sql = SQL::getInstance()->Insert($t, $v);
-
-
+        $flight_id = SQL::getInstance()->Insert($t, $v);
     }
     catch(PDOException $e){
         die("Error: ".$e->getMessage());
     }
-   // header("Location: /");
+
+    // Добавляем запись в таблицу "exercises"
+    $exercise_array = array();
+    for ($i=0; $i<count($exercise); $i++){
+        $exercise_array[$i]['name'] = $exercise[$i];
+        $exercise_array[$i]['flight_id'] = $flight_id;
+    }
+
+    try {
+        $t = 'exercises';
+        $v = $exercise_array;
+        $sql = SQL::getInstance()->mulInsert($t, $v);
+    }
+    catch(PDOException $e){
+        die("Error: ".$e->getMessage());
+    }
 }

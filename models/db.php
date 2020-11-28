@@ -31,14 +31,18 @@ class SQL{
     }
 
     // Create
+    // Ввод одной строки
     public function Insert($table, $object){
+
         $columns = array();
         foreach($object as $key=>$value) {
             $columns[] = $key;
             $masks[] = ":$key";
         }
+
             $columns_s = implode(',' ,$columns);
             $masks_s = implode(',' , $masks);
+
             $query = "INSERT INTO $table ($columns_s) VALUES ($masks_s)";
             $q = $this->db->prepare($query);
             $q->execute($object);
@@ -49,7 +53,37 @@ class SQL{
             return $this->db->lastInsertId();
         }
 
-        // Update
+    // Ввод нескольких строк
+    public function mulInsert($table, $object){
+
+        $columns = array();
+        foreach($object[0] as $key=>$value) {
+            $columns[] = $key;
+            $masks[] = "?";
+        }
+
+        $columns_s = implode(',' ,$columns);
+        $masks_s = implode(',' , $masks);
+
+        $query = "INSERT INTO $table ($columns_s) VALUES ($masks_s)";
+        $stmt = $this->db->prepare($query);
+
+        for ($i=0; $i<count($columns); $i++) {
+            $var = array_keys($object[0])[$i];
+            $stmt->bindParam($i+1, $$var);
+        }
+
+        for ($i=0; $i<count($object); $i++){
+
+            for ($index=0; $index<count($object[0]); $index++){
+                $var = array_keys($object[0])[$index];
+                $$var = $object[$i][$var];
+            }
+            $stmt->execute();
+        }
+    }
+
+    // Update
     public function Update($table,$object,$where){
         $sets = array();
 
