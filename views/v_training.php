@@ -8,8 +8,8 @@
 <div id="row-flights" class="row-flights">
     <?php
     foreach($flights as $flight){
-        ?><div class="raw-item" data-sort-date="<?php echo substr($flight['date'], 0, 7);?>">
-            <h4><?php echo $flight['flight_name'];?></h4>
+        ?><div class="raw-item" data-sort-date="<?php echo $flight['date']?>">
+            <h4><?php echo $flight['name'];?></h4>
             <p><?php echo $flight['date']?></p>
             <p>Начало полётов: <?php echo $flight['time_start']?></p>
             <p>Конец полётов: <?php echo $flight['time_end']?></p>
@@ -44,8 +44,8 @@
         </div>
 
         <div class="form-group">
-            <p><input required name="dawn-sunset" type="radio" value="dawn">Рассвет
-            <input required name="dawn-sunset" type="radio" value="sunset">Закат</p>
+            <p><input required name="dawn-sunset" type="radio" value="Рассвет">Рассвет
+            <input required name="dawn-sunset" type="radio" value="Закат">Закат</p>
         </div>
 
         <div class="form-group" id="flight-exercises-row"></div>
