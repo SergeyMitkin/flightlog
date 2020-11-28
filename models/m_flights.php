@@ -32,7 +32,6 @@ function setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $e
 
     // Добавляем запись в таблицу "exercises"
     // Создаём массив для добавления строк в БД
-
     if ($exercise !== null){
         $exercise_array = array();
         for ($i=0; $i<count($exercise); $i++){

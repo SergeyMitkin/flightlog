@@ -3,7 +3,7 @@
 
 <h1>Подготовка к полётам</h1>
 
-<div id="flight-create-div">
+<div id="flight-create-div" hidden>
     <form role="form" action="" method="post" class="form-horizontal" id="flight-create-form">
 
         <div class="form-group">

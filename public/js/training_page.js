@@ -1,3 +1,11 @@
+var elFlightCreateDiv = document.getElementById("flight-create-div"); // Div с формой добавления полёта
+var elDivFlightCreateButton = document.getElementById("div-flight-create-button"); // Div с кнопкой "Добавить полёт"
+
+// Лткрываем форму при нажатии кнопки "Добавить полёт"
+elDivFlightCreateButton.querySelector("button").addEventListener("click", event=>{
+    elFlightCreateDiv.removeAttribute("hidden")
+})
+
 var elAddFlightExerciseButton = document.getElementById("add-flight-exercise-button");
 var elFlightExercisesRow = document.getElementById("flight-exercises-row");
 
