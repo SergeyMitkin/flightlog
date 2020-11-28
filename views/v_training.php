@@ -3,6 +3,25 @@
 
 <h1>Подготовка к полётам</h1>
 
+<!-- Выводим полёты -->
+<h2 id = "flights-title">Полёты на</h2>
+<div id="row-flights" class="row-flights">
+    <?php
+    foreach($flights as $flight){
+        ?><div class="raw-item" data-sort-date="<?php echo substr($flight['date'], 0, 7);?>">
+            <h4><?php echo $flight['flight_name'];?></h4>
+            <p><?php echo $flight['date']?></p>
+            <p>Начало полётов: <?php echo $flight['time_start']?></p>
+            <p>Конец полётов: <?php echo $flight['time_end']?></p>
+            <p>Время суток: <?php echo $flight['dawn_sunset']?></p>
+            <p>Упражнения: <?//php echo $flight['exercises']?></p> <!-- В таблицу? -->
+            <p>Экипаж: <?//php echo $flight['crew']?></p>
+        </div>
+        <?php
+    }
+    ?>
+</div>
+
 <div id="flight-create-div" hidden>
     <form role="form" action="" method="post" class="form-horizontal" id="flight-create-form">
 

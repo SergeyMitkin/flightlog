@@ -11,6 +11,16 @@ function getCrew(){
     return $sql;
 }
 
+function getFlights(){
+    try {
+        $q = "SELECT * FROM flights";
+        $sql = SQL::getInstance()->Select($q);
+    } catch (PDOException $e) {
+        die("Error: " . $e->getMessage());
+    }
+    return $sql;
+}
+
 function setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew){
 
     // Добавляем запись в таблицу "flights"

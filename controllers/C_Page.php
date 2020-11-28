@@ -99,12 +99,15 @@ class C_Page extends C_Base
             setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew);
         }
 
+        $flights = getFlights();
+
         $date = date('Y-m-d');
         $crew = getCrew();
 
         $this->content = $this->Template(VIEW_DIR . '/v_training.php', array(
                 'date' => $date,
-                'crew' => $crew
+                'crew' => $crew,
+                'flights' => $flights
             )
         );
     }
