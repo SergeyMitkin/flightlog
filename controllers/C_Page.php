@@ -100,6 +100,9 @@ class C_Page extends C_Base
         }
 
         $flights = getFlights();
+	    $exercises = getFlightExercises();
+
+
 
         $date = date('Y-m-d');
         $crew = getCrew();
@@ -107,7 +110,8 @@ class C_Page extends C_Base
         $this->content = $this->Template(VIEW_DIR . '/v_training.php', array(
                 'date' => $date,
                 'crew' => $crew,
-                'flights' => $flights
+                'flights' => $flights,
+                'exercises' => $exercises
             )
         );
     }

@@ -14,7 +14,17 @@
             <p>Начало полётов: <?php echo $flight['time_start']?></p>
             <p>Конец полётов: <?php echo $flight['time_end']?></p>
             <p>Время суток: <?php echo $flight['dawn_sunset']?></p>
-            <p>Упражнения: <?//php echo $flight['exercises']?></p> <!-- В таблицу? -->
+            <div>Упражнения:
+                <ol>
+                <?
+                for ($i=0; $i<count($exercises); $i++){
+                    if ($exercises[$i]['flight_id'] == $flight['id']){
+                        echo '<li>' . $exercises[$i]['name'] . '</li>';
+                    }
+                }
+                ?>
+                </ol>
+            </div> <!-- В таблицу? -->
             <p>Экипаж: <?//php echo $flight['crew']?></p>
         </div>
         <?php

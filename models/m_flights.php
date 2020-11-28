@@ -11,6 +11,17 @@ function getCrew(){
     return $sql;
 }
 
+function getFlightExercises(){
+    try {
+        $q = "SELECT * FROM exercises";
+        $sql = SQL::getInstance()->Select($q);
+    } catch (PDOException $e) {
+        die("Error: " . $e->getMessage());
+    }
+
+    return $sql;
+}
+
 function getFlights(){
     try {
         $q = "SELECT * FROM flights";
