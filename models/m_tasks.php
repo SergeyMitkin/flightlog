@@ -30,5 +30,5 @@ function setGeneralTask($task_name, $description, $author_id, $date){
     catch(PDOException $e){
         die("Error: ".$e->getMessage());
     }
-    header("Location: /training");
+    header("Location: /");
 }

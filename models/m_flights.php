@@ -31,18 +31,41 @@ function setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $e
     }
 
     // Добавляем запись в таблицу "exercises"
-    $exercise_array = array();
-    for ($i=0; $i<count($exercise); $i++){
-        $exercise_array[$i]['name'] = $exercise[$i];
-        $exercise_array[$i]['flight_id'] = $flight_id;
+    // Создаём массив для добавления строк в БД
+
+    if ($exercise !== null){
+        $exercise_array = array();
+        for ($i=0; $i<count($exercise); $i++){
+            $exercise_array[$i]['name'] = $exercise[$i];
+            $exercise_array[$i]['flight_id'] = $flight_id;
+        }
+
+        try {
+            $t = 'exercises';
+            $v = $exercise_array;
+            $sql = SQL::getInstance()->mulInsert($t, $v);
+        }
+        catch(PDOException $e){
+            die("Error: ".$e->getMessage());
+        }
+    }
+
+    // Добавляем запись в таблицу "flights_crew"
+    // Создаём массив для добавления строк в БД
+    $crew_array = array();
+    for ($i=0; $i<count($crew); $i++){
+        $crew_array[$i]['flight_id'] = $flight_id;
+        $crew_array[$i]['crew_id'] = $crew[$i];
     }
 
     try {
-        $t = 'exercises';
-        $v = $exercise_array;
+        $t = 'flights_crew';
+        $v = $crew_array;
         $sql = SQL::getInstance()->mulInsert($t, $v);
     }
     catch(PDOException $e){
         die("Error: ".$e->getMessage());
     }
+
+    header("Location: /training/");
 }
