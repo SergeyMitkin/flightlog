@@ -23,7 +23,7 @@ function getCurrentMonthAndYear(){
     return task_date;
 }
 
-function getItemsByMonth(classname = "task-and-topic-item"){
+function getItemsByMonth(classname = "row-item"){
 
     var task_date = getCurrentMonthAndYear();
 
