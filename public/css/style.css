@@ -55,3 +55,7 @@ textarea
 #training-calendar{
     padding-top: 4px;
 }
+
+.exercises-table, .exercises-table td{
+    border: 1px solid black;
+}

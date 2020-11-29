@@ -20,6 +20,38 @@
             <p>Начало полётов: <?php echo $flight['time_start']?></p>
             <p>Конец полётов: <?php echo $flight['time_end']?></p>
             <p>Время суток: <?php echo $flight['dawn_sunset']?></p>
+
+                <?php
+                $rows = 2;
+                //$cols = count($exercises);
+
+                echo '<table border="1">';
+
+                for ($tr=1; $tr<=$rows; $tr++){ // в этом цикле счётчик $tr
+                // следит за количеством строк и всегда равен текущему номеру строки.
+                // То есть в начале $tr=1, так как в начале у нас 1 строка, затем
+                // каждый раз прибавляем единицу, пока не дойдём до заданного количества
+                // $rows.
+                echo '<tr>';
+                    for ($td=1; $td<=count($exercises)+1; $td++){ // в этом цикле счётчик $td аналогичен
+                        // счётчику $tr.
+                        if ($tr == 1 && $td ==1){
+                            echo '<td>Время</td>';
+                        } if ($tr == 2 && $td == 1){
+                            echo '<td>УПР</td>';
+                        }
+                        else if (($tr % 2) != 0 && $td != count($exercises)+1){
+                            echo '<td>'. $exercises[$td-1]['time'] .'</td>';
+                        }
+                        else if (($tr % 2) == 0){
+                            echo '<td>'. $exercises[$td-2]['name'] .'</td>';
+                        }
+                    }
+                    echo '</tr>';
+                }
+                echo '</table>';
+                ?>
+
             <div>Упражнения:
                 <ol>
                 <?

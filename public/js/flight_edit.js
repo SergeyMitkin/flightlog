@@ -9,6 +9,8 @@ elRowFlights.addEventListener("click", event =>{
         elFlightItemDiv.appendChild(elFlightCreateDiv);
         elFlightCreateDiv.removeAttribute("hidden");
 
+
+
         console.log(elFlightItemDiv);
     }
 })
