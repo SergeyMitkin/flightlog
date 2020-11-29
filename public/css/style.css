@@ -46,8 +46,12 @@ textarea
     background: #ccc;
 }
 
-.raw-item{
+.row-item{
     margin: 5px;
     padding: 0px 10px 10px 10px;
     border: 1px solid black;
+}
+
+#training-calendar{
+    padding-top: 4px;
 }

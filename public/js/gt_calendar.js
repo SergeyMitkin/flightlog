@@ -42,7 +42,7 @@ function getItemsByMonth(classname = "task-and-topic-item"){
             m[k].removeAttribute('hidden');
         }
     }
-    // Выводим на печть элементы сисков
+    // Выводим на печть элементы списков
     printGeneralTasks();
     printAviationTopics();
     printAerodynamicsTopics();

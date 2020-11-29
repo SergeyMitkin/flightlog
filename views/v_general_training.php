@@ -38,7 +38,7 @@
 <div id="row-tasks" class="row-tasks-and-topics">
     <?php
     foreach($general_tasks as $task){
-        ?><div class="raw-item general-task-item" data-sort-date="<?php echo substr($task['date'], 0, 7);?>">
+        ?><div class="row-item general-task-item" data-sort-date="<?php echo substr($task['date'], 0, 7);?>">
             <h4><?php echo $task['task_name'];?></h4>
             <p><?php echo $task['description']?></p>
             <p>Автор: <?php echo $task['author_name']?></p>
@@ -98,7 +98,7 @@
 <div id="row-topics-aviation-technology" class="row-tasks-and-topics">
     <?php
     foreach($aviation_technology_topics as $topic){
-        ?><div class="raw-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
             <h4 class="task-title"><?php echo $topic['topic_name'];?></h4>
             <p><?php echo $topic['description']?></p>
             <p>Автор: <?php echo $topic['author_name']?></p>
@@ -113,7 +113,7 @@
 <div id="row-topics-aerodynamics" class="row-tasks-and-topics">
     <?php
     foreach($aerodynamics_topics as $topic){
-        ?><div class="raw-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
             <h4><?php echo $topic['topic_name'];?></h4>
             <p><?php echo $topic['description']?></p>
             <p>Автор: <?php echo $topic['author_name']?></p>
@@ -128,7 +128,7 @@
 <div id="row-topics-navigation" class="row-tasks-and-topics">
     <?php
     foreach($navigation_topics as $topic){
-        ?><div class="raw-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
         <h4><?php echo $topic['topic_name'];?></h4>
         <p><?php echo $topic['description']?></p>
         <p>Автор: <?php echo $topic['author_name']?></p>
@@ -143,7 +143,7 @@
 <div id="row-topics-guidelines" class="row-tasks-and-topics">
     <?php
     foreach($guidelines_topics as $topic){
-        ?><div class="raw-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
         <h4><?php echo $topic['topic_name'];?></h4>
         <p><?php echo $topic['description']?></p>
         <p>Автор: <?php echo $topic['author_name']?></p>
@@ -158,7 +158,7 @@
 <div id="row-topics-tactics" class="row-tasks-and-topics">
     <?php
     foreach($tactics_topics as $topic){
-        ?><div class="raw-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+        ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
         <h4><?php echo $topic['topic_name'];?></h4>
         <p><?php echo $topic['description']?></p>
         <p>Автор: <?php echo $topic['author_name']?></p>
@@ -240,7 +240,7 @@
 </div>
 
 <script src="js/general_training_print.js"></script>
-<script src="js/calendar.js"></script>
+<script src="js/gt_calendar.js"></script>
 <script src="js/general_training_page.js"></script>
 
 

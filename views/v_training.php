@@ -3,22 +3,23 @@
 
 <h1>Подготовка к полётам</h1>
 
+<div id="flight-calendar-div">
+    <button id="flight-button-back"><</button>
+    <input id="training-calendar" type="date" value="<?php echo $date?>">
+    <button id="flight-button-forward">></button>
+</div>
+
 <!-- Выводим полёты -->
-<h2 id = "flights-title">Полёты на</h2>
+<h2 id = "flights-title">Полёты на </h2>
 <div id="row-flights" class="row-flights">
     <?php
     foreach($flights as $flight){
-        ?><div class="raw-item" data-sort-date="<?php echo $flight['date']?>">
+        ?><div class="row-item" data-sort-date="<?php echo $flight['date']?>">
             <h4><?php echo $flight['name'];?></h4>
-            <p><?php echo $flight['date']?></p>
+            <p>Дата: <?php echo $flight['date']?></p>
             <p>Начало полётов: <?php echo $flight['time_start']?></p>
             <p>Конец полётов: <?php echo $flight['time_end']?></p>
             <p>Время суток: <?php echo $flight['dawn_sunset']?></p>
-            <table>
-                <tr>
-                    <td></td>
-                </tr>
-            </table>
             <div>Упражнения:
                 <ol>
                 <?
@@ -29,7 +30,7 @@
                 }
                 ?>
                 </ol>
-            </div> <!-- В таблицу? -->
+            </div>
             <div>Экипаж:
                 <ol>
                     <?
@@ -41,7 +42,6 @@
                     ?>
                 </ol>
             </div>
-            <p>Экипаж: <?//php echo $flight['crew']?></p>
         </div>
         <?php
     }
@@ -104,5 +104,6 @@
 </div>
 
 <script src="../js/training_page.js"></script>
+<script src="../js/t_calendar.js"></script>
 
 
