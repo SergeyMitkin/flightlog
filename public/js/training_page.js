@@ -22,14 +22,23 @@ elAddFlightExerciseButton.addEventListener("click", event=>{
     d.classList = "flight-exercise-div";
     d.id = "flight-exercise-item_" + new_exercise_id;
 
-    var l = document.createElement("label");
-    l.for = "flight-exercise-input";
-    l.textContent = "Упражнение :";
+    var l_n = document.createElement("label");
+    l_n.setAttribute("for", "exercise-name-input_" + new_exercise_id);
+    l_n.textContent = "Упражнение: ";
 
-    var i = document.createElement("input");
-    i.type = "text";
-    i.id = "flight-exercise-input";
-    i.name = "flight-exercise[]";
+    var i_n = document.createElement("input");
+    i_n.type = "text";
+    i_n.id = "exercise-name-input_" + new_exercise_id;
+    i_n.name = "exercise-name[]";
+
+    var l_t = document.createElement("label");
+    l_t.setAttribute("for", "exercise-time-input_" + new_exercise_id);
+    l_t.textContent = "Время: ";
+
+    var i_t = document.createElement("input");
+    i_t.type = "time";
+    i_t.id = "exercise-time-input_" + new_exercise_id;
+    i_t.name = "exercise-date[]";
 
     var b = document.createElement("button");
     b.id = "exercise-remove-button_" + new_exercise_id;
@@ -37,8 +46,10 @@ elAddFlightExerciseButton.addEventListener("click", event=>{
     b.type = "button";
     b.textContent = "Удалить";
 
-    d.appendChild(l);
-    d.appendChild(i);
+    d.appendChild(l_n);
+    d.appendChild(i_n);
+    d.appendChild(l_t);
+    d.appendChild(i_t);
     d.appendChild(b);
 
     elFlightExercisesRow.appendChild(d);

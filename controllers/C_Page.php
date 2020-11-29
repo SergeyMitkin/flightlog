@@ -102,8 +102,6 @@ class C_Page extends C_Base
         $flights = getFlights();
 	    $exercises = getFlightExercises();
 
-
-
         $date = date('Y-m-d');
         $crew = getCrew();
 

@@ -14,6 +14,11 @@
             <p>Начало полётов: <?php echo $flight['time_start']?></p>
             <p>Конец полётов: <?php echo $flight['time_end']?></p>
             <p>Время суток: <?php echo $flight['dawn_sunset']?></p>
+            <table>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
             <div>Упражнения:
                 <ol>
                 <?
@@ -36,8 +41,8 @@
     <form role="form" action="" method="post" class="form-horizontal" id="flight-create-form">
 
         <div class="form-group">
-            <label for="flight-date-input">Название: </label>
-            <input required class="form-control" name="flight-name" value="">
+            <label for="flight-name-input">Название: </label>
+            <input required id="flight-name-input" class="form-control" name="flight-name" value="">
         </div>
 
         <div class="form-group">
@@ -46,10 +51,10 @@
         </div>
 
         <div class="form-group">
-            <label for="time">Начало полётов: </label>
+            <label for="flight-start">Начало полётов: </label>
             <input required type="time" id="flight-start" name="time-start" value=""/>
 
-            <label for="time">Конец полётов: </label>
+            <label for="flight-end">Конец полётов: </label>
             <input required type="time" id="flight-end" name="time-end" value=""/>
         </div>
 
