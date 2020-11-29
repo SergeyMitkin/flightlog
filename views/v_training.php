@@ -23,9 +23,14 @@
 
                 <?php
                 $rows = 2;
-                //$cols = count($exercises);
 
-                echo '<table border="1">';
+                if (count($exercises)>4){
+                    $rows = floor(count($exercises)/4) * 2;
+                }
+
+                echo $rows;
+
+                echo '<table border="1"> Упражнения: ';
 
                 for ($tr=1; $tr<=$rows; $tr++){ // в этом цикле счётчик $tr
                 // следит за количеством строк и всегда равен текущему номеру строки.
@@ -52,17 +57,6 @@
                 echo '</table>';
                 ?>
 
-            <div>Упражнения:
-                <ol>
-                <?
-                for ($i=0; $i<count($exercises); $i++){
-                    if ($exercises[$i]['flight_id'] == $flight['id']){
-                        echo '<li>' . $exercises[$i]['name'] . '<br>' .' Время: ' . $exercises[$i]['time'] . '</li>';
-                    }
-                }
-                ?>
-                </ol>
-            </div>
             <div>Экипаж:
                 <ol>
                     <?
