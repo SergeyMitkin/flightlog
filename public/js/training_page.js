@@ -29,7 +29,7 @@ elAddFlightExerciseButton.addEventListener("click", event=>{
     var i_n = document.createElement("input");
     i_n.type = "text";
     i_n.id = "exercise-name-input_" + new_exercise_id;
-    i_n.name = "exercise-name[]";
+    i_n.setAttribute("required", "");
 
     var l_t = document.createElement("label");
     l_t.setAttribute("for", "exercise-time-input_" + new_exercise_id);
@@ -38,7 +38,7 @@ elAddFlightExerciseButton.addEventListener("click", event=>{
     var i_t = document.createElement("input");
     i_t.type = "time";
     i_t.id = "exercise-time-input_" + new_exercise_id;
-    i_t.name = "exercise-date[]";
+    i_t.setAttribute("required", "");
 
     var b = document.createElement("button");
     b.id = "exercise-remove-button_" + new_exercise_id;
@@ -46,10 +46,23 @@ elAddFlightExerciseButton.addEventListener("click", event=>{
     b.type = "button";
     b.textContent = "Удалить";
 
+    // Объединяем значения из инпутов имени и времени упражнения
+    var input3 = document.createElement("input");
+    input3.name = "exercise[]";
+    input3.setAttribute("hidden", "");
+
+    i_n.addEventListener('input', joinValues, false);
+    i_t.addEventListener('input', joinValues, false);
+
+    function joinValues(){
+        input3.value = i_n.value + '+php+' + i_t.value;
+    }
+
     d.appendChild(l_n);
     d.appendChild(i_n);
     d.appendChild(l_t);
     d.appendChild(i_t);
+    d.appendChild(input3);
     d.appendChild(b);
 
     elFlightExercisesRow.appendChild(d);
