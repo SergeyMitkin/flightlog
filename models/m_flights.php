@@ -22,6 +22,19 @@ function getFlightExercises(){
     return $sql;
 }
 
+function getFlightsCrew(){
+    try {
+        $q = "SELECT * FROM flights_crew
+        LEFT JOIN crew c2 on flights_crew.crew_id = c2.id
+        ";
+        $sql = SQL::getInstance()->Select($q);
+    } catch (PDOException $e) {
+        die("Error: " . $e->getMessage());
+    }
+
+    return $sql;
+}
+
 function getFlights(){
     try {
         $q = "SELECT * FROM flights";
@@ -60,15 +73,15 @@ function setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $e
             $exercise_array[$i]['time'] = explode('+php+', $exercise[$i])[1];
             $exercise_array[$i]['flight_id'] = $flight_id;
         }
-    }
 
-    try {
-        $t = 'exercises';
-        $v = $exercise_array;
-        $sql = SQL::getInstance()->mulInsert($t, $v);
-    }
-    catch(PDOException $e){
-        die("Error: ".$e->getMessage());
+        try {
+            $t = 'exercises';
+            $v = $exercise_array;
+            $sql = SQL::getInstance()->mulInsert($t, $v);
+        }
+        catch(PDOException $e){
+            die("Error: ".$e->getMessage());
+        }
     }
 
     // Добавляем запись в таблицу "flights_crew"

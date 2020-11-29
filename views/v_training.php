@@ -24,12 +24,23 @@
                 <?
                 for ($i=0; $i<count($exercises); $i++){
                     if ($exercises[$i]['flight_id'] == $flight['id']){
-                        echo '<li>' . $exercises[$i]['name'] . '</li>';
+                        echo '<li>' . $exercises[$i]['name'] . '<br>' .' Время: ' . $exercises[$i]['time'] . '</li>';
                     }
                 }
                 ?>
                 </ol>
             </div> <!-- В таблицу? -->
+            <div>Экипаж:
+                <ol>
+                    <?
+                    for ($i=0; $i<count($flights_crew); $i++){
+                        if ($flights_crew[$i]['flight_id'] == $flight['id']){
+                            echo '<li>' . $flights_crew[$i]['name'] . '</li>';
+                        }
+                    }
+                    ?>
+                </ol>
+            </div>
             <p>Экипаж: <?//php echo $flight['crew']?></p>
         </div>
         <?php

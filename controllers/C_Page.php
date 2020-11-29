@@ -103,7 +103,7 @@ class C_Page extends C_Base
 
         $flights = getFlights();
 	    $exercises = getFlightExercises();
-
+        $flights_crew = getFlightsCrew();
         $date = date('Y-m-d');
         $crew = getCrew();
 
@@ -111,7 +111,8 @@ class C_Page extends C_Base
                 'date' => $date,
                 'crew' => $crew,
                 'flights' => $flights,
-                'exercises' => $exercises
+                'exercises' => $exercises,
+                'flights_crew' => $flights_crew
             )
         );
     }
