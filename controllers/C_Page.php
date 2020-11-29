@@ -90,19 +90,12 @@ class C_Page extends C_Base
 
 	    if (isset($_POST['flight-name'])){
 
-	        // --- ОТЛАДКА НАЧАЛО
-	        echo '<pre>';
-	        var_dump($_POST);
-	        echo'</pre>';
-	        die;
-	        // --- Отладка конец
             $flight_name = $_POST['flight-name'];
             $date = $_POST['flight-date'];
             $time_start = $_POST['time-start'];
             $time_end = $_POST['time-end'];
             $dawn_sunset = $_POST['dawn-sunset'];
-            //$exercise = array();
-            //array_push($exercise, $_POST['exercise-name'], $_POST['exercise-time']);
+            $exercise = $_POST['exercise'];
             $crew = $_POST['crew'];
 
             setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew);

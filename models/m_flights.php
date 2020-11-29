@@ -53,21 +53,22 @@ function setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $e
 
     // Добавляем запись в таблицу "exercises"
     // Создаём массив для добавления строк в БД
-    if ($exercise !== null){
+    if ($exercise !== null) {
         $exercise_array = array();
-        for ($i=0; $i<count($exercise); $i++){
-            $exercise_array[$i]['name'] = $exercise[$i];
+        for ($i = 0; $i < count($exercise); $i++) {
+            $exercise_array[$i]['name'] = explode('+php+', $exercise[$i])[0];
+            $exercise_array[$i]['time'] = explode('+php+', $exercise[$i])[1];
             $exercise_array[$i]['flight_id'] = $flight_id;
         }
+    }
 
-        try {
-            $t = 'exercises';
-            $v = $exercise_array;
-            $sql = SQL::getInstance()->mulInsert($t, $v);
-        }
-        catch(PDOException $e){
-            die("Error: ".$e->getMessage());
-        }
+    try {
+        $t = 'exercises';
+        $v = $exercise_array;
+        $sql = SQL::getInstance()->mulInsert($t, $v);
+    }
+    catch(PDOException $e){
+        die("Error: ".$e->getMessage());
     }
 
     // Добавляем запись в таблицу "flights_crew"
