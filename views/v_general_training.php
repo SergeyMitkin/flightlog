@@ -129,10 +129,10 @@
     <?php
     foreach($navigation_topics as $topic){
         ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-        <h4><?php echo $topic['topic_name'];?></h4>
-        <p><?php echo $topic['description']?></p>
-        <p>Автор: <?php echo $topic['author_name']?></p>
-        <p>Дата: <?php echo $topic['date']?></p>
+            <h4><?php echo $topic['topic_name'];?></h4>
+            <p><?php echo $topic['description']?></p>
+            <p>Автор: <?php echo $topic['author_name']?></p>
+            <p>Дата: <?php echo $topic['date']?></p>
         </div>
         <?php
     }
@@ -144,10 +144,10 @@
     <?php
     foreach($guidelines_topics as $topic){
         ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-        <h4><?php echo $topic['topic_name'];?></h4>
-        <p><?php echo $topic['description']?></p>
-        <p>Автор: <?php echo $topic['author_name']?></p>
-        <p>Дата: <?php echo $topic['date']?></p>
+            <h4><?php echo $topic['topic_name'];?></h4>
+            <p><?php echo $topic['description']?></p>
+            <p>Автор: <?php echo $topic['author_name']?></p>
+            <p>Дата: <?php echo $topic['date']?></p>
         </div>
         <?php
     }
@@ -159,10 +159,10 @@
     <?php
     foreach($tactics_topics as $topic){
         ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-        <h4><?php echo $topic['topic_name'];?></h4>
-        <p><?php echo $topic['description']?></p>
-        <p>Автор: <?php echo $topic['author_name']?></p>
-        <p>Дата: <?php echo $topic['date']?></p>
+            <h4><?php echo $topic['topic_name'];?></h4>
+            <p><?php echo $topic['description']?></p>
+            <p>Автор: <?php echo $topic['author_name']?></p>
+            <p>Дата: <?php echo $topic['date']?></p>
         </div>
         <?php
     }
