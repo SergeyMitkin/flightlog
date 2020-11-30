@@ -19,12 +19,13 @@
             <p>Дата: <span class="flight-date"><?php echo $flight['date']?></span></p>
             <p>Начало полётов: <span class="flight-time-start"><?php echo substr($flight['time_start'], 0, 5)?></span></p>
             <p>Конец полётов: <span class="flight-time-end"><?php echo substr($flight['time_end'], 0, 5)?></span></p>
-            <p>Время суток: <span><?php echo $flight['dawn_sunset']?></span></p>
+            <p>Время суток: <span class="flight-d-s"><?php echo $flight['dawn_sunset']?></span></p>
 
             <?php
             $ex_array[$flight['id']] = array();
             for ($i=0; $i<count($exercises); $i++) {
 
+                // Создаём массив с упражнениями для конкретного полёта
                 if ($exercises[$i]['flight_id'] == $flight['id']) {
                    array_push($ex_array[$flight['id']], $exercises[$i]['name'] . '+php+' .  $exercises[$i]['time']);
                 }
@@ -63,7 +64,7 @@
             </div>
 
             <div>
-                <h2>Индивидуальное задание по запланированным полетным заданиям:</h2>
+                <h2>Индивидуальное задание по запланированным полётным заданиям:</h2>
                 <p><?php echo $flight['individual_task'] ?></p>
             </div>
 
@@ -120,8 +121,8 @@
         </div>
 
         <div class="form-group">
-            <p><input required name="dawn-sunset" type="radio" value="Рассвет">Рассвет
-            <input required name="dawn-sunset" type="radio" value="Закат">Закат</p>
+            <p><input id="flight-d" required name="dawn-sunset" type="radio" value="Рассвет">Рассвет
+            <input id="flight-s" required name="dawn-sunset" type="radio" value="Закат">Закат</p>
         </div>
 
         <div class="form-group" id="flight-exercises-row"></div>
