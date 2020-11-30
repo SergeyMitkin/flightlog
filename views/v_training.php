@@ -22,7 +22,6 @@
             <p>Время суток: <?php echo $flight['dawn_sunset']?></p>
 
         <?php
-
         $ex_array[$flight['id']] = array();
         for ($i=0; $i<count($exercises); $i++) {
 
@@ -30,36 +29,26 @@
                array_push($ex_array[$flight['id']], $exercises[$i]['name'] . '+php+' .  $exercises[$i]['time']);
             }
         }
-
-        $rows = 2;
-
-        echo '<table border="1"> Упражнения: ';
-
-        for ($tr=1; $tr<=$rows; $tr++){ // в этом цикле счётчик $tr
-            // следит за количеством строк и всегда равен текущему номеру строки.
-            // То есть в начале $tr=1, так как в начале у нас 1 строка, затем
-            // каждый раз прибавляем единицу, пока не дойдём до заданного количества
-            // $rows.
-            echo '<tr>';
-            for ($td=1; $td<=count($ex_array[$flight['id']])+1; $td++){ // в этом цикле счётчик $td аналогичен
-                // счётчику $tr.
-                if ($tr == 1 && $td ==1){
+        // Выводим по 6 упражнений в строке
+        $ex_array_div = array_chunk($ex_array[$flight['id']], 6);
+        echo '<table class="exercises-table"> Упражнения: ';
+            for ($i=0; $i<count($ex_array_div); $i++){
+                //print_r($ex_array_div[$i]);
+                echo '<tr>';
                     echo '<td>Время</td>';
-                } if ($tr == 2 && $td == 1){
+                    for ($in=0; $in<count($ex_array_div[$i]); $in++){
+                        echo '<td>' . explode('+php+',$ex_array_div[$i][$in])[0] . '</td>';
+                    }
+                echo '</tr>';
+
+                echo '<tr>';
                     echo '<td>УПР</td>';
-                }
-                else if (($tr % 2) != 0 && $td != count($ex_array[$flight['id']])+1){
-                    echo '<td>'. explode('+php+', $ex_array[$flight['id']][$td-1])[1] .'</td>';
-                }
-                else if (($tr % 2) == 0){
-                    echo '<td>'. explode('+php+', $ex_array[$flight['id']][$td-2])[0].'</td>';
-                }
+                    for ($in=0; $in<count($ex_array_div[$i]); $in++){
+                        echo '<td>' . explode('+php+',$ex_array_div[$i][$in])[1] . '</td>';
+                    }
+                echo '</tr>';
             }
-            echo '</tr>';
-        }
         echo '</table>';
-
-
         ?>
 
         <div>Экипаж:
