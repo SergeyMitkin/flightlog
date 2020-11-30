@@ -27,7 +27,7 @@
 
                 // Создаём массив с упражнениями для конкретного полёта
                 if ($exercises[$i]['flight_id'] == $flight['id']) {
-                   array_push($ex_array[$flight['id']], $exercises[$i]['name'] . '+php+' .  $exercises[$i]['time']);
+                   array_push($ex_array[$flight['id']], $exercises[$i]['name'] . '+php+' .  $exercises[$i]['time'] . '+php+' . $exercises[$i]['id']);
                 }
             }
             // Выводим по 6 упражнений в строке
@@ -37,14 +37,14 @@
                     echo '<tr>';
                         echo '<td>Время</td>';
                         for ($in=0; $in<count($ex_array_div[$i]); $in++){
-                            echo '<td>' . explode('+php+',$ex_array_div[$i][$in])[0] . '</td>';
+                            echo '<td id="ex-time-td_' . explode('+php+',$ex_array_div[$i][$in])[2] . '">' . substr(explode('+php+',$ex_array_div[$i][$in])[1], 0, 5) . '</td>';
                         }
                     echo '</tr>';
 
                     echo '<tr>';
                         echo '<td>УПР</td>';
                         for ($in=0; $in<count($ex_array_div[$i]); $in++){
-                            echo '<td>' . explode('+php+',$ex_array_div[$i][$in])[1] . '</td>';
+                            echo '<td id="ex-name-td_' . explode('+php+',$ex_array_div[$i][$in])[2] . '">' . explode('+php+',$ex_array_div[$i][$in])[0] . '</td>';
                         }
                     echo '</tr>';
                 }

@@ -1,7 +1,7 @@
 var elFlightCreateDiv = document.getElementById("flight-create-div"); // Div с формой добавления полёта
 var elDivFlightCreateButton = document.getElementById("div-flight-create-button"); // Div с кнопкой "Добавить полёт"
 
-// Открываем форму при нажатии кнопки "Добавить полёт"
+// Открываем форму создания/рредактирования при нажатии кнопки "Добавить полёт"
 elDivFlightCreateButton.querySelector("button").addEventListener("click", event=>{
     elFlightCreateDiv.removeAttribute("hidden")
 })

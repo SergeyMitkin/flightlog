@@ -11,6 +11,8 @@ elRowFlights.addEventListener("click", event =>{
         // Снимаем галочку с radio
         elFlightCreateForm.querySelector("#flight-d").removeAttribute("checked");
         elFlightCreateForm.querySelector("#flight-s").removeAttribute("checked");
+        var ex_td = elFlightItemDiv.querySelector(".exercises-table").querySelectorAll("td") // Столбики таблицы упражнений
+        var elExercisesDiv = document.getElementById("flight-exercises-row");
 
         var d_s  = elFlightItemDiv.querySelector(".flight-d-s").textContent // Узнаём время суток полёта
 
@@ -29,8 +31,77 @@ elRowFlights.addEventListener("click", event =>{
             elFlightCreateForm.querySelector("#flight-s").setAttribute("checked", "");
         }
 
-        console.log(elFlightItemDiv);
+        // Выводим список упражнений
+        for (var i=0; i<ex_td.length; i++){
+            // Выбираем только столбики с упражнениями (проверяем наличие атрибута id)
+            if (ex_td[i].hasAttribute("id")){
+                var exercise_id = ex_td[i].id.split("_")[1];
+
+                // Выводим инпуты с временем упражнений
+                if (ex_td[i].id.split("_")[0] == "ex-time-td"){
+
+                    // Создаём div для одного упражнения
+                    var d = document.createElement("div");
+                    d.classList = "flight-exercise-div_old_" + exercise_id;
+                    d.id = "flight-exercise-item_old_" + exercise_id;
+
+                    var l_t = document.createElement("label");
+                    l_t.setAttribute("for", "exercise-time-input_old_" + exercise_id);
+                    l_t.textContent = "Время: ";
+
+                    var i_t = document.createElement("input");
+                    i_t.type = "time";
+                    i_t.id = "exercise-time-input_old_" + exercise_id;
+                    i_t.value = ex_td[i].textContent; // Вставляем в инпут исходное значение
+
+                    var b = document.createElement("button");
+                    b.id = "exercise-remove-button_old_" + exercise_id;
+                    b.classList = "button exercise-remove-button-old";
+                    b.type = "button";
+                    b.textContent = "Удалить";
+
+                    d.appendChild(l_t);
+                    d.appendChild(i_t);
+                    d.appendChild(b);
+
+                    elExercisesDiv.appendChild(d);
+
+                    // Выводим инпуты с названиями упражнений
+                } else if (ex_td[i].id.split("_")[0] == "ex-name-td"){
+
+                    d = document.getElementById("flight-exercise-item_old_" + exercise_id);
+                    var l_n = document.createElement("label");
+                    l_n.setAttribute("for", "exercise-name-input_old_" + exercise_id);
+                    l_n.textContent = "Упражнение: ";
+
+                    var i_n = document.createElement("input");
+                    i_n.type = "text";
+                    i_n.id = "exercise-name-input_old_" + exercise_id;
+                    i_n.value = ex_td[i].textContent; // Вставляем в инпут исходное значение
+
+                    var firstChild = d.firstChild;
+                    d.insertBefore(l_n, firstChild);
+                    d.insertBefore(i_n, firstChild);
+                   // console.log(d);
+                }
+            }
+        }
+
+        var elExerciseOldRemoveButtons = document.querySelectorAll(".exercise-remove-button-old");
+        elExerciseOldRemoveButtons.forEach( elem => {
+            elem.addEventListener('click', event =>{
+                exerciseOldRemove(Number.parseInt(elem.attributes["id"].value.split("_")[2]));
+            })
+        })
+
+        function exerciseOldRemove(exercise_id) {
+            var elItemForDelete = elExercisesDiv.querySelector("#flight-exercise-item_old_" + exercise_id);
+            elFlightExercisesRow.removeChild(elItemForDelete);
+        }
+
     }
 })
 // var elFlightEditButtons = document.querySelectorAll(".flight-edit-button");
+
+
 
