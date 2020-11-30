@@ -15,11 +15,11 @@
     <?php
     foreach($flights as $flight){
         ?><div class="row-item" id="flight-item_<?php echo $flight['id']?>" data-sort-date="<?php echo $flight['date']?>">
-            <h4><?php echo $flight['name'];?></h4>
-            <p>Дата: <?php echo $flight['date']?></p>
-            <p>Начало полётов: <?php echo $flight['time_start']?></p>
-            <p>Конец полётов: <?php echo $flight['time_end']?></p>
-            <p>Время суток: <?php echo $flight['dawn_sunset']?></p>
+            <h3 class="flight-title"><?php echo $flight['name'];?></h3>
+            <p>Дата: <span class="flight-date"><?php echo $flight['date']?></span></p>
+            <p>Начало полётов: <span class="flight-time-start"><?php echo substr($flight['time_start'], 0, 5)?></span></p>
+            <p>Конец полётов: <span class="flight-time-end"><?php echo substr($flight['time_end'], 0, 5)?></span></p>
+            <p>Время суток: <span><?php echo $flight['dawn_sunset']?></span></p>
 
             <?php
             $ex_array[$flight['id']] = array();
@@ -99,7 +99,7 @@
     <form role="form" action="" method="post" class="form-horizontal" id="flight-create-form">
 
         <!-- В скрытый инпут помещаем id полёта при редактировании, при создании id полёта = 0 -->
-        <input type="hidden" id="form-create-task_id" name="id" value="0">
+        <input type="hidden" id="form-create-task_id" name="flight_id" value="0">
 
         <div class="form-group">
             <label for="flight-name-input">Название: </label>
@@ -107,7 +107,7 @@
         </div>
 
         <div class="form-group">
-            <label for="flight-date-input">Полёты: </label>
+            <label for="flight-date-input">Дата: </label>
             <input required class="form-control" value="<?php echo $date ?>" type="date" id="flight-date-input" name="flight-date">
         </div>
 
