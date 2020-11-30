@@ -21,37 +21,36 @@
             <p>Конец полётов: <?php echo $flight['time_end']?></p>
             <p>Время суток: <?php echo $flight['dawn_sunset']?></p>
 
-        <?php
-        $ex_array[$flight['id']] = array();
-        for ($i=0; $i<count($exercises); $i++) {
+            <?php
+            $ex_array[$flight['id']] = array();
+            for ($i=0; $i<count($exercises); $i++) {
 
-            if ($exercises[$i]['flight_id'] == $flight['id']) {
-               array_push($ex_array[$flight['id']], $exercises[$i]['name'] . '+php+' .  $exercises[$i]['time']);
+                if ($exercises[$i]['flight_id'] == $flight['id']) {
+                   array_push($ex_array[$flight['id']], $exercises[$i]['name'] . '+php+' .  $exercises[$i]['time']);
+                }
             }
-        }
-        // Выводим по 6 упражнений в строке
-        $ex_array_div = array_chunk($ex_array[$flight['id']], 6);
-        echo '<table class="exercises-table"> Упражнения: ';
-            for ($i=0; $i<count($ex_array_div); $i++){
-                //print_r($ex_array_div[$i]);
-                echo '<tr>';
-                    echo '<td>Время</td>';
-                    for ($in=0; $in<count($ex_array_div[$i]); $in++){
-                        echo '<td>' . explode('+php+',$ex_array_div[$i][$in])[0] . '</td>';
-                    }
-                echo '</tr>';
+            // Выводим по 6 упражнений в строке
+            $ex_array_div = array_chunk($ex_array[$flight['id']], 6);
+            echo '<table class="exercises-table"> Упражнения: ';
+                for ($i=0; $i<count($ex_array_div); $i++){
+                    echo '<tr>';
+                        echo '<td>Время</td>';
+                        for ($in=0; $in<count($ex_array_div[$i]); $in++){
+                            echo '<td>' . explode('+php+',$ex_array_div[$i][$in])[0] . '</td>';
+                        }
+                    echo '</tr>';
 
-                echo '<tr>';
-                    echo '<td>УПР</td>';
-                    for ($in=0; $in<count($ex_array_div[$i]); $in++){
-                        echo '<td>' . explode('+php+',$ex_array_div[$i][$in])[1] . '</td>';
-                    }
-                echo '</tr>';
-            }
-        echo '</table>';
-        ?>
+                    echo '<tr>';
+                        echo '<td>УПР</td>';
+                        for ($in=0; $in<count($ex_array_div[$i]); $in++){
+                            echo '<td>' . explode('+php+',$ex_array_div[$i][$in])[1] . '</td>';
+                        }
+                    echo '</tr>';
+                }
+            echo '</table>';
+            ?>
 
-        <div>Экипаж:
+            <div class="flight-crew-div">Экипаж:
                 <ol>
                     <?
                     for ($i=0; $i<count($flights_crew); $i++){
@@ -62,6 +61,32 @@
                     ?>
                 </ol>
             </div>
+
+            <div>
+                <h2>Индивидуальное задание по запланированным полетным заданиям:</h2>
+                <p><?php echo $flight['individual_task'] ?></p>
+            </div>
+
+            <div>
+                <h2>Указания, меры безопасности:</h2>
+                <p><?php echo $flight['security_measures'] ?></p>
+            </div>
+
+            <div>
+                <h2>Задание на самоподготовку:</h2>
+                <p><?php echo $flight['self_preparation_task'] ?></p>
+            </div>
+
+            <div>
+                <h2>Тренажи:</h2>
+                <p><?php echo $flight['trainers'] ?></p>
+            </div>
+
+            <div>
+                <h2>Самостоятельная подготовка:</h2>
+                <p><?php echo $flight['self_preparation'] ?></p>
+            </div>
+
             <button class="flight-edit-button" id="flight-edit-button_<?php echo $flight['id']?>">Редактировать</button>
         </div>
         <?php
@@ -116,6 +141,31 @@
                 }
                 ?>
             </select>
+        </div>
+
+        <div class="form-group">
+            <label for="individual-task-textarea">Индивидуальное задание по запланированным полетным заданиям:</label>
+            <textarea id="individual-task-textarea" name="individual-task" placeholder="Индивидуальное задание по запланированным полетным заданиям"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="security-measures-textarea">Указания, меры безопасности:</label>
+            <textarea id="security-measures-textarea" name="security-measures" placeholder="Указания, меры безопасности"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="self-preparation-task-textarea">Задание на самоподготовку:</label>
+            <textarea id="self-preparation-task-textarea" name="self-preparation-task" placeholder="Задание на самоподготовку"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="trainers-textarea">Тренажи:</label>
+            <textarea id="trainers-textarea" name="trainers" placeholder="Тренажи"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="self-preparation-textarea">Самостоятельная подготовка:</label>
+            <textarea id="self-preparation-textarea" name="self-preparation" placeholder="Самостоятельная подготовка"></textarea>
         </div>
 
         <div class="form-footer">

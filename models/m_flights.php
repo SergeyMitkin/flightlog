@@ -45,7 +45,8 @@ function getFlights(){
     return $sql;
 }
 
-function setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew){
+function setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
+                   $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation){
 
     // Добавляем запись в таблицу "flights"
     try {
@@ -56,6 +57,11 @@ function setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $e
             'time_start' => $time_start,
             'time_end' => $time_end,
             'dawn_sunset' => $dawn_sunset,
+            'individual_task' => $individual_task,
+            'security_measures' => $security_measures,
+            'self_preparation_task' => $self_preparation_task,
+            'trainers' => $trainers,
+            'self_preparation' => $self_preparation
         );
 
         $flight_id = SQL::getInstance()->Insert($t, $v);

@@ -97,8 +97,14 @@ class C_Page extends C_Base
             $dawn_sunset = $_POST['dawn-sunset'];
             $exercise = $_POST['exercise'];
             $crew = $_POST['crew'];
+            $individual_task = $_POST['individual-task'];
+            $security_measures = $_POST['security-measures'];
+            $self_preparation_task = $_POST['self-preparation-task'];
+            $trainers = $_POST['trainers'];
+            $self_preparation = $_POST['self-preparation'];
 
-            setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew);
+            setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
+                $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation);
         }
 
         $flights = getFlights();
