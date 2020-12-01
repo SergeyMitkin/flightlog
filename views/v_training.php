@@ -57,7 +57,7 @@
                     <?
                     for ($i=0; $i<count($flights_crew); $i++){
                         if ($flights_crew[$i]['flight_id'] == $flight['id']){
-                            echo '<li class = "flight-crew-li" value="'. $flights_crew[$i]['id'] .'">' . $flights_crew[$i]['name'] . '</li>';
+                            echo '<li class = "flight-crew-li" data-id="'. $flights_crew[$i]['id'] .'">' . $flights_crew[$i]['name'] . '</li>';
                         }
                     }
                     ?>
@@ -101,7 +101,7 @@
     <form role="form" action="" method="post" class="form-horizontal" id="flight-create-form">
 
         <!-- В скрытый инпут помещаем id полёта при редактировании, при создании id полёта = 0 -->
-        <input type="hidden" id="form-create-task_id" name="flight_id" value="0">
+        <input type="hidden" id="form-create-flight-id" name="flight-id" value="">
 
         <div class="form-group">
             <label for="flight-name-input">Название: </label>

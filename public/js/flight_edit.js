@@ -20,7 +20,8 @@ elRowFlights.addEventListener("click", event =>{
         elFlightCreateDiv.removeAttribute("hidden");
 
         // Помещаем текущие значения в форму редактирования
-        elFlightCreateForm.querySelector("#form-create-task_id").value = flight_id;
+
+        elFlightCreateForm.querySelector("#form-create-flight-id").value = flight_id;
         elFlightCreateForm.querySelector("#flight-name-input").value = elFlightItemDiv.querySelector(".flight-title").textContent;
         elFlightCreateForm.querySelector("#flight-date-input").value = elFlightItemDiv.querySelector(".flight-date").textContent;
         elFlightCreateForm.querySelector("#flight-start").value = elFlightItemDiv.querySelector(".flight-time-start").textContent;
@@ -79,13 +80,18 @@ elRowFlights.addEventListener("click", event =>{
                     i_n.id = "exercise-name-input_old_" + exercise_id;
                     i_n.value = ex_td[i].textContent; // Вставляем в инпут исходное значение
 
+                    var i_t = document.getElementById("exercise-time-input_old_" + exercise_id);
+
                     // Объединяем значения из инпутов имени и времени упражнения
                     var input3 = document.createElement("input");
                     input3.id = "input-common_" + exercise_id;
                     input3.name = "exercise[]";
                     // input3.setAttribute("hidden", "");
 
-                    var i_t = document.getElementById("exercise-time-input_old_" + exercise_id);
+                    // Помещаем в общий инпут изначальные значения
+                    input3.value = i_n.value + "+php+" + i_t.value;
+
+
                     i_n.addEventListener('input', event=>{
 
                         var id = event.target.id.split("_")[2];
@@ -105,7 +111,6 @@ elRowFlights.addEventListener("click", event =>{
                         var elCommonInput = document.getElementById("input-common_" + id);
 
                         elCommonInput.value = elNameInput.value + '+php+' + elTimeInput.value;
-                        console.log(event.target.id);
                     }, false);
 
                     var firstChild = d.firstChild;
@@ -135,7 +140,7 @@ elRowFlights.addEventListener("click", event =>{
 
         // Помечаем как выбранных исходные значения
         for (var i=0; i<crew_li.length; i++){
-            var option = elCrewSelect.querySelector("option[value='" + crew_li[i].value + "']");
+            var option = elCrewSelect.querySelector("option[value='" + crew_li[i].getAttribute("data-id") + "']");
             option.setAttribute("selected", "");
         }
 
@@ -157,7 +162,7 @@ elRowFlights.addEventListener("click", event =>{
         elSelfPreparationTextarea.textContent = document.getElementById("self-preparation_" + flight_id).textContent;
     }
 })
-// var elFlightEditButtons = document.querySelectorAll(".flight-edit-button");
+
 
 
 

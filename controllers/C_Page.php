@@ -90,6 +90,7 @@ class C_Page extends C_Base
 
 	    if (isset($_POST['flight-name'])){
 
+	        $flight_id = $_POST['flight-id'];
             $flight_name = $_POST['flight-name'];
             $date = $_POST['flight-date'];
             $time_start = $_POST['time-start'];
@@ -103,7 +104,7 @@ class C_Page extends C_Base
             $trainers = $_POST['trainers'];
             $self_preparation = $_POST['self-preparation'];
 
-            setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
+            setFlight($flight_id, $flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
                 $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation);
         }
 

@@ -45,8 +45,31 @@ function getFlights(){
     return $sql;
 }
 
-function setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
+function setFlight($flight_id = 0, $flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
                    $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation){
+
+    // Если полёт редактируется, удаляем предыдцщих членов экипажа и упражнения из связанных таблиц
+    if($flight_id > 0) {
+        // Удаляем членов экипажа
+        try{
+            $table = 'flights_crew';
+            $where = 'flight_id = ' . $flight_id;
+            $sql = SQL::getInstance()->Delete($table, $where);
+        }
+        catch(PDOException $e){
+            die("Error: ".$e->getMessage());
+        }
+
+        // Удаляем упражнения
+        try{
+            $table = 'exercises';
+            $where = 'flight_id = ' . $flight_id;
+            $sql = SQL::getInstance()->Delete($table, $where);
+        }
+        catch(PDOException $e){
+            die("Error: ".$e->getMessage());
+        }
+    }
 
     // Добавляем запись в таблицу "flights"
     try {
@@ -64,7 +87,14 @@ function setFlight($flight_name, $date, $time_start, $time_end, $dawn_sunset, $e
             'self_preparation' => $self_preparation
         );
 
-        $flight_id = SQL::getInstance()->Insert($t, $v);
+        // Если Id полёта больше 0, значит полёт редактируется
+        if($flight_id > 0) {
+            $w = "id =" . $flight_id;
+            $sql = SQL::getInstance()->Update($t, $v, $w);
+        // Иначе добавляем новый полёт
+        } else {
+            $flight_id = SQL::getInstance()->Insert($t, $v);
+        }
     }
     catch(PDOException $e){
         die("Error: ".$e->getMessage());
