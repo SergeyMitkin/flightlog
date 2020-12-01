@@ -49,7 +49,7 @@ elAddFlightExerciseButton.addEventListener("click", event=>{
     // Объединяем значения из инпутов имени и времени упражнения
     var input3 = document.createElement("input");
     input3.name = "exercise[]";
-    input3.setAttribute("hidden", "");
+    //input3.setAttribute("hidden", "");
 
     i_n.addEventListener('input', joinValues, false);
     i_t.addEventListener('input', joinValues, false);

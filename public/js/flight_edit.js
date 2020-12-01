@@ -64,6 +64,8 @@ elRowFlights.addEventListener("click", event =>{
                     d.appendChild(i_t);
                     d.appendChild(b);
 
+
+
                     elExercisesDiv.appendChild(d);
 
                     // Выводим инпуты с названиями упражнений
@@ -79,10 +81,39 @@ elRowFlights.addEventListener("click", event =>{
                     i_n.id = "exercise-name-input_old_" + exercise_id;
                     i_n.value = ex_td[i].textContent; // Вставляем в инпут исходное значение
 
+                    // Объединяем значения из инпутов имени и времени упражнения
+                    var input3 = document.createElement("input");
+                    input3.id = "input-common_" + exercise_id;
+                    input3.name = "exercise[]";
+                    // input3.setAttribute("hidden", "");
+
+                    var i_t = document.getElementById("exercise-time-input_old_" + exercise_id);
+                    i_n.addEventListener('input', event=>{
+
+                        var id = event.target.id.split("_")[2];
+                        var elNameInput = document.getElementById("exercise-name-input_old_" + id);
+                        var elTimeInput = document.getElementById("exercise-time-input_old_" + id);
+                        var elCommonInput = document.getElementById("input-common_" + id);
+
+                        elCommonInput.value = elNameInput.value + '+php+' + elTimeInput.value;
+
+                    }, false);
+
+                    i_t.addEventListener('input', event=>{
+
+                        var id = event.target.id.split("_")[2];
+                        var elNameInput = document.getElementById("exercise-name-input_old_" + id);
+                        var elTimeInput = document.getElementById("exercise-time-input_old_" + id);
+                        var elCommonInput = document.getElementById("input-common_" + id);
+
+                        elCommonInput.value = elNameInput.value + '+php+' + elTimeInput.value;
+                        console.log(event.target.id);
+                    }, false);
+
                     var firstChild = d.firstChild;
                     d.insertBefore(l_n, firstChild);
                     d.insertBefore(i_n, firstChild);
-                   // console.log(d);
+                    d.insertBefore(input3, firstChild);
                 }
             }
         }
@@ -98,7 +129,6 @@ elRowFlights.addEventListener("click", event =>{
             var elItemForDelete = elExercisesDiv.querySelector("#flight-exercise-item_old_" + exercise_id);
             elFlightExercisesRow.removeChild(elItemForDelete);
         }
-
     }
 })
 // var elFlightEditButtons = document.querySelectorAll(".flight-edit-button");
