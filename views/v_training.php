@@ -30,6 +30,7 @@
                    array_push($ex_array[$flight['id']], $exercises[$i]['name'] . '+php+' .  $exercises[$i]['time'] . '+php+' . $exercises[$i]['id']);
                 }
             }
+
             // Выводим по 6 упражнений в строке
             $ex_array_div = array_chunk($ex_array[$flight['id']], 6);
             echo '<table class="exercises-table"> Упражнения: ';
@@ -65,27 +66,27 @@
 
             <div>
                 <h2>Индивидуальное задание по запланированным полётным заданиям:</h2>
-                <p><?php echo $flight['individual_task'] ?></p>
+                <p id="individual-task_<?php echo $flight['id']?>"><?php echo $flight['individual_task'] ?></p>
             </div>
 
             <div>
                 <h2>Указания, меры безопасности:</h2>
-                <p><?php echo $flight['security_measures'] ?></p>
+                <p id="security-measures_<?php echo $flight['id']?>"><?php echo $flight['security_measures'] ?></p>
             </div>
 
             <div>
                 <h2>Задание на самоподготовку:</h2>
-                <p><?php echo $flight['self_preparation_task'] ?></p>
+                <p id="self-preparation-task_<?php echo $flight['id']?>"><?php echo $flight['self_preparation_task'] ?></p>
             </div>
 
             <div>
                 <h2>Тренажи:</h2>
-                <p><?php echo $flight['trainers'] ?></p>
+                <p id="trainers_<?php echo $flight['id']?>"><?php echo $flight['trainers'] ?></p>
             </div>
 
             <div>
                 <h2>Самостоятельная подготовка:</h2>
-                <p><?php echo $flight['self_preparation'] ?></p>
+                <p id="self-preparation_<?php echo $flight['id']?>"><?php echo $flight['self_preparation'] ?></p>
             </div>
 
             <button class="flight-edit-button" id="flight-edit-button_<?php echo $flight['id']?>">Редактировать</button>

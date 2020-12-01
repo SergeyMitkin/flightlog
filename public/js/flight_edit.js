@@ -139,9 +139,22 @@ elRowFlights.addEventListener("click", event =>{
             option.setAttribute("selected", "");
         }
 
-        //console.log(crew_li);
+        // Помещаем исходные значения в textarea
 
+        var elIndividualTaskTextarea = document.getElementById("individual-task-textarea");
+        elIndividualTaskTextarea.textContent = document.getElementById("individual-task_" + flight_id).textContent;
 
+        var elSecurityMeasuresTextarea = document.getElementById("security-measures-textarea");
+        elSecurityMeasuresTextarea.textContent = document.getElementById("security-measures_" + flight_id).textContent;
+
+        var elSelfPreparationTaskTextarea = document.getElementById("self-preparation-task-textarea");
+        elSelfPreparationTaskTextarea.textContent = document.getElementById("self-preparation-task_" + flight_id).textContent;
+
+        var elTrainersTextarea = document.getElementById("trainers-textarea");
+        elTrainersTextarea.textContent = document.getElementById("trainers_" + flight_id).textContent;
+
+        var elSelfPreparationTextarea = document.getElementById("self-preparation-textarea");
+        elSelfPreparationTextarea.textContent = document.getElementById("self-preparation_" + flight_id).textContent;
     }
 })
 // var elFlightEditButtons = document.querySelectorAll(".flight-edit-button");
