@@ -64,8 +64,6 @@ elRowFlights.addEventListener("click", event =>{
                     d.appendChild(i_t);
                     d.appendChild(b);
 
-
-
                     elExercisesDiv.appendChild(d);
 
                     // Выводим инпуты с названиями упражнений
@@ -129,6 +127,21 @@ elRowFlights.addEventListener("click", event =>{
             var elItemForDelete = elExercisesDiv.querySelector("#flight-exercise-item_old_" + exercise_id);
             elFlightExercisesRow.removeChild(elItemForDelete);
         }
+
+        // Определяем членов экипажа
+        var elCrewOl = document.getElementById("flight-crew-ol_" + flight_id);
+        var elCrewSelect = document.getElementById("flight-crew-select");
+        var crew_li = elCrewOl.querySelectorAll("li");
+
+        // Помечаем как выбранных исходные значения
+        for (var i=0; i<crew_li.length; i++){
+            var option = elCrewSelect.querySelector("option[value='" + crew_li[i].value + "']");
+            option.setAttribute("selected", "");
+        }
+
+        //console.log(crew_li);
+
+
     }
 })
 // var elFlightEditButtons = document.querySelectorAll(".flight-edit-button");

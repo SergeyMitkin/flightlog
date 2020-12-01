@@ -37,14 +37,14 @@
                     echo '<tr>';
                         echo '<td>Время</td>';
                         for ($in=0; $in<count($ex_array_div[$i]); $in++){
-                            echo '<td id="ex-time-td_' . explode('+php+',$ex_array_div[$i][$in])[2] . '">' . substr(explode('+php+',$ex_array_div[$i][$in])[1], 0, 5) . '</td>';
+                            echo '<td id="ex-time-td_' . explode('+php+', $ex_array_div[$i][$in])[2] . '">' . substr(explode('+php+',$ex_array_div[$i][$in])[1], 0, 5) . '</td>';
                         }
                     echo '</tr>';
 
                     echo '<tr>';
                         echo '<td>УПР</td>';
                         for ($in=0; $in<count($ex_array_div[$i]); $in++){
-                            echo '<td id="ex-name-td_' . explode('+php+',$ex_array_div[$i][$in])[2] . '">' . explode('+php+',$ex_array_div[$i][$in])[0] . '</td>';
+                            echo '<td id="ex-name-td_' . explode('+php+', $ex_array_div[$i][$in])[2] . '">' . explode('+php+',$ex_array_div[$i][$in])[0] . '</td>';
                         }
                     echo '</tr>';
                 }
@@ -52,11 +52,11 @@
             ?>
 
             <div class="flight-crew-div">Экипаж:
-                <ol>
+                <ol class="flight-crew-ol" id="flight-crew-ol_<?php echo $flight['id']?>">
                     <?
                     for ($i=0; $i<count($flights_crew); $i++){
                         if ($flights_crew[$i]['flight_id'] == $flight['id']){
-                            echo '<li>' . $flights_crew[$i]['name'] . '</li>';
+                            echo '<li class = "flight-crew-li" value="'. $flights_crew[$i]['id'] .'">' . $flights_crew[$i]['name'] . '</li>';
                         }
                     }
                     ?>
