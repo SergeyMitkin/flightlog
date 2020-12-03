@@ -18,29 +18,29 @@ class C_Page extends C_Base
 	
 	public function action_generalTraining(){
 
-       if (isset($_POST['month-year'])){
-           $month_year = $_POST['month-year'];
+	    // Сохраняем файл для печати
+        if (isset($_POST['month-year'])){
+            $month_year = $_POST['month-year'];
+            $general_tasks = $_POST['general-task-item'];
+            $aviation_topics = $_POST['aviation-topic-item'];
+            $aerodynamics_topics = $_POST['aerodynamics-topic-item'];
+            $navigation_topics = $_POST['navigation-topic-item'];
+            $guidelines_topics = $_POST['guidelines-topic-item'];
+            $tactics_topics = $_POST['tactics-topic-item'];
 
-           $general_tasks = $_POST['general-task-item'];
-           $aviation_topics = $_POST['aviation-topic-item'];
-           $aerodynamics_topics = $_POST['aerodynamics-topic-item'];
-           $navigation_topics = $_POST['navigation-topic-item'];
-           $guidelines_topics = $_POST['guidelines-topic-item'];
-           $tactics_topics = $_POST['tactics-topic-item'];
+            $file_template = 'files/f_4465fad8d613a549.docx';
+            $output_file = 'files/outputfile.docx';
+            editDocx($file_template, $output_file, $month_year, $general_tasks, $aviation_topics,
+                $aerodynamics_topics, $navigation_topics, $guidelines_topics, $tactics_topics);
+        }
 
-           $file_template = 'files/f_4465fad8d613a549.docx';
-           $output_file = 'files/outputfile.docx';
-           editDocx($file_template, $output_file, $month_year, $general_tasks, $aviation_topics,
-               $aerodynamics_topics, $navigation_topics, $guidelines_topics, $tactics_topics);
-       }
-
-       if (isset($_POST['task-name'])){
-           $task_name = $_POST['task-name'];
-           $description = $_POST['description'];
-           $author_id = $_POST['author'];
-           $date = $_POST['date'];
-           setGeneralTask($task_name, $description, $author_id, $date);
-       }
+        if (isset($_POST['task-name'])){
+            $task_name = $_POST['task-name'];
+            $description = $_POST['description'];
+            $author_id = $_POST['author'];
+            $date = $_POST['date'];
+            setGeneralTask($task_name, $description, $author_id, $date);
+        }
 
         if (isset($_POST['topic-name'])){
             $topic_name = $_POST['topic-name'];

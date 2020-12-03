@@ -49,6 +49,8 @@
     ?>
 </div>
 
+
+<!-- Форма создания задачи -->
 <div id="div-task-create-form" class="div-create-form" hidden>
     <form role="form" action="" method="post" class="form-horizontal" id="task-create-form">
 
@@ -88,6 +90,7 @@
     </form>
 </div>
 
+<!-- Кнопка "Создать задачу" -->
 <div id="div-task-create-button">
     <button type="button" class="btn" id="task-create-form-button">Создать задачу</button>
 </div>
@@ -169,6 +172,7 @@
     ?>
 </div>
 
+<!-- Форма создания темы -->
 <div id="div-topic-create-form" class="div-create-form" hidden>
     <form role="form" action="" method="post" class="form-horizontal" id="topic-create-form">
 
@@ -219,10 +223,12 @@
     </form>
 </div>
 
+<!-- Форма "Создать тему" -->
 <div id="div-topic-create-button">
     <button type="button" class="btn" id="topic-create-form-button">Создать тему</button>
 </div>
 
+<!-- Форма для печати документа -->
 <div id="div-items-print-form">
     <form role="form" action="" method="post" id="general-training-print-form" >
         <div class="form-group date-input" hidden>

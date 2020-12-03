@@ -80,7 +80,6 @@ elAddFlightExerciseButton.addEventListener("click", event=>{
             exerciseRemove(Number.parseInt(elem.attributes["id"].value.split("_")[1]));
         })
     })
-
 })
 
 // Функция удаления упражнения
