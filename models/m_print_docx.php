@@ -1,7 +1,7 @@
 <?php
 require '../vendor/autoload.php';
 
-function printFlight($file_template, $output_file, $date, $dawn_sunset){
+function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_start, $time_end){
 
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
 
@@ -14,6 +14,8 @@ function printFlight($file_template, $output_file, $date, $dawn_sunset){
     $document->setValue('month', $month);
     $document->setValue('year', $year);
     $document->setValue('d_s', $d_s);
+    $document->setValue('time_start', $time_start);
+    $document->setValue('time_end', $time_end);
 
     $document->saveAs($output_file);
     uploadDocx($output_file);
