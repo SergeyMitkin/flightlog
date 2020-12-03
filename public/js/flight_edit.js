@@ -7,7 +7,7 @@ var elCrewSelect = document.getElementById("flight-crew-select"); // Селек�
 function resetFlightForm(){
 
     elFlightCreateForm.reset(); // Очищаем инпуты
-    // Cбрасываем radio
+    // Сбрасываем radio
     elFlightCreateForm.querySelector("#flight-d").removeAttribute("checked");
     elFlightCreateForm.querySelector("#flight-s").removeAttribute("checked");
 
@@ -23,23 +23,29 @@ function resetFlightForm(){
 
     // Очищаем все textarea
     for (var i=0; i<elFlightCreateForm.querySelectorAll("textarea").length; i++){
-        //console.log(elFlightCreateForm.querySelectorAll("textarea")[i])
         elFlightCreateForm.querySelectorAll("textarea")[i].textContent = "";
     }
+}
 
+// Функция, отображающая скрытую кнопку "Редактировать" в карточке полёта
+function showEditButton(){
+    for (var i=0; i<elEditButtons.length; i++){
+        elEditButtons[i].removeAttribute("hidden");
+    }
 }
 
 // При клике на кнопку "Реактировать", помещаем форму редактирования в карточку полёта
 elRowFlights.addEventListener("click", event =>{
 
-    resetFlightForm(); // Очищаем поля формы
     if (event.target.className == "flight-edit-button"){
-        var flight_id = event.target.id.split("_")[1];
-        var elFlightItemDiv = document.getElementById("flight-item_" + flight_id);
 
-        // Снимаем галочку с radio
-        elFlightCreateForm.querySelector("#flight-d").removeAttribute("checked");
-        elFlightCreateForm.querySelector("#flight-s").removeAttribute("checked");
+        showEditButton(); // Отображаем кнопку "Редактировать", если была скрыта
+        resetFlightForm(); // Очищаем поля формы
+
+        event.target.setAttribute("hidden", ""); // Скрываем кнопку "Редактировать"
+        var flight_id = event.target.id.split("_")[1]; // Id полёта
+        var elFlightItemDiv = document.getElementById("flight-item_" + flight_id); // Карточка полёта
+
         var ex_td = elFlightItemDiv.querySelector(".exercises-table").querySelectorAll("td") // Столбики таблицы упражнений
         var elExercisesDiv = document.getElementById("flight-exercises-row");
 

@@ -1,18 +1,21 @@
 var elFlightCreateDiv = document.getElementById("flight-create-div"); // Div с формой добавления полёта
 var elDivFlightCreateButton = document.getElementById("div-flight-create-button"); // Div с кнопкой "Добавить полёт"
 var elFlightFormSection = document.getElementById("flight-form-section");
-
-// Открываем форму создания/рредактирования при нажатии кнопки "Добавить полёт"
-elDivFlightCreateButton.querySelector("button").addEventListener("click", event=>{
-    resetFlightForm(); // Очищаем поля формы
-
-    elFlightFormSection.appendChild(elFlightCreateDiv);
-    elFlightCreateDiv.removeAttribute("hidden")
-})
-
 var elAddFlightExerciseButton = document.getElementById("add-flight-exercise-button");
 var elFlightExercisesRow = document.getElementById("flight-exercises-row");
+var elEditButtons = document.querySelectorAll(".flight-edit-button");
 
+// Открываем форму создания/редактирования полёта при нажатии кнопки "Добавить полёт"
+elDivFlightCreateButton.querySelector("button").addEventListener("click", event=>{
+
+    showEditButton(); // Показываем кнопку "Редактировать" в карточке полёта, если была скрыта
+    resetFlightForm(); // Очищаем поля формы
+    elFlightCreateForm.querySelector("#form-create-flight-id").value = 0; // Айди полёта = 0
+    elFlightFormSection.appendChild(elFlightCreateDiv); // Помещаем форму в изначальный див, если до этого она была в карточке полёта
+    elFlightCreateDiv.removeAttribute("hidden"); // Отображаем форму
+})
+
+// Вешаем событие на кнопку "Добавить упражнение" - добавляем инпут для ввода имени и времени
 elAddFlightExerciseButton.addEventListener("click", event=>{
 
     if (elFlightExercisesRow.querySelector(".flight-exercise-div") == null){
@@ -80,6 +83,7 @@ elAddFlightExerciseButton.addEventListener("click", event=>{
 
 })
 
+// Функция удаления упражнения
 function exerciseRemove(exercise_tmp_id) {
     var elItemForDelete = elFlightExercisesRow.querySelector("#flight-exercise-item_" + exercise_tmp_id);
     elFlightExercisesRow.removeChild(elItemForDelete);
