@@ -21,6 +21,12 @@ function resetFlightForm(){
         elCrewSelect.querySelectorAll("option")[i].removeAttribute("selected");
     }
 
+    // Очищаем все textarea
+    for (var i=0; i<elFlightCreateForm.querySelectorAll("textarea").length; i++){
+        //console.log(elFlightCreateForm.querySelectorAll("textarea")[i])
+        elFlightCreateForm.querySelectorAll("textarea")[i].textContent = "";
+    }
+
 }
 
 // При клике на кнопку "Реактировать", помещаем форму редактирования в карточку полёта
