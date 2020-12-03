@@ -1,10 +1,19 @@
 <?php
 require '../vendor/autoload.php';
 
-function printFlight($flight_print, $file_template, $output_file){
+function printFlight($file_template, $output_file, $date, $dawn_sunset){
+
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
 
-    $document->setValue('date', $flight_print);
+    $day = explode('-', $date)[2];
+    $month = getMonth(explode('-', $date)[1]);
+    $year = explode('-', $date)[0];
+    $d_s = ($dawn_sunset == 'Рассвет') ? 'РВ' : 'ЗТ';
+
+    $document->setValue('day', $day);
+    $document->setValue('month', $month);
+    $document->setValue('year', $year);
+    $document->setValue('d_s', $d_s);
 
     $document->saveAs($output_file);
     uploadDocx($output_file);
@@ -86,4 +95,46 @@ function uploadDocx($file){
 // Прочитать файл
     readfile($file);
     unlink($file);
+}
+
+function getMonth($month_number){
+    switch ($month_number){
+        case '01':
+            $month = 'января';
+            break;
+        case '02':
+            $month = 'февраля';
+            break;
+        case '03':
+            $month = 'марта';
+            break;
+        case '04':
+            $month = 'апреля';
+            break;
+        case '05':
+            $month = 'мая';
+            break;
+        case '06':
+            $month = 'июня';
+            break;
+        case '07':
+            $month = 'июля';
+            break;
+        case '08':
+            $month = 'августа';
+            break;
+        case '09':
+            $month = 'сентября';
+            break;
+        case '10':
+            $month = 'октября';
+            break;
+        case '11':
+            $month = 'ноября';
+            break;
+        case '12':
+            $month = 'декабря';
+            break;
+    }
+    return $month;
 }

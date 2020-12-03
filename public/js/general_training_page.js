@@ -7,7 +7,7 @@ elTaskCreateFormButton.addEventListener("click", event =>{
     event.target.setAttribute("hidden", "");
 })
 
-//  Открываем/скрываем форму добавления тем
+// Открываем/скрываем форму добавления тем
 var elDivTopicCreateForm = document.getElementById("div-topic-create-form");
 var elTopicCreateFormButton = document.getElementById('topic-create-form-button');
 

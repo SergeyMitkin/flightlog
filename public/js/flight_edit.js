@@ -44,7 +44,6 @@ function fillFlightForm(flight_id, print = "off"){
     var d_s  = elFlightItemDiv.querySelector(".flight-d-s").textContent // Узнаём время суток полёта
 
     elFlightItemDiv.appendChild(elFlightCreateDiv);
-    elFlightCreateDiv.removeAttribute("hidden");
 
     // Помещаем текущие значения в форму редактирования
     elFlightCreateForm.querySelector("#flight-print-input").value = print;
@@ -193,9 +192,8 @@ elRowFlights.addEventListener("click", event =>{
         resetFlightForm(); // Очищаем поля формы
         var flight_id = event.target.id.split("_")[1]; // Id полёта
         fillFlightForm(flight_id); // Заполняем форму данными полёта
-
+        elFlightCreateDiv.removeAttribute("hidden");
         event.target.setAttribute("hidden", ""); // Скрываем кнопку "Редактировать"
-
     }
 })
 

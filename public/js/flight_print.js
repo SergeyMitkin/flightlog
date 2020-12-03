@@ -5,6 +5,8 @@ elRowFlights.addEventListener("click", event => {
         var print = "on";
 
         fillFlightForm(flight_id, print); // Заполняем форму данными полёта
+        elFlightCreateForm
 
+        elFlightCreateForm.submit();
     }
 })
