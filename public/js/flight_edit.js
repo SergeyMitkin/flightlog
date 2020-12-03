@@ -2,8 +2,23 @@ var elRowFlights = document.getElementById("row-flights"); // Div со спис�
 var elFlightCreateDiv = document.getElementById("flight-create-div"); // Div с формой добавления полёта
 var elFlightCreateForm = document.getElementById("flight-create-form"); // Форма полёта
 
+
+// Функция очистки формы при повторном открытии
+function resetFlightForm(){
+    elFlightCreateForm.reset(); // очищаем инпуты
+    // Cбрасываем radio
+    elFlightCreateForm.querySelector("#flight-d").removeAttribute("checked");
+    elFlightCreateForm.querySelector("#flight-s").removeAttribute("checked");
+    // Очищаем div с упражнениями
+    while (elFlightExercisesRow.firstChild) {
+        elFlightExercisesRow.removeChild(elFlightExercisesRow.firstChild);
+    }
+}
+
 // При клике на кнопку "Реактировать", помещаем форму редактирования в карточку полёта
 elRowFlights.addEventListener("click", event =>{
+
+    resetFlightForm(); // Очищаем поля формы
     if (event.target.className == "flight-edit-button"){
         var flight_id = event.target.id.split("_")[1];
         var elFlightItemDiv = document.getElementById("flight-item_" + flight_id);
@@ -86,11 +101,8 @@ elRowFlights.addEventListener("click", event =>{
                     var input3 = document.createElement("input");
                     input3.id = "input-common_" + exercise_id;
                     input3.name = "exercise[]";
-                    // input3.setAttribute("hidden", "");
-
-                    // Помещаем в общий инпут изначальные значения
-                    input3.value = i_n.value + "+php+" + i_t.value;
-
+                    input3.setAttribute("hidden", "");
+                    input3.value = i_n.value + "+php+" + i_t.value; // Помещаем в общий инпут изначальные значения
 
                     i_n.addEventListener('input', event=>{
 

@@ -96,84 +96,86 @@
     ?>
 </div>
 
-<!-- Форма создания/редактирования полёта -->
-<div id="flight-create-div" hidden>
-    <form role="form" action="" method="post" class="form-horizontal" id="flight-create-form">
+<div id="flight-form-section">
+    <!-- Форма создания/редактирования полёта -->
+    <div id="flight-create-div" hidden>
+        <form role="form" action="" method="post" class="form-horizontal" id="flight-create-form">
 
-        <!-- В скрытый инпут помещаем id полёта при редактировании, при создании id полёта = 0 -->
-        <input type="hidden" id="form-create-flight-id" name="flight-id" value="">
+            <!-- В скрытый инпут помещаем id полёта при редактировании, при создании id полёта = 0 -->
+            <input type="hidden" id="form-create-flight-id" name="flight-id" value="">
 
-        <div class="form-group">
-            <label for="flight-name-input">Название: </label>
-            <input required id="flight-name-input" class="form-control" name="flight-name" value="">
-        </div>
+            <div class="form-group">
+                <label for="flight-name-input">Название: </label>
+                <input required id="flight-name-input" class="form-control" name="flight-name" value="">
+            </div>
 
-        <div class="form-group">
-            <label for="flight-date-input">Дата: </label>
-            <input required class="form-control" value="<?php echo $date ?>" type="date" id="flight-date-input" name="flight-date">
-        </div>
+            <div class="form-group">
+                <label for="flight-date-input">Дата: </label>
+                <input required class="form-control" value="<?php echo $date ?>" type="date" id="flight-date-input" name="flight-date">
+            </div>
 
-        <div class="form-group">
-            <label for="flight-start">Начало полётов: </label>
-            <input required type="time" id="flight-start" name="time-start" value=""/>
+            <div class="form-group">
+                <label for="flight-start">Начало полётов: </label>
+                <input required type="time" id="flight-start" name="time-start" value=""/>
 
-            <label for="flight-end">Конец полётов: </label>
-            <input required type="time" id="flight-end" name="time-end" value=""/>
-        </div>
+                <label for="flight-end">Конец полётов: </label>
+                <input required type="time" id="flight-end" name="time-end" value=""/>
+            </div>
 
-        <div class="form-group">
-            <p><input id="flight-d" required name="dawn-sunset" type="radio" value="Рассвет">Рассвет
-            <input id="flight-s" required name="dawn-sunset" type="radio" value="Закат">Закат</p>
-        </div>
+            <div class="form-group">
+                <p><input id="flight-d" required name="dawn-sunset" type="radio" value="Рассвет">Рассвет
+                <input id="flight-s" required name="dawn-sunset" type="radio" value="Закат">Закат</p>
+            </div>
 
-        <div class="form-group" id="flight-exercises-row"></div>
+            <div class="form-group" id="flight-exercises-row"></div>
 
-        <div id="div-flight-exercise-button">
-            <button type="button" class="btn" id="add-flight-exercise-button">Добавить упражнение</button>
-        </div>
+            <div id="div-flight-exercise-button">
+                <button type="button" class="btn" id="add-flight-exercise-button">Добавить упражнение</button>
+            </div>
 
-        <div class="form-group">
-            <label for="flight-crew-select">Выберите членов экипажа</label>
-            <br>
-            <select required id="flight-crew-select" name="crew[]" multiple size="3">
-                <?php
-                foreach ($crew as $crew_member) {
-                    echo '<option value="' . $crew_member['id'] . '">'
-                        . $crew_member['name'] . '</option>';
-                }
-                ?>
-            </select>
-        </div>
+            <div class="form-group">
+                <label for="flight-crew-select">Выберите членов экипажа</label>
+                <br>
+                <select required id="flight-crew-select" name="crew[]" multiple size="3">
+                    <?php
+                    foreach ($crew as $crew_member) {
+                        echo '<option value="' . $crew_member['id'] . '">'
+                            . $crew_member['name'] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label for="individual-task-textarea">Индивидуальное задание по запланированным полетным заданиям:</label>
-            <textarea id="individual-task-textarea" name="individual-task" placeholder="Индивидуальное задание по запланированным полетным заданиям"></textarea>
-        </div>
+            <div class="form-group">
+                <label for="individual-task-textarea">Индивидуальное задание по запланированным полетным заданиям:</label>
+                <textarea id="individual-task-textarea" name="individual-task" placeholder="Индивидуальное задание по запланированным полетным заданиям"></textarea>
+            </div>
 
-        <div class="form-group">
-            <label for="security-measures-textarea">Указания, меры безопасности:</label>
-            <textarea id="security-measures-textarea" name="security-measures" placeholder="Указания, меры безопасности"></textarea>
-        </div>
+            <div class="form-group">
+                <label for="security-measures-textarea">Указания, меры безопасности:</label>
+                <textarea id="security-measures-textarea" name="security-measures" placeholder="Указания, меры безопасности"></textarea>
+            </div>
 
-        <div class="form-group">
-            <label for="self-preparation-task-textarea">Задание на самоподготовку:</label>
-            <textarea id="self-preparation-task-textarea" name="self-preparation-task" placeholder="Задание на самоподготовку"></textarea>
-        </div>
+            <div class="form-group">
+                <label for="self-preparation-task-textarea">Задание на самоподготовку:</label>
+                <textarea id="self-preparation-task-textarea" name="self-preparation-task" placeholder="Задание на самоподготовку"></textarea>
+            </div>
 
-        <div class="form-group">
-            <label for="trainers-textarea">Тренажи:</label>
-            <textarea id="trainers-textarea" name="trainers" placeholder="Тренажи"></textarea>
-        </div>
+            <div class="form-group">
+                <label for="trainers-textarea">Тренажи:</label>
+                <textarea id="trainers-textarea" name="trainers" placeholder="Тренажи"></textarea>
+            </div>
 
-        <div class="form-group">
-            <label for="self-preparation-textarea">Самостоятельная подготовка:</label>
-            <textarea id="self-preparation-textarea" name="self-preparation" placeholder="Самостоятельная подготовка"></textarea>
-        </div>
+            <div class="form-group">
+                <label for="self-preparation-textarea">Самостоятельная подготовка:</label>
+                <textarea id="self-preparation-textarea" name="self-preparation" placeholder="Самостоятельная подготовка"></textarea>
+            </div>
 
-        <div class="form-footer">
-            <button id="task-create-submit-button" type="submit" class="button">Отправить</button>
-        </div>
-    </form>
+            <div class="form-footer">
+                <button id="task-create-submit-button" type="submit" class="button">Отправить</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <div id="div-flight-create-button">

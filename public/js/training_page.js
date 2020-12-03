@@ -1,8 +1,12 @@
 var elFlightCreateDiv = document.getElementById("flight-create-div"); // Div с формой добавления полёта
 var elDivFlightCreateButton = document.getElementById("div-flight-create-button"); // Div с кнопкой "Добавить полёт"
+var elFlightFormSection = document.getElementById("flight-form-section");
 
 // Открываем форму создания/рредактирования при нажатии кнопки "Добавить полёт"
 elDivFlightCreateButton.querySelector("button").addEventListener("click", event=>{
+    resetFlightForm(); // Очищаем поля формы
+
+    elFlightFormSection.appendChild(elFlightCreateDiv);
     elFlightCreateDiv.removeAttribute("hidden")
 })
 
@@ -49,7 +53,7 @@ elAddFlightExerciseButton.addEventListener("click", event=>{
     // Объединяем значения из инпутов имени и времени упражнения
     var input3 = document.createElement("input");
     input3.name = "exercise[]";
-    //input3.setAttribute("hidden", "");
+    input3.setAttribute("hidden", "");
 
     i_n.addEventListener('input', joinValues, false);
     i_t.addEventListener('input', joinValues, false);
