@@ -1,5 +1,10 @@
 elRowFlights.addEventListener("click", event => {
     if (event.target.className == "flight-print-button"){
-        console.log("print");
+
+        var flight_id = event.target.id.split("_")[1]; // Id полёта
+        var print = "on";
+
+        fillFlightForm(flight_id, print); // Заполняем форму данными полёта
+
     }
 })

@@ -34,6 +34,156 @@ function showEditButton(){
     }
 }
 
+function fillFlightForm(flight_id, print = "off"){
+
+    var elFlightItemDiv = document.getElementById("flight-item_" + flight_id); // Карточка полёта
+
+    var ex_td = elFlightItemDiv.querySelector(".exercises-table").querySelectorAll("td") // Столбики таблицы упражнений
+    var elExercisesDiv = document.getElementById("flight-exercises-row");
+
+    var d_s  = elFlightItemDiv.querySelector(".flight-d-s").textContent // Узнаём время суток полёта
+
+    elFlightItemDiv.appendChild(elFlightCreateDiv);
+    elFlightCreateDiv.removeAttribute("hidden");
+
+    // Помещаем текущие значения в форму редактирования
+    elFlightCreateForm.querySelector("#flight-print-input").value = print;
+    elFlightCreateForm.querySelector("#form-create-flight-id").value = flight_id;
+    elFlightCreateForm.querySelector("#flight-name-input").value = elFlightItemDiv.querySelector(".flight-title").textContent;
+    elFlightCreateForm.querySelector("#flight-date-input").value = elFlightItemDiv.querySelector(".flight-date").textContent;
+    elFlightCreateForm.querySelector("#flight-start").value = elFlightItemDiv.querySelector(".flight-time-start").textContent;
+    elFlightCreateForm.querySelector("#flight-end").value = elFlightItemDiv.querySelector(".flight-time-end").textContent;
+    if (elFlightCreateForm.querySelector("#flight-d").value == d_s){
+        elFlightCreateForm.querySelector("#flight-d").setAttribute("checked", "");
+    } else if (elFlightCreateForm.querySelector("#flight-s").value == d_s){
+        elFlightCreateForm.querySelector("#flight-s").setAttribute("checked", "");
+    }
+
+    // Выводим список упражнений
+    for (var i=0; i<ex_td.length; i++){
+        // Выбираем только столбики с упражнениями (проверяем наличие атрибута id)
+        if (ex_td[i].hasAttribute("id")){
+            var exercise_id = ex_td[i].id.split("_")[1];
+
+            // Выводим инпуты с временем упражнений
+            if (ex_td[i].id.split("_")[0] == "ex-time-td"){
+
+                // Создаём div для одного упражнения
+                var d = document.createElement("div");
+                d.classList = "flight-exercise-div_old_" + exercise_id;
+                d.id = "flight-exercise-item_old_" + exercise_id;
+
+                var l_t = document.createElement("label");
+                l_t.setAttribute("for", "exercise-time-input_old_" + exercise_id);
+                l_t.textContent = "Время: ";
+
+                var i_t = document.createElement("input");
+                i_t.type = "time";
+                i_t.id = "exercise-time-input_old_" + exercise_id;
+                i_t.value = ex_td[i].textContent; // Вставляем в инпут исходное значение
+
+                var b = document.createElement("button");
+                b.id = "exercise-remove-button_old_" + exercise_id;
+                b.classList = "button exercise-remove-button-old";
+                b.type = "button";
+                b.textContent = "Удалить";
+
+                d.appendChild(l_t);
+                d.appendChild(i_t);
+                d.appendChild(b);
+
+                elExercisesDiv.appendChild(d);
+
+                // Выводим инпуты с названиями упражнений
+            } else if (ex_td[i].id.split("_")[0] == "ex-name-td"){
+
+                d = document.getElementById("flight-exercise-item_old_" + exercise_id);
+                var l_n = document.createElement("label");
+                l_n.setAttribute("for", "exercise-name-input_old_" + exercise_id);
+                l_n.textContent = "Упражнение: ";
+
+                var i_n = document.createElement("input");
+                i_n.type = "text";
+                i_n.id = "exercise-name-input_old_" + exercise_id;
+                i_n.value = ex_td[i].textContent; // Вставляем в инпут исходное значение
+
+                var i_t = document.getElementById("exercise-time-input_old_" + exercise_id);
+
+                // Объединяем значения из инпутов имени и времени упражнения
+                var input3 = document.createElement("input");
+                input3.id = "input-common_" + exercise_id;
+                input3.name = "exercise[]";
+                input3.setAttribute("hidden", "");
+                input3.value = i_n.value + "+php+" + i_t.value; // Помещаем в общий инпут изначальные значения
+
+                i_n.addEventListener('input', event=>{
+
+                    var id = event.target.id.split("_")[2];
+                    var elNameInput = document.getElementById("exercise-name-input_old_" + id);
+                    var elTimeInput = document.getElementById("exercise-time-input_old_" + id);
+                    var elCommonInput = document.getElementById("input-common_" + id);
+
+                    elCommonInput.value = elNameInput.value + '+php+' + elTimeInput.value;
+
+                }, false);
+
+                i_t.addEventListener('input', event=>{
+
+                    var id = event.target.id.split("_")[2];
+                    var elNameInput = document.getElementById("exercise-name-input_old_" + id);
+                    var elTimeInput = document.getElementById("exercise-time-input_old_" + id);
+                    var elCommonInput = document.getElementById("input-common_" + id);
+
+                    elCommonInput.value = elNameInput.value + '+php+' + elTimeInput.value;
+                }, false);
+
+                var firstChild = d.firstChild;
+                d.insertBefore(l_n, firstChild);
+                d.insertBefore(i_n, firstChild);
+                d.insertBefore(input3, firstChild);
+            }
+        }
+    }
+
+    var elExerciseOldRemoveButtons = document.querySelectorAll(".exercise-remove-button-old");
+    elExerciseOldRemoveButtons.forEach( elem => {
+        elem.addEventListener('click', event =>{
+            exerciseOldRemove(Number.parseInt(elem.attributes["id"].value.split("_")[2]));
+        })
+    })
+
+    function exerciseOldRemove(exercise_id) {
+        var elItemForDelete = elExercisesDiv.querySelector("#flight-exercise-item_old_" + exercise_id);
+        elFlightExercisesRow.removeChild(elItemForDelete);
+    }
+
+    // Определяем членов экипажа
+    var elCrewOl = document.getElementById("flight-crew-ol_" + flight_id);
+    var crew_li = elCrewOl.querySelectorAll("li");
+
+    // Помечаем как выбранных исходные значения
+    for (var i=0; i<crew_li.length; i++){
+        var option = elCrewSelect.querySelector("option[value='" + crew_li[i].getAttribute("data-id") + "']");
+        option.setAttribute("selected", "");
+    }
+
+    // Помещаем исходные значения в textarea
+    var elIndividualTaskTextarea = document.getElementById("individual-task-textarea");
+    elIndividualTaskTextarea.textContent = document.getElementById("individual-task_" + flight_id).textContent;
+
+    var elSecurityMeasuresTextarea = document.getElementById("security-measures-textarea");
+    elSecurityMeasuresTextarea.textContent = document.getElementById("security-measures_" + flight_id).textContent;
+
+    var elSelfPreparationTaskTextarea = document.getElementById("self-preparation-task-textarea");
+    elSelfPreparationTaskTextarea.textContent = document.getElementById("self-preparation-task_" + flight_id).textContent;
+
+    var elTrainersTextarea = document.getElementById("trainers-textarea");
+    elTrainersTextarea.textContent = document.getElementById("trainers_" + flight_id).textContent;
+
+    var elSelfPreparationTextarea = document.getElementById("self-preparation-textarea");
+    elSelfPreparationTextarea.textContent = document.getElementById("self-preparation_" + flight_id).textContent;
+}
+
 // При клике на кнопку "Реактировать", помещаем форму редактирования в карточку полёта
 elRowFlights.addEventListener("click", event =>{
 
@@ -41,154 +191,11 @@ elRowFlights.addEventListener("click", event =>{
 
         showEditButton(); // Отображаем кнопку "Редактировать", если была скрыта
         resetFlightForm(); // Очищаем поля формы
+        var flight_id = event.target.id.split("_")[1]; // Id полёта
+        fillFlightForm(flight_id); // Заполняем форму данными полёта
 
         event.target.setAttribute("hidden", ""); // Скрываем кнопку "Редактировать"
-        var flight_id = event.target.id.split("_")[1]; // Id полёта
-        var elFlightItemDiv = document.getElementById("flight-item_" + flight_id); // Карточка полёта
 
-        var ex_td = elFlightItemDiv.querySelector(".exercises-table").querySelectorAll("td") // Столбики таблицы упражнений
-        var elExercisesDiv = document.getElementById("flight-exercises-row");
-
-        var d_s  = elFlightItemDiv.querySelector(".flight-d-s").textContent // Узнаём время суток полёта
-
-        elFlightItemDiv.appendChild(elFlightCreateDiv);
-        elFlightCreateDiv.removeAttribute("hidden");
-
-        // Помещаем текущие значения в форму редактирования
-        elFlightCreateForm.querySelector("#form-create-flight-id").value = flight_id;
-        elFlightCreateForm.querySelector("#flight-name-input").value = elFlightItemDiv.querySelector(".flight-title").textContent;
-        elFlightCreateForm.querySelector("#flight-date-input").value = elFlightItemDiv.querySelector(".flight-date").textContent;
-        elFlightCreateForm.querySelector("#flight-start").value = elFlightItemDiv.querySelector(".flight-time-start").textContent;
-        elFlightCreateForm.querySelector("#flight-end").value = elFlightItemDiv.querySelector(".flight-time-end").textContent;
-        if (elFlightCreateForm.querySelector("#flight-d").value == d_s){
-            elFlightCreateForm.querySelector("#flight-d").setAttribute("checked", "");
-        } else if (elFlightCreateForm.querySelector("#flight-s").value == d_s){
-            elFlightCreateForm.querySelector("#flight-s").setAttribute("checked", "");
-        }
-
-        // Выводим список упражнений
-        for (var i=0; i<ex_td.length; i++){
-            // Выбираем только столбики с упражнениями (проверяем наличие атрибута id)
-            if (ex_td[i].hasAttribute("id")){
-                var exercise_id = ex_td[i].id.split("_")[1];
-
-                // Выводим инпуты с временем упражнений
-                if (ex_td[i].id.split("_")[0] == "ex-time-td"){
-
-                    // Создаём div для одного упражнения
-                    var d = document.createElement("div");
-                    d.classList = "flight-exercise-div_old_" + exercise_id;
-                    d.id = "flight-exercise-item_old_" + exercise_id;
-
-                    var l_t = document.createElement("label");
-                    l_t.setAttribute("for", "exercise-time-input_old_" + exercise_id);
-                    l_t.textContent = "Время: ";
-
-                    var i_t = document.createElement("input");
-                    i_t.type = "time";
-                    i_t.id = "exercise-time-input_old_" + exercise_id;
-                    i_t.value = ex_td[i].textContent; // Вставляем в инпут исходное значение
-
-                    var b = document.createElement("button");
-                    b.id = "exercise-remove-button_old_" + exercise_id;
-                    b.classList = "button exercise-remove-button-old";
-                    b.type = "button";
-                    b.textContent = "Удалить";
-
-                    d.appendChild(l_t);
-                    d.appendChild(i_t);
-                    d.appendChild(b);
-
-                    elExercisesDiv.appendChild(d);
-
-                    // Выводим инпуты с названиями упражнений
-                } else if (ex_td[i].id.split("_")[0] == "ex-name-td"){
-
-                    d = document.getElementById("flight-exercise-item_old_" + exercise_id);
-                    var l_n = document.createElement("label");
-                    l_n.setAttribute("for", "exercise-name-input_old_" + exercise_id);
-                    l_n.textContent = "Упражнение: ";
-
-                    var i_n = document.createElement("input");
-                    i_n.type = "text";
-                    i_n.id = "exercise-name-input_old_" + exercise_id;
-                    i_n.value = ex_td[i].textContent; // Вставляем в инпут исходное значение
-
-                    var i_t = document.getElementById("exercise-time-input_old_" + exercise_id);
-
-                    // Объединяем значения из инпутов имени и времени упражнения
-                    var input3 = document.createElement("input");
-                    input3.id = "input-common_" + exercise_id;
-                    input3.name = "exercise[]";
-                    input3.setAttribute("hidden", "");
-                    input3.value = i_n.value + "+php+" + i_t.value; // Помещаем в общий инпут изначальные значения
-
-                    i_n.addEventListener('input', event=>{
-
-                        var id = event.target.id.split("_")[2];
-                        var elNameInput = document.getElementById("exercise-name-input_old_" + id);
-                        var elTimeInput = document.getElementById("exercise-time-input_old_" + id);
-                        var elCommonInput = document.getElementById("input-common_" + id);
-
-                        elCommonInput.value = elNameInput.value + '+php+' + elTimeInput.value;
-
-                    }, false);
-
-                    i_t.addEventListener('input', event=>{
-
-                        var id = event.target.id.split("_")[2];
-                        var elNameInput = document.getElementById("exercise-name-input_old_" + id);
-                        var elTimeInput = document.getElementById("exercise-time-input_old_" + id);
-                        var elCommonInput = document.getElementById("input-common_" + id);
-
-                        elCommonInput.value = elNameInput.value + '+php+' + elTimeInput.value;
-                    }, false);
-
-                    var firstChild = d.firstChild;
-                    d.insertBefore(l_n, firstChild);
-                    d.insertBefore(i_n, firstChild);
-                    d.insertBefore(input3, firstChild);
-                }
-            }
-        }
-
-        var elExerciseOldRemoveButtons = document.querySelectorAll(".exercise-remove-button-old");
-        elExerciseOldRemoveButtons.forEach( elem => {
-            elem.addEventListener('click', event =>{
-                exerciseOldRemove(Number.parseInt(elem.attributes["id"].value.split("_")[2]));
-            })
-        })
-
-        function exerciseOldRemove(exercise_id) {
-            var elItemForDelete = elExercisesDiv.querySelector("#flight-exercise-item_old_" + exercise_id);
-            elFlightExercisesRow.removeChild(elItemForDelete);
-        }
-
-        // Определяем членов экипажа
-        var elCrewOl = document.getElementById("flight-crew-ol_" + flight_id);
-        var crew_li = elCrewOl.querySelectorAll("li");
-
-        // Помечаем как выбранных исходные значения
-        for (var i=0; i<crew_li.length; i++){
-            var option = elCrewSelect.querySelector("option[value='" + crew_li[i].getAttribute("data-id") + "']");
-            option.setAttribute("selected", "");
-        }
-
-        // Помещаем исходные значения в textarea
-        var elIndividualTaskTextarea = document.getElementById("individual-task-textarea");
-        elIndividualTaskTextarea.textContent = document.getElementById("individual-task_" + flight_id).textContent;
-
-        var elSecurityMeasuresTextarea = document.getElementById("security-measures-textarea");
-        elSecurityMeasuresTextarea.textContent = document.getElementById("security-measures_" + flight_id).textContent;
-
-        var elSelfPreparationTaskTextarea = document.getElementById("self-preparation-task-textarea");
-        elSelfPreparationTaskTextarea.textContent = document.getElementById("self-preparation-task_" + flight_id).textContent;
-
-        var elTrainersTextarea = document.getElementById("trainers-textarea");
-        elTrainersTextarea.textContent = document.getElementById("trainers_" + flight_id).textContent;
-
-        var elSelfPreparationTextarea = document.getElementById("self-preparation-textarea");
-        elSelfPreparationTextarea.textContent = document.getElementById("self-preparation_" + flight_id).textContent;
     }
 })
 

@@ -104,6 +104,9 @@
     <div id="flight-create-div" hidden>
         <form role="form" action="" method="post" class="form-horizontal" id="flight-create-form">
 
+            <!-- Здесь отмечаем - сохраняем файл для печати или нет -->
+            <input type="hidden" id="flight-print-input" name="flight-print" value="off">
+
             <!-- При редактировании полёта, в скрытый инпут помещаем его id, при создании id полёта = 0 -->
             <input type="hidden" id="form-create-flight-id" name="flight-id" value="">
 
@@ -189,17 +192,13 @@
 <!-- Форма для печати полёта -->
 <div id="div-flight-print-form">
     <form role="form" action="" method="post" id="flight-print-form" >
-        <div class="form-group date-input" hidden>
-            <label for="month-year-input">Месяц и год</label>
-            <input required type="text" class="form-control" id="month-year-input"
+        <div class="form-group">
+            <label for="flight-date-input">Месяц и год</label>
+            <input required type="text" class="form-control" id="flight-date-input"
                    name="month-year">
         </div>
 
-        <div id="print-form-items" hidden></div>
-
-        <div class="form-footer">
-            <button id="general-training-print-button" type="submit" class="button">Распечатать</button>
-        </div>
+        <div id="print-form-items" ></div>
     </form>
 </div>
 

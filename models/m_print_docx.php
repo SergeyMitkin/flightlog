@@ -1,6 +1,17 @@
 <?php
 require '../vendor/autoload.php';
 
+function printFlight($flight_print, $file_template, $output_file){
+    $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
+
+    $document->setValue('date', $flight_print);
+
+    $document->saveAs($output_file);
+    uploadDocx($output_file);
+    header("Location: /");
+
+}
+
 function editDocx($file_template, $output_file, $month_year, $general_tasks, $aviation_topics,
                     $aerodynamics_topics, $navigation_topics, $guidelines_topics, $tactics_topics){
 

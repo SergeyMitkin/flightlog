@@ -87,8 +87,10 @@ class C_Page extends C_Base
 
     public function action_training(){
 
-	    if (isset($_POST['flight-name'])){
+	    //if ()
 
+	    if (isset($_POST['flight-name'])){
+	        $flight_print = $_POST['flight-print'];
 	        $flight_id = $_POST['flight-id'];
             $flight_name = $_POST['flight-name'];
             $date = $_POST['flight-date'];
@@ -103,8 +105,16 @@ class C_Page extends C_Base
             $trainers = $_POST['trainers'];
             $self_preparation = $_POST['self-preparation'];
 
-            setFlight($flight_id, $flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
-                $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation);
+            if ($flight_print == "on"){
+
+                $file_template = 'files/f_7785fad8d785225f.docx';
+                $output_file = 'files/outputfile.docx';
+
+                printFlight($flight_print, $file_template, $output_file);
+            } else {
+                setFlight($flight_id, $flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
+                    $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation);
+            }
         }
 
         $flights = getFlights();
