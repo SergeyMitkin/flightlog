@@ -87,7 +87,6 @@ class C_Page extends C_Base
 
     public function action_training(){
 
-
 	    if (isset($_POST['flight-name'])){
 
 	        $flight_id = $_POST['flight-id'];

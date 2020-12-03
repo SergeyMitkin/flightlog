@@ -1,18 +1,26 @@
 var elRowFlights = document.getElementById("row-flights"); // Div со списком полётов
 var elFlightCreateDiv = document.getElementById("flight-create-div"); // Div с формой добавления полёта
 var elFlightCreateForm = document.getElementById("flight-create-form"); // Форма полёта
-
+var elCrewSelect = document.getElementById("flight-crew-select"); // Селект с членами экипажа
 
 // Функция очистки формы при повторном открытии
 function resetFlightForm(){
-    elFlightCreateForm.reset(); // очищаем инпуты
+
+    elFlightCreateForm.reset(); // Очищаем инпуты
     // Cбрасываем radio
     elFlightCreateForm.querySelector("#flight-d").removeAttribute("checked");
     elFlightCreateForm.querySelector("#flight-s").removeAttribute("checked");
+
     // Очищаем div с упражнениями
     while (elFlightExercisesRow.firstChild) {
         elFlightExercisesRow.removeChild(elFlightExercisesRow.firstChild);
     }
+
+    // Очищаем select с членами экипажа
+    for (var i=0; i<elCrewSelect.querySelectorAll("option").length; i++){
+        elCrewSelect.querySelectorAll("option")[i].removeAttribute("selected");
+    }
+
 }
 
 // При клике на кнопку "Реактировать", помещаем форму редактирования в карточку полёта
@@ -35,7 +43,6 @@ elRowFlights.addEventListener("click", event =>{
         elFlightCreateDiv.removeAttribute("hidden");
 
         // Помещаем текущие значения в форму редактирования
-
         elFlightCreateForm.querySelector("#form-create-flight-id").value = flight_id;
         elFlightCreateForm.querySelector("#flight-name-input").value = elFlightItemDiv.querySelector(".flight-title").textContent;
         elFlightCreateForm.querySelector("#flight-date-input").value = elFlightItemDiv.querySelector(".flight-date").textContent;
@@ -147,7 +154,6 @@ elRowFlights.addEventListener("click", event =>{
 
         // Определяем членов экипажа
         var elCrewOl = document.getElementById("flight-crew-ol_" + flight_id);
-        var elCrewSelect = document.getElementById("flight-crew-select");
         var crew_li = elCrewOl.querySelectorAll("li");
 
         // Помечаем как выбранных исходные значения
@@ -157,7 +163,6 @@ elRowFlights.addEventListener("click", event =>{
         }
 
         // Помещаем исходные значения в textarea
-
         var elIndividualTaskTextarea = document.getElementById("individual-task-textarea");
         elIndividualTaskTextarea.textContent = document.getElementById("individual-task_" + flight_id).textContent;
 
