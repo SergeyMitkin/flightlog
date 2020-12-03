@@ -91,7 +91,7 @@
 
             <button class="flight-edit-button" id="flight-edit-button_<?php echo $flight['id']?>">Редактировать</button>
 
-            <button id="flight-print-button_<?php echo $flight['id']?>" type="submit" class="button">Распечатать</button>
+            <button class="flight-print-button" id="flight-print-button_<?php echo $flight['id']?>" type="submit">Распечатать</button>
 
         </div>
         <?php
@@ -104,7 +104,7 @@
     <div id="flight-create-div" hidden>
         <form role="form" action="" method="post" class="form-horizontal" id="flight-create-form">
 
-            <!-- В скрытый инпут помещаем id полёта при редактировании, при создании id полёта = 0 -->
+            <!-- При редактировании полёта, в скрытый инпут помещаем его id, при создании id полёта = 0 -->
             <input type="hidden" id="form-create-flight-id" name="flight-id" value="">
 
             <div class="form-group">
@@ -206,5 +206,6 @@
 <script src="../js/training_page.js"></script>
 <script src="../js/t_calendar.js"></script>
 <script src="../js/flight_edit.js"></script>
+<script src="../js/flight_print.js"></script>
 
 
