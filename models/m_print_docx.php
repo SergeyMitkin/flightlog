@@ -1,6 +1,30 @@
 <?php
 require '../vendor/autoload.php';
 
+use PhpOffice\PhpWord\Element\Field;
+use PhpOffice\PhpWord\Element\Table;
+use PhpOffice\PhpWord\Element\TextRun;
+use PhpOffice\PhpWord\SimpleType\TblWidth;
+
+function addTable($file_template, $output_file){
+    $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
+
+    $table = new Table(array('borderSize' => 12, 'borderColor' => 'green', 'width' => 6000, 'unit' => TblWidth::TWIP));
+    $table->addRow();
+    $table->addCell(150)->addText('Cell A1');
+    $table->addCell(150)->addText('Cell A2');
+    $table->addCell(150)->addText('Cell A3');
+    $table->addRow();
+    $table->addCell(150)->addText('Cell B1');
+    $table->addCell(150)->addText('Cell B2');
+    $table->addCell(150)->addText('Cell B3');
+    $templateProcessor->setComplexBlock('table', $table);
+
+    $templateProcessor->saveAs($output_file);
+    uploadDocx($output_file);
+    header("Location: /");
+}
+
 function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_start, $time_end){
 
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
