@@ -25,7 +25,8 @@ function addTable($file_template, $output_file){
     header("Location: /");
 }
 
-function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_start, $time_end){
+function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_start, $time_end,
+                     $exercise){
 
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
 
@@ -40,6 +41,28 @@ function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_st
     $document->setValue('d_s', $d_s);
     $document->setValue('time_start', $time_start);
     $document->setValue('time_end', $time_end);
+
+    $table = new Table(array('borderSize' => 12, 'borderColor' => 'green', 'width' => 6000, 'unit' => TblWidth::TWIP));
+
+
+    $ex_array_div = array_chunk($exercise, 6);
+    $str_count = count($ex_array_div);
+
+    for ($i=0; $i<$str_count; $i++){
+        $table->addRow();
+            $table->addCell(150)->addText('Время');
+            for ($in=0; $in<count($ex_array_div[$i]); $in++){
+                $table->addCell(150)->addText(explode('+php+', $ex_array_div[$i][$in])[1]);
+            }
+
+        $table->addRow();
+            $table->addCell(150)->addText('УПР');
+            for ($in=0; $in<count($ex_array_div[$i]); $in++){
+                $table->addCell(150)->addText(explode('+php+', $ex_array_div[$i][$in])[0]);
+            }
+    }
+
+    $document->setComplexBlock('table', $table);
 
     $document->saveAs($output_file);
     uploadDocx($output_file);

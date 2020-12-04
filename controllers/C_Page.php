@@ -110,8 +110,9 @@ class C_Page extends C_Base
                 $file_template = 'files/f_7785fad8d785225f.docx';
                 $output_file = 'files/outputfile.docx';
 
-                addTable($file_template, $output_file );
-                // printFlight($file_template, $output_file, $date, $dawn_sunset, $time_start, $time_end);
+                //addTable($file_template, $output_file );
+                printFlight($file_template, $output_file, $date, $dawn_sunset, $time_start, $time_end,
+                    $exercise);
             } else {
                 setFlight($flight_id, $flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
                     $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation);
