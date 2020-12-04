@@ -47,6 +47,8 @@ function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_st
 
     $ex_array_div = array_chunk($exercise, 6);
     $str_count = count($ex_array_div);
+    // Определяем количество пустых ячеек - вычитаем из максимального количества ячеек, количество элементов последнего массива с упражнениями
+    $empty_cells_count = count($ex_array_div[0]) - count($ex_array_div[$str_count-1]);
 
     for ($i=0; $i<$str_count; $i++){
         $table->addRow();
@@ -54,11 +56,25 @@ function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_st
             for ($in=0; $in<count($ex_array_div[$i]); $in++){
                 $table->addCell(150)->addText(explode('+php+', $ex_array_div[$i][$in])[1]);
             }
+            // Вставляем пустые ячейки
+            if ($i == $str_count-1){
+                for ($ind=0; $ind<$empty_cells_count; $ind++){
+
+                    $table->addCell(150)->addText(' ');
+                }
+            }
 
         $table->addRow();
             $table->addCell(150)->addText('УПР');
             for ($in=0; $in<count($ex_array_div[$i]); $in++){
                 $table->addCell(150)->addText(explode('+php+', $ex_array_div[$i][$in])[0]);
+            }
+            // Вставляем пустые ячейки
+            if ($i == $str_count-1){
+                for ($ind=0; $ind<$empty_cells_count; $ind++){
+
+                    $table->addCell(150)->addText(' ');
+                }
             }
     }
 
