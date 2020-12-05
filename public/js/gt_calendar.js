@@ -1,11 +1,12 @@
 // Элементы календаря
-var elTaskCalendarDiv = document.getElementById("task-calendar-div");
-var elTaskButtonBack = document.getElementById("task-button-back");
-var elTaskButtonForward = document.getElementById("task-button-forward");
-var elSelectYear = document.getElementById("year-task-select");
-var elSelectMonth = document.getElementById("month-task-select");
-var elPrintFormItems = document.getElementById("print-form-items");
+var elTaskCalendarDiv = document.getElementById("task-calendar-div"); // Div с календарём
+var elTaskButtonBack = document.getElementById("task-button-back"); // Кнопка "Назад"
+var elTaskButtonForward = document.getElementById("task-button-forward"); // Кнопка "Вперёд"
+var elSelectYear = document.getElementById("year-task-select"); // Селект для года
+var elSelectMonth = document.getElementById("month-task-select"); // Селект для месяца
+var elPrintFormItems = document.getElementById("print-form-items"); // Форма выводастраницы на печать
 
+// Получаем текущий месяц
 function getCurrentMonthAndYear(){
 
     // Вставляем в заголовок название месяца и год
@@ -18,20 +19,24 @@ function getCurrentMonthAndYear(){
     var elMonthYearInput = document.getElementById("month-year-input");
     elMonthYearInput.value = month_name.toLowerCase() + ' ' + year;
 
+    // Дата для sql-запросов
     var task_date = elSelectYear.value + '-' + elSelectMonth.value;
 
     return task_date;
 }
 
+// Получаем элементы по месяцу
 function getItemsByMonth(classname = "row-item"){
 
+    // Получаем необходимый месяц
     var task_date = getCurrentMonthAndYear();
 
-    // Очищаем форму распечатки файла
+    // Очищаем форму печати страницы, если необходимо
     while (elPrintFormItems.firstChild) {
         elPrintFormItems.removeChild(elPrintFormItems.firstChild);
     }
 
+    // Скрываем темы и задачи не соответсвующие дате
     var m, k;
     m=document.querySelectorAll("." + classname);
     k=m.length;
@@ -42,7 +47,7 @@ function getItemsByMonth(classname = "row-item"){
             m[k].removeAttribute('hidden');
         }
     }
-    // Выводим на печть элементы списков
+    // Вставляем в форму печати списки с задачми и темами
     printGeneralTasks();
     printAviationTopics();
     printAerodynamicsTopics();

@@ -35,7 +35,7 @@ function showEditButton(){
     }
 }
 
-// Заполняем форму полёта исходнами значениями при редактировании
+// Заполняем форму полёта исходнами значениями при редактировании или отправке на печать
 function fillFlightForm(flight_id, print = "off"){
     // Элементы формы редактирования
     var elFlightItemDiv = document.getElementById("flight-item_" + flight_id); // Карточка полёта

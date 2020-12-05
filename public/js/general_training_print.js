@@ -1,9 +1,11 @@
 // Функция вывода на печать задач
 function printGeneralTasks() {
 
+    // Определяем задачи по дате (не скрытые)
     var elGeneralTasksRow = document.getElementById("row-tasks");
     var m = elGeneralTasksRow.querySelectorAll('div:not([hidden])');
 
+    // Помещаем в форму отрпавки страницы на печать
     for (var i = 0; i < m.length; i++){
         var n = i+1; // Порядковый номер задачи в списке
         elPrintFormItems.innerHTML += '<input name="general-task-item[' + i + '][gt]" value="№' + n + '">'
@@ -14,11 +16,14 @@ function printGeneralTasks() {
     }
 }
 
+// Функция вывода на печать тем по авиации
 function printAviationTopics() {
 
+    // Определяем темы по дате (не скрытые)
     var elAviationRow = document.getElementById("row-topics-aviation-technology");
     var m = elAviationRow.querySelectorAll('div:not([hidden])');
 
+    // Помещаем в форму отрпавки страницы на печать
     for (var i = 0; i < m.length; i++){
         var n = i+1; // Порядковый номер темы в списке
         elPrintFormItems.innerHTML += '<input name="aviation-topic-item[' + i + '][av]" value="№' + n + '">'
@@ -29,11 +34,14 @@ function printAviationTopics() {
     }
 }
 
+// Функция вывода на печать тем по аэродинамике
 function printAerodynamicsTopics() {
 
+    // Определяем темы по дате (не скрытые)
     var elAerodynamicsRow = document.getElementById("row-topics-aerodynamics");
     var m = elAerodynamicsRow.querySelectorAll('div:not([hidden])');
 
+    // Помещаем в форму отрпавки страницы на печать
     for (var i = 0; i < m.length; i++){
         var n = i+1; // Порядковый номер темы в списке
         elPrintFormItems.innerHTML += '<input name="aerodynamics-topic-item[' + i + '][aer]" value="№' + n + '">'
@@ -44,11 +52,14 @@ function printAerodynamicsTopics() {
     }
 }
 
+// Функция вывода на печать тем по навигации
 function printNavigationTopics() {
 
+    // Определяем темы по дате (не скрытые)
     var elNavigationRow = document.getElementById("row-topics-navigation");
     var m = elNavigationRow.querySelectorAll('div:not([hidden])');
 
+    // Помещаем в форму отрпавки страницы на печать
     for (var i = 0; i < m.length; i++){
         var n = i+1; // Порядковый номер темы в списке
         elPrintFormItems.innerHTML += '<input name="navigation-topic-item[' + i + '][nav]" value="№' + n + '">'
@@ -59,11 +70,14 @@ function printNavigationTopics() {
     }
 }
 
+// Функция вывода на печать руководящих документов
 function printGuidelinesTopics() {
 
+    // Определяем темы по дате (не скрытые)
     var elGuidelinesRow = document.getElementById("row-topics-guidelines");
     var m = elGuidelinesRow.querySelectorAll('div:not([hidden])');
 
+    // Помещаем в форму отрпавки страницы на печать
     for (var i = 0; i < m.length; i++){
         var n = i+1; // Порядковый номер темы в списке
         elPrintFormItems.innerHTML += '<input name="guidelines-topic-item[' + i + '][guide]" value="№' + n + '">'
@@ -74,11 +88,14 @@ function printGuidelinesTopics() {
     }
 }
 
+// Функция вывода на печать тем по тактике
 function printTacticsTopics() {
 
+    // Определяем темы по дате (не скрытые)
     var elTacticsRow = document.getElementById("row-topics-tactics");
     var m = elTacticsRow.querySelectorAll('div:not([hidden])');
 
+    // Помещаем в форму отрпавки страницы на печать
     for (var i = 0; i < m.length; i++){
         var n = i+1; // Порядковый номер темы в списке
         elPrintFormItems.innerHTML += '<input name="tactics-topic-item[' + i + '][tac]" value="№' + n + '">'

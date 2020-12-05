@@ -1,3 +1,4 @@
+// Прикрепляем событие к кнопке "Распечатать" в карточке полёта
 elRowFlights.addEventListener("click", event => {
     if (event.target.className == "flight-print-button"){
 
@@ -5,8 +6,7 @@ elRowFlights.addEventListener("click", event => {
         var print = "on";
 
         fillFlightForm(flight_id, print); // Заполняем форму данными полёта
-        elFlightCreateForm
 
-        elFlightCreateForm.submit();
+        elFlightCreateForm.submit(); // Отправляем форму
     }
 })
