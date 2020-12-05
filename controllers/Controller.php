@@ -4,7 +4,7 @@
 
 abstract class Controller
 {
-	// Генерация внешнего шаблона
+	// Генерация основного шаблона
 	abstract function render();
 
 	// Запрос произведен методом GET?
@@ -19,7 +19,7 @@ abstract class Controller
 		return $_SERVER['REQUEST_METHOD'] == 'POST';
 	}
 
-	// Генерация HTML шаблона.
+	// Метод подставновки переменных в HTML шаблон
 	protected function Template($fileName, $vars = array())
 	{
 		// Установка переменных для шаблона.
@@ -36,6 +36,6 @@ abstract class Controller
 	
 	// Если вызвали метод, которого нет - завершаем работу
 	public function __call($name, $params){
-        die('Не пишите фигню в url-адресе!!!');
+        die('Такого url-адреса не существует!');
 	}
 }
