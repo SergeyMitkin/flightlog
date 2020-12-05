@@ -4,16 +4,20 @@ require '../vendor/autoload.php';
 use PhpOffice\PhpWord\Element\Table;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
 
+// Распечатываем документ полёта
 function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_start, $time_end,
-                     $exercise, $crew){
+                     $exercise, $crew, $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation){
 
+    // Объект шаблона документа
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
 
+    // Дата
     $day = explode('-', $date)[2];
     $month = getMonth(explode('-', $date)[1]);
     $year = explode('-', $date)[0];
     $d_s = ($dawn_sunset == 'Рассвет') ? 'РВ' : 'ЗТ';
 
+    // Подставляем переменные в шаблон
     $document->setValue('day', $day);
     $document->setValue('month', $month);
     $document->setValue('year', $year);
@@ -21,33 +25,37 @@ function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_st
     $document->setValue('time_start', $time_start);
     $document->setValue('time_end', $time_end);
 
+    // Создаём таблицу для вывода упражнений
     $table = new Table(array('borderSize' => 6, 'borderColor' => 'green', 'width' => 9000, 'unit' => TblWidth::TWIP));
 
-    $ex_array_div = array_chunk($exercise, 6);
+    $ex_array_div = array_chunk($exercise, 6); // Определяем максимум по 6 упражнений в строке
     $str_count = count($ex_array_div);
 
     // Определяем количество пустых ячеек - вычитаем из максимального количества ячеек, количество элементов последнего массива с упражнениями
     $empty_cells_count = count($ex_array_div[0]) - count($ex_array_div[$str_count-1]);
 
+    // Заполняем ячейки
     for ($i=0; $i<$str_count; $i++){
+        // Записываем время упражнений в таблицу
         $table->addRow();
             $table->addCell(300)->addText('Время');
             for ($in=0; $in<count($ex_array_div[$i]); $in++){
                 $table->addCell(300)->addText(explode('+php+', $ex_array_div[$i][$in])[1]);
             }
-            // Вставляем пустые ячейки
+            // Вставляем пустые ячейки, если необходимо
             if ($i == $str_count-1){
                 for ($ind=0; $ind<$empty_cells_count; $ind++){
                     $table->addCell(300)->addText(' ');
                 }
             }
 
+        // Записываем имена упражнений в таблицу
         $table->addRow();
             $table->addCell(300)->addText('УПР');
             for ($in=0; $in<count($ex_array_div[$i]); $in++){
                 $table->addCell(300)->addText(explode('+php+', $ex_array_div[$i][$in])[0]);
             }
-            // Вставляем пустые ячейки
+            // Вставляем пустые ячейки, если необходимо
             if ($i == $str_count-1){
                 for ($ind=0; $ind<$empty_cells_count; $ind++){
 
@@ -55,11 +63,11 @@ function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_st
                 }
             }
     }
-
+    // Вставляем таблицу в шаблон
     $document->setComplexBlock('table', $table);
 
+    // Вставляем в шаблон список с именами членов экипажа
     $crew_array = getCrew();
-
     $replacements = array();
 
     for ($i=0; $i<count($crew); $i++){
@@ -74,20 +82,16 @@ function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_st
 
     $document->cloneBlock('crew', 0, true, false, $replacements);
 
-    /*
-    $document->setValue('time_end', $time_end);
-    $document->setValue('time_end', $time_end);
-    $document->setValue('time_end', $time_end);
-    $document->setValue('time_end', $time_end);
-    $document->setValue('time_end', $time_end);
-    $document->setValue('time_end', $time_end);
-    */
-    //echo getEndingNotes(array('Word2007' => 'docx'), 'f_7785fad8d785225f');
+    // Подставляем переменные в шаблон
+    $document->setValue('individual_task', $individual_task);
+    $document->setValue('security_measures', $security_measures);
+    $document->setValue('self_preparation_task', $self_preparation_task);
+    $document->setValue('trainers', $trainers);
+    $document->setValue('self_preparation', $self_preparation);
 
     $document->saveAs($output_file);
     uploadDocx($output_file);
     header("Location: /");
-
 }
 
 function editDocx($file_template, $output_file, $month_year, $general_tasks, $aviation_topics,
