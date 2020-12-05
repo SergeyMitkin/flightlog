@@ -3,6 +3,7 @@ var elTrainingCalendar = document.getElementById("training-calendar");
 var elFlightButtonBack = document.getElementById("flight-button-back");
 var elFlightButtonForward = document.getElementById("flight-button-forward");
 
+// Получаем дату по календарю
 function getDate() {
     var date = elTrainingCalendar.value;
     var elFlightsTitle = document.getElementById("flights-title");
@@ -11,9 +12,11 @@ function getDate() {
     return date;
 }
 
+// Получаем полёты по дате
 function getItemsByDate(classname = "row-item") {
     var date = getDate();
 
+    // Скрываем полёты, не соответсвующие дате
     var m, k;
     m=document.querySelectorAll("." + classname);
     k=m.length;
@@ -26,14 +29,15 @@ function getItemsByDate(classname = "row-item") {
     }
 }
 
-// При загрузке страницы и при смене даты, выводим задачи по дате
+// При загрузке страницы и при смене даты, выводим полёты по дате
 document.addEventListener("DOMContentLoaded", getItemsByDate());
 elTrainingCalendar.addEventListener('change', event => {
     getItemsByDate();
 })
 
-// Получаем задачи на предыдущий день
+// Получаем полёты на предыдущий день
 elFlightButtonBack.addEventListener('click', event => {
+
     var d = new Date(getDate());
     d.setDate(d.getDate() - 1);
 
@@ -45,6 +49,7 @@ elFlightButtonBack.addEventListener('click', event => {
         day = "0" + day;
     }
 
+    // Получаем месяц
     var month = d.getMonth()+1;
     var month_str = String(month);
 
@@ -53,6 +58,7 @@ elFlightButtonBack.addEventListener('click', event => {
         month = "0" + month;
     }
 
+    // Получаем год
     var year = d.getFullYear();
     var previous_day = year + '-' + month + '-' + day;
 
@@ -73,6 +79,7 @@ elFlightButtonForward.addEventListener('click', event => {
         day = "0" + day;
     }
 
+    // Получаем месяц
     var month = d.getMonth()+1;
     var month_str = String(month);
 
@@ -81,6 +88,7 @@ elFlightButtonForward.addEventListener('click', event => {
         month = "0" + month;
     }
 
+    // Получаем год
     var year = d.getFullYear();
     var next_day = year + '-' + month + '-' + day;
 
