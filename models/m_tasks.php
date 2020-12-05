@@ -1,6 +1,7 @@
 <?php
 include_once 'db.php';
 
+// Получаем данные таблицы 'tasks' со смежной таблицей авторов
 function getGeneralTasks(){
     try {
         $q = "SELECT g.name AS task_name, g.description, a.name AS author_name, g.date 
@@ -13,6 +14,7 @@ function getGeneralTasks(){
     return $sql;
 }
 
+// Добавляем задачу
 function setGeneralTask($task_name, $description, $author_id, $date){
 
     try {

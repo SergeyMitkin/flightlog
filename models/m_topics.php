@@ -1,6 +1,7 @@
 <?php
 include_once 'db.php';
 
+// Получаем темы общей подготовки по типу
 function getGeneralTopics($type){
     try {
         $q = "SELECT g.name AS topic_name, g.description, a.name AS author_name, g.date 
@@ -15,6 +16,7 @@ function getGeneralTopics($type){
     return $sql;
 }
 
+// Создаём новую тему общей подготовки
 function setGeneralTopic($topic_name, $description, $topic_type, $author_id, $date){
     try {
         $t = 'general_topics';
