@@ -1,8 +1,11 @@
 <?php
 ?>
 
+<!-- Шаблон страницы подготовки к полётам -->
+
 <h1>Подготовка к полётам</h1>
 
+<!-- Календарь -->
 <div id="flight-calendar-div">
     <button id="flight-button-back"><</button>
     <input id="training-calendar" type="date" value="<?php echo $date?>">
@@ -12,6 +15,7 @@
 <!-- Выводим полёты -->
 <h2 id="flights-title">Полёты на </h2>
 <div id="row-flights" class="row-flights">
+    <!-- Карточка полёта -->
     <?php
     foreach($flights as $flight){
         ?><div class="row-item" id="flight-item_<?php echo $flight['id']?>" data-sort-date="<?php echo $flight['date']?>">
@@ -21,6 +25,7 @@
             <p>Конец полётов: <span class="flight-time-end"><?php echo substr($flight['time_end'], 0, 5)?></span></p>
             <p>Время суток: <span class="flight-d-s"><?php echo $flight['dawn_sunset']?></span></p>
 
+            <!-- Упражнения -->
             <?php
             $ex_array[$flight['id']] = array();
             for ($i=0; $i<count($exercises); $i++) {
@@ -52,6 +57,7 @@
             echo '</table>';
             ?>
 
+            <!-- Члены экипажа -->
             <div class="flight-crew-div">Экипаж:
                 <ol class="flight-crew-ol" id="flight-crew-ol_<?php echo $flight['id']?>">
                     <?
@@ -189,19 +195,7 @@
     <button type="button" class="btn" id="task-create-form-button">Добавить полёт</button>
 </div>
 
-<!-- Форма для печати полёта -->
-<div id="div-flight-print-form">
-    <form role="form" action="" method="post" id="flight-print-form" >
-        <div class="form-group">
-            <label for="flight-date-input">Месяц и год</label>
-            <input required type="text" class="form-control" id="flight-date-input"
-                   name="month-year">
-        </div>
-
-        <div id="print-form-items" ></div>
-    </form>
-</div>
-
+<!-- Подключаем js файлы для страницы -->
 <script src="../js/training_page.js"></script>
 <script src="../js/t_calendar.js"></script>
 <script src="../js/flight_edit.js"></script>

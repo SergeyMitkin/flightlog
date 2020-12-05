@@ -1,5 +1,6 @@
 <?php
 ?>
+<!-- Шаблон страницы общей подготовки -->
 
 <h1>План общей подготовки на месяц</h1>
 
@@ -7,7 +8,7 @@
 
     <button id="task-button-back"><</button>
 
-    <!-- Выводим выпадающий список -->
+    <!-- Выводим выпадающий список месяцев -->
     <select class="general-task-select" id="month-task-select" name="month">
         <?php
         foreach ($month_array as $month) {
@@ -19,7 +20,7 @@
         ?>
     </select>
 
-    <!-- Выводим выпадающий список -->
+    <!-- Выводим выпадающий список годов -->
     <select class="general-task-select" id="year-task-select" name="year">
         <?php
         foreach ($year_array as $year) {
@@ -48,7 +49,6 @@
     }
     ?>
 </div>
-
 
 <!-- Форма создания задачи -->
 <div id="div-task-create-form" class="div-create-form" hidden>
@@ -223,7 +223,7 @@
     </form>
 </div>
 
-<!-- Форма "Создать тему" -->
+<!-- Кнопка "Создать тему" -->
 <div id="div-topic-create-button">
     <button type="button" class="btn" id="topic-create-form-button">Создать тему</button>
 </div>
@@ -245,6 +245,7 @@
     </form>
 </div>
 
+<!-- Подключаем js файлы для страницы -->
 <script src="js/general_training_print.js"></script>
 <script src="js/gt_calendar.js"></script>
 <script src="js/general_training_page.js"></script>
