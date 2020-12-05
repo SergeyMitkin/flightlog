@@ -1,3 +1,4 @@
+// Элементы для редактирования полёта
 var elRowFlights = document.getElementById("row-flights"); // Div со списком полётов
 var elFlightCreateDiv = document.getElementById("flight-create-div"); // Div с формой добавления полёта
 var elFlightCreateForm = document.getElementById("flight-create-form"); // Форма полёта
@@ -34,16 +35,14 @@ function showEditButton(){
     }
 }
 
+// Заполняем форму полёта исходнами значениями при редактировании
 function fillFlightForm(flight_id, print = "off"){
-
+    // Элементы формы редактирования
     var elFlightItemDiv = document.getElementById("flight-item_" + flight_id); // Карточка полёта
-
     var ex_td = elFlightItemDiv.querySelector(".exercises-table").querySelectorAll("td") // Столбики таблицы упражнений
-    var elExercisesDiv = document.getElementById("flight-exercises-row");
+    var elExercisesDiv = document.getElementById("flight-exercises-row"); // Div с упражнениями
 
     var d_s  = elFlightItemDiv.querySelector(".flight-d-s").textContent // Узнаём время суток полёта
-
-    elFlightItemDiv.appendChild(elFlightCreateDiv);
 
     // Помещаем текущие значения в форму редактирования
     elFlightCreateForm.querySelector("#flight-print-input").value = print;
@@ -67,54 +66,61 @@ function fillFlightForm(flight_id, print = "off"){
             // Выводим инпуты с временем упражнений
             if (ex_td[i].id.split("_")[0] == "ex-time-td"){
 
-                // Создаём div для одного упражнения
+                // Создаём div для упражнения
                 var d = document.createElement("div");
                 d.classList = "flight-exercise-div_old_" + exercise_id;
                 d.id = "flight-exercise-item_old_" + exercise_id;
 
+                // Создаём лайбл для инпута времени упражнения
                 var l_t = document.createElement("label");
                 l_t.setAttribute("for", "exercise-time-input_old_" + exercise_id);
                 l_t.textContent = "Время: ";
 
+                // Создаём инпут времени упражнения
                 var i_t = document.createElement("input");
                 i_t.type = "time";
                 i_t.id = "exercise-time-input_old_" + exercise_id;
                 i_t.value = ex_td[i].textContent; // Вставляем в инпут исходное значение
 
+                // Создаём кнопку удалить упражнение
                 var b = document.createElement("button");
                 b.id = "exercise-remove-button_old_" + exercise_id;
                 b.classList = "button exercise-remove-button-old";
                 b.type = "button";
                 b.textContent = "Удалить";
 
+                // Помещаем элементы в див с упражнениями
                 d.appendChild(l_t);
                 d.appendChild(i_t);
                 d.appendChild(b);
-
                 elExercisesDiv.appendChild(d);
 
                 // Выводим инпуты с названиями упражнений
             } else if (ex_td[i].id.split("_")[0] == "ex-name-td"){
 
-                d = document.getElementById("flight-exercise-item_old_" + exercise_id);
+                d = document.getElementById("flight-exercise-item_old_" + exercise_id);  // div для упражнения
+
+                // Создаём элемент для инпута имени упражнения
                 var l_n = document.createElement("label");
                 l_n.setAttribute("for", "exercise-name-input_old_" + exercise_id);
                 l_n.textContent = "Упражнение: ";
 
+                // Создаём инпут для ввода имени упражнения
                 var i_n = document.createElement("input");
                 i_n.type = "text";
                 i_n.id = "exercise-name-input_old_" + exercise_id;
                 i_n.value = ex_td[i].textContent; // Вставляем в инпут исходное значение
 
-                var i_t = document.getElementById("exercise-time-input_old_" + exercise_id);
+                var i_t = document.getElementById("exercise-time-input_old_" + exercise_id); // Инпут для ввода времени упражнения
 
-                // Объединяем значения из инпутов имени и времени упражнения
+                // Объединяем значения из инпутов имени и времени упражнения в скрытый инпут
                 var input3 = document.createElement("input");
                 input3.id = "input-common_" + exercise_id;
                 input3.name = "exercise[]";
                 input3.setAttribute("hidden", "");
                 input3.value = i_n.value + "+php+" + i_t.value; // Помещаем в общий инпут изначальные значения
 
+                // При заполнении инпутов времени иимени, заполняем общий инпут
                 i_n.addEventListener('input', event=>{
 
                     var id = event.target.id.split("_")[2];
@@ -136,6 +142,7 @@ function fillFlightForm(flight_id, print = "off"){
                     elCommonInput.value = elNameInput.value + '+php+' + elTimeInput.value;
                 }, false);
 
+                // Помещаем элементы в див упражнения
                 var firstChild = d.firstChild;
                 d.insertBefore(l_n, firstChild);
                 d.insertBefore(i_n, firstChild);
@@ -144,6 +151,7 @@ function fillFlightForm(flight_id, print = "off"){
         }
     }
 
+    // Прикрепляем события для удаления упражнений к кнопкам
     var elExerciseOldRemoveButtons = document.querySelectorAll(".exercise-remove-button-old");
     elExerciseOldRemoveButtons.forEach( elem => {
         elem.addEventListener('click', event =>{
@@ -151,6 +159,7 @@ function fillFlightForm(flight_id, print = "off"){
         })
     })
 
+    // Функция удаления упражнений
     function exerciseOldRemove(exercise_id) {
         var elItemForDelete = elExercisesDiv.querySelector("#flight-exercise-item_old_" + exercise_id);
         elFlightExercisesRow.removeChild(elItemForDelete);
@@ -183,7 +192,7 @@ function fillFlightForm(flight_id, print = "off"){
     elSelfPreparationTextarea.textContent = document.getElementById("self-preparation_" + flight_id).textContent;
 }
 
-// При клике на кнопку "Реактировать", помещаем форму редактирования в карточку полёта
+// Прикрепляем событи к кнопкам "Редактировать"
 elRowFlights.addEventListener("click", event =>{
 
     if (event.target.className == "flight-edit-button"){
@@ -191,7 +200,12 @@ elRowFlights.addEventListener("click", event =>{
         showEditButton(); // Отображаем кнопку "Редактировать", если была скрыта
         resetFlightForm(); // Очищаем поля формы
         var flight_id = event.target.id.split("_")[1]; // Id полёта
+
+        var elFlightItemDiv = document.getElementById("flight-item_" + flight_id); // Карточка полёта
         fillFlightForm(flight_id); // Заполняем форму данными полёта
+
+        elFlightItemDiv.appendChild(elFlightCreateDiv); // Помещаем форму редактирования в карточку полёта
+
         elFlightCreateDiv.removeAttribute("hidden");
         event.target.setAttribute("hidden", ""); // Скрываем кнопку "Редактировать"
     }
