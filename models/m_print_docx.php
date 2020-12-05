@@ -94,7 +94,7 @@ function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_st
     header("Location: /");
 }
 
-function editDocx($file_template, $output_file, $month_year, $general_tasks, $aviation_topics,
+function printGTPage($file_template, $output_file, $month_year, $general_tasks, $aviation_topics,
                     $aerodynamics_topics, $navigation_topics, $guidelines_topics, $tactics_topics){
 
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
