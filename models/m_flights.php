@@ -1,6 +1,7 @@
 <?php
 include_once 'db.php';
 
+// Получаем данные таблицы 'crew'
 function getCrew(){
     try {
         $q = "SELECT * FROM crew";
@@ -11,6 +12,7 @@ function getCrew(){
     return $sql;
 }
 
+// Получаем данные таблицы 'exercises'
 function getFlightExercises(){
     try {
         $q = "SELECT * FROM exercises";
@@ -22,6 +24,8 @@ function getFlightExercises(){
     return $sql;
 }
 
+// Получаем данные составной таблицы полётов и членов экипажа, получем имена членов экипажа
+// из таблицы 'crew'
 function getFlightsCrew(){
     try {
         $q = "SELECT * FROM flights_crew
@@ -35,6 +39,7 @@ function getFlightsCrew(){
     return $sql;
 }
 
+// Получаем данные таблицы 'flights'
 function getFlights(){
     try {
         $q = "SELECT * FROM flights";
@@ -45,10 +50,12 @@ function getFlights(){
     return $sql;
 }
 
+// Создаём новый полёт или редактируем
 function setFlight($flight_id = 0, $flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
                    $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation){
 
-    // Если полёт редактируется, удаляем предыдцщих членов экипажа и упражнения из связанных таблиц
+    // Если id полёта > 0, значит полёт редактируется
+    // При редактировании, удаляем изначальных членов экипажа и упражнения из связанных таблиц
     if($flight_id > 0) {
         // Удаляем членов экипажа
         try{
@@ -71,7 +78,7 @@ function setFlight($flight_id = 0, $flight_name, $date, $time_start, $time_end, 
         }
     }
 
-    // Добавляем запись в таблицу "flights"
+    // Добавляем запись в таблицу "flights" или редактируем
     try {
         $t = 'flights';
         $v = array(

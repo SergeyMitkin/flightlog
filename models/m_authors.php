@@ -1,6 +1,7 @@
 <?php
 include_once 'db.php';
 
+// Получаем данные таблицы 'authors'
 function getAuthors(){
     try {
         $q = "SELECT * FROM authors";
