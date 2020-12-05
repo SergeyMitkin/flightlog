@@ -4,12 +4,10 @@ include_once('Controller.php');
 // Контроллер базового шаблона
 abstract class C_Base extends Controller
 {
-	protected $title;		// заголовок страницы
-	protected $content;		// содержание страницы
+	protected $title;		// Заголовок страницы
+	protected $content;		// Содержание страницы
 
-	//
-	// Конструктор.
-	//
+	// Конструктор
 	function __construct()
 	{		
 		$this->title = 'Журнал подготовки к полётам беспилотной авиационной системы';
