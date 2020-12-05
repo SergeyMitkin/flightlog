@@ -1,32 +1,11 @@
 <?php
 require '../vendor/autoload.php';
 
-use PhpOffice\PhpWord\Element\Field;
 use PhpOffice\PhpWord\Element\Table;
-use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
 
-function addTable($file_template, $output_file){
-    $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
-
-    $table = new Table(array('borderSize' => 12, 'borderColor' => 'green', 'width' => 6000, 'unit' => TblWidth::TWIP));
-    $table->addRow();
-    $table->addCell(150)->addText('Cell A1');
-    $table->addCell(150)->addText('Cell A2');
-    $table->addCell(150)->addText('Cell A3');
-    $table->addRow();
-    $table->addCell(150)->addText('Cell B1');
-    $table->addCell(150)->addText('Cell B2');
-    $table->addCell(150)->addText('Cell B3');
-    $templateProcessor->setComplexBlock('table', $table);
-
-    $templateProcessor->saveAs($output_file);
-    uploadDocx($output_file);
-    header("Location: /");
-}
-
 function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_start, $time_end,
-                     $exercise){
+                     $exercise, $crew){
 
     $document = new \PhpOffice\PhpWord\TemplateProcessor($file_template);
 
@@ -42,43 +21,68 @@ function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_st
     $document->setValue('time_start', $time_start);
     $document->setValue('time_end', $time_end);
 
-    $table = new Table(array('borderSize' => 12, 'borderColor' => 'green', 'width' => 6000, 'unit' => TblWidth::TWIP));
-
+    $table = new Table(array('borderSize' => 6, 'borderColor' => 'green', 'width' => 9000, 'unit' => TblWidth::TWIP));
 
     $ex_array_div = array_chunk($exercise, 6);
     $str_count = count($ex_array_div);
+
     // Определяем количество пустых ячеек - вычитаем из максимального количества ячеек, количество элементов последнего массива с упражнениями
     $empty_cells_count = count($ex_array_div[0]) - count($ex_array_div[$str_count-1]);
 
     for ($i=0; $i<$str_count; $i++){
         $table->addRow();
-            $table->addCell(150)->addText('Время');
+            $table->addCell(300)->addText('Время');
             for ($in=0; $in<count($ex_array_div[$i]); $in++){
-                $table->addCell(150)->addText(explode('+php+', $ex_array_div[$i][$in])[1]);
+                $table->addCell(300)->addText(explode('+php+', $ex_array_div[$i][$in])[1]);
             }
             // Вставляем пустые ячейки
             if ($i == $str_count-1){
                 for ($ind=0; $ind<$empty_cells_count; $ind++){
-
-                    $table->addCell(150)->addText(' ');
+                    $table->addCell(300)->addText(' ');
                 }
             }
 
         $table->addRow();
-            $table->addCell(150)->addText('УПР');
+            $table->addCell(300)->addText('УПР');
             for ($in=0; $in<count($ex_array_div[$i]); $in++){
-                $table->addCell(150)->addText(explode('+php+', $ex_array_div[$i][$in])[0]);
+                $table->addCell(300)->addText(explode('+php+', $ex_array_div[$i][$in])[0]);
             }
             // Вставляем пустые ячейки
             if ($i == $str_count-1){
                 for ($ind=0; $ind<$empty_cells_count; $ind++){
 
-                    $table->addCell(150)->addText(' ');
+                    $table->addCell(300)->addText(' ');
                 }
             }
     }
 
     $document->setComplexBlock('table', $table);
+
+    $crew_array = getCrew();
+
+    $replacements = array();
+
+    for ($i=0; $i<count($crew); $i++){
+
+        for ($in=0; $in<count($crew_array); $in++){
+            if ($crew_array[$in]['id'] == $crew[$i]){
+                $replacements[$i]['crew_number'] = $i+1;
+                $replacements[$i]['crew_name'] = $crew_array[$in]['name'];
+            }
+        }
+    }
+
+    $document->cloneBlock('crew', 0, true, false, $replacements);
+
+    /*
+    $document->setValue('time_end', $time_end);
+    $document->setValue('time_end', $time_end);
+    $document->setValue('time_end', $time_end);
+    $document->setValue('time_end', $time_end);
+    $document->setValue('time_end', $time_end);
+    $document->setValue('time_end', $time_end);
+    */
+    //echo getEndingNotes(array('Word2007' => 'docx'), 'f_7785fad8d785225f');
 
     $document->saveAs($output_file);
     uploadDocx($output_file);

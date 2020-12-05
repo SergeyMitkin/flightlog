@@ -87,8 +87,6 @@ class C_Page extends C_Base
 
     public function action_training(){
 
-	    //if ()
-
 	    if (isset($_POST['flight-name'])){
 	        $flight_print = $_POST['flight-print'];
 	        $flight_id = $_POST['flight-id'];
@@ -112,7 +110,7 @@ class C_Page extends C_Base
 
                 //addTable($file_template, $output_file );
                 printFlight($file_template, $output_file, $date, $dawn_sunset, $time_start, $time_end,
-                    $exercise);
+                    $exercise, $crew);
             } else {
                 setFlight($flight_id, $flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
                     $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation);
