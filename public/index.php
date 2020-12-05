@@ -17,5 +17,5 @@ $action .= $page_name;
 
 $controller = new C_Page();
 
-$controller->$action();
-$controller->render();
+$controller->$action(); // Переходим на страницу
+$controller->render(); // Метод подстановки переменных в шаблон страницы

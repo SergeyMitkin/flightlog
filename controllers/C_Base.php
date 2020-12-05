@@ -1,8 +1,7 @@
 <?php
 include_once('Controller.php');
 
-// Базовый контроллер сайта
-
+// Контроллер базового шаблона
 abstract class C_Base extends Controller
 {
 	protected $title;		// заголовок страницы
@@ -17,7 +16,7 @@ abstract class C_Base extends Controller
 		$this->content = '';
 	}
 
-	// Генерация базового шаблонаы
+	// Подставляем переменные в базовый шаблон
 	public function render()
 	{
 		$vars = array('title' => $this->title, 'content' => $this->content);	
