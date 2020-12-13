@@ -1,11 +1,3 @@
-/*
-var elRowTopicsAviation = document.getElementById("row-topics-aviation-technology");
-var elRowTopicsAerodynamics = document.getElementById("row-topics-aerodynamics");
-var elRowTopicsNavigation = document.getElementById("row-topics-navigation");
-var elRowTopicsGuidelines = document.getElementById("row-topics-guidelines");
-var elRowTopicsTactics = document.getElementById("row-topics-tactics");
-*/
-
 // Прикрепляем событие кнопкам редактировать
 var elTopicsLists = document.querySelectorAll(".row-topics");
 

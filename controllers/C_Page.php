@@ -155,4 +155,22 @@ class C_Page extends C_Base
             )
         );
     }
+
+    public function action_authors(){
+
+	    if (isset($_POST['author-name'])){
+	        $author_id = $_POST['author-id'];
+	        $author_name = $_POST['author-name'];
+	        setAuthor($author_id, $author_name);
+        }
+
+        $authors = getAuthors();
+
+        // Подставляем переменные в шаблон страницы
+        $this->content = $this->Template(VIEW_DIR . '/v_authors.php', array(
+                'authors' => $authors,
+            )
+        );
+
+    }
 }

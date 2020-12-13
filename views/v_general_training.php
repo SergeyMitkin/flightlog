@@ -249,6 +249,7 @@
         </form>
     </div>
 </div>
+
 <!-- Кнопка "Создать тему" -->
 <div id="div-topic-create-button">
     <button type="button" class="btn create-button" id="topic-create-form-button">Создать тему</button>

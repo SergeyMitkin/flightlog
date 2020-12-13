@@ -11,3 +11,7 @@ function getAuthors(){
     }
     return $sql;
 }
+
+function setAuthor($author_id = 0, $author_name){
+
+}
