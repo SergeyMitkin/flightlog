@@ -35,7 +35,6 @@ function setGeneralTopic($topic_id = 0, $topic_name, $description, $topic_type, 
         } else {
             $sql = SQL::getInstance()->Insert($t, $v);
         }
-        // $sql = SQL::getInstance()->Insert($t, $v);
     }
     catch(PDOException $e){
         die("Error: ".$e->getMessage());
