@@ -39,11 +39,12 @@
 <div id="row-tasks" class="row-tasks-and-topics">
     <?php
     foreach($general_tasks as $task){
-        ?><div class="row-item general-task-item" data-sort-date="<?php echo substr($task['date'], 0, 7);?>">
-            <h4><?php echo $task['task_name'];?></h4>
-            <p><?php echo $task['description']?></p>
-            <p>Автор: <?php echo $task['author_name']?></p>
-            <p>Дата: <?php echo $task['date']?></p>
+        ?><div class="row-item general-task-item" id="task-item_<?php echo $task['id']?>" data-sort-date="<?php echo substr($task['date'], 0, 7);?>">
+            <h4 class="task-title-h"><?php echo $task['task_name'];?></h4>
+            <p class="task-description-p"><?php echo $task['description']?></p>
+            <p class="task-author-p" data-id="<?php echo $task['author_id']?>">Автор: <?php echo $task['author_name']?></p>
+            <p class="task-date-p">Дата: <span class="task-date-span"><?php echo $task['date']?></span></p>
+            <button class="task-edit-button edit-button" id="general-task-edit-button_<?php echo $task['id']?>">Редактировать</button>
         </div>
     <?php
     }
@@ -53,6 +54,9 @@
 <!-- Форма создания задачи -->
 <div id="div-task-create-form" class="div-create-form" hidden>
     <form role="form" action="" method="post" class="form-horizontal" id="task-create-form">
+
+        <!-- При редактировании задачи, в скрытый инпут помещаем её id, при создании id задачи = 0 -->
+        <input type="hidden" id="input-general-task-id" name="flight-id" value="0">
 
         <div class="form-group">
             <label for="task-name">Введите название задачи</label>
@@ -92,7 +96,7 @@
 
 <!-- Кнопка "Создать задачу" -->
 <div id="div-task-create-button">
-    <button type="button" class="btn" id="task-create-form-button">Создать задачу</button>
+    <button type="button" class="btn create-button" id="task-create-form-button">Создать задачу</button>
 </div>
 
 <!-- Выводим темы общей подготовки -->
@@ -225,7 +229,7 @@
 
 <!-- Кнопка "Создать тему" -->
 <div id="div-topic-create-button">
-    <button type="button" class="btn" id="topic-create-form-button">Создать тему</button>
+    <button type="button" class="btn create-button" id="topic-create-form-button">Создать тему</button>
 </div>
 
 <!-- Форма для печати документа -->
@@ -249,6 +253,6 @@
 <script src="js/general_training_print.js"></script>
 <script src="js/gt_calendar.js"></script>
 <script src="js/general_training_page.js"></script>
-
+<script src="js/general_task_edit.js"></script>
 
 

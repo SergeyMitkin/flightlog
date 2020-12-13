@@ -41,7 +41,7 @@ class C_Page extends C_Base
             $description = $_POST['description']; // Описание
             $author_id = $_POST['author']; // Автор
             $date = $_POST['date']; // Дата
-            setGeneralTask($task_name, $description, $author_id, $date);
+            setGeneralTask($task_id, $task_name, $description, $author_id, $date);
         }
 
         // Добавляем тему общей подготовки

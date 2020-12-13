@@ -4,7 +4,7 @@ var elFlightCreateDiv = document.getElementById("flight-create-div"); // Div с 
 var elFlightCreateForm = document.getElementById("flight-create-form"); // Форма полёта
 var elCrewSelect = document.getElementById("flight-crew-select"); // Селект с членами экипажа
 
-// Функция очистки формы при повторном открытии
+// Очищаем форму создания/редактирования полёта при повторном открытии
 function resetFlightForm(){
 
     elFlightCreateForm.reset(); // Очищаем инпуты
@@ -28,7 +28,7 @@ function resetFlightForm(){
     }
 }
 
-// Функция, отображающая скрытую кнопку "Редактировать" в карточке полёта
+// Функция, отображающая кнопку "Редактировать" в карточке полёта, если она была скрыта
 function showEditButton(){
     for (var i=0; i<elEditButtons.length; i++){
         elEditButtons[i].removeAttribute("hidden");

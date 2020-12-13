@@ -4,7 +4,7 @@ include_once 'db.php';
 // Получаем данные таблицы 'tasks' со смежной таблицей авторов
 function getGeneralTasks(){
     try {
-        $q = "SELECT g.name AS task_name, g.description, a.name AS author_name, g.date 
+        $q = "SELECT g.id, g.name AS task_name, g.description, a.id AS author_id, a.name AS author_name, g.date 
         FROM general_tasks g 
         LEFT JOIN authors a on g.author_id = a.id";
         $sql = SQL::getInstance()->Select($q);
@@ -15,7 +15,7 @@ function getGeneralTasks(){
 }
 
 // Добавляем задачу
-function setGeneralTask($task_name, $description, $author_id, $date){
+function setGeneralTask($task_id = 0, $task_name, $description, $author_id, $date){
 
     try {
         $t = 'general_tasks';
