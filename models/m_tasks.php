@@ -40,3 +40,15 @@ function setGeneralTask($task_id = 0, $task_name, $description, $author_id, $dat
     }
     header("Location: /");
 }
+
+// Удаляем задачу
+function deleteTask($task_id){
+    try{
+        $table = 'general_tasks';
+        $where = "id = " . $task_id;
+        $sql = SQL::getInstance()->Delete($table, $where);
+    }
+    catch(PDOException $e){
+        die("Error: ".$e->getMessage());
+    }
+}

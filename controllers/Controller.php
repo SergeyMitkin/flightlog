@@ -36,6 +36,6 @@ abstract class Controller
 	
 	// Если вызвали метод, которого нет - завершаем работу
 	public function __call($name, $params){
-        die('Такого url-адреса не существует!');
+        //die('Такого url-адреса не существует!');
 	}
 }

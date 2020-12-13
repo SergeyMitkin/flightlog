@@ -56,6 +56,16 @@ class C_Page extends C_Base
             setGeneralTopic($topic_id, $topic_name, $description, $topic_type, $author_id, $date);
         }
 
+        // Удаляем задачу
+        if (isset($_GET['task-delete'])){
+            deleteTask($_GET['task-delete']);
+        }
+
+        // Удаляем тему
+        if (isset($_GET['topic-delete'])){
+            deleteTopic($_GET['topic-delete']);
+        }
+
         // Переменные для селектов с выбором года и месяца
         $year_array = range(2000, 2050);
         $current_year = date('Y');

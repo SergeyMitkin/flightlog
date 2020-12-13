@@ -41,3 +41,15 @@ function setGeneralTopic($topic_id = 0, $topic_name, $description, $topic_type, 
     }
     header("Location: /");
 }
+
+// Удаляем тему
+function deleteTopic($topic_id){
+    try{
+        $table = 'general_topics';
+        $where = "id = " . $topic_id;
+        $sql = SQL::getInstance()->Delete($table, $where);
+    }
+    catch(PDOException $e){
+        die("Error: ".$e->getMessage());
+    }
+}

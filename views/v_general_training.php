@@ -45,7 +45,7 @@
             <p class="task-author-p" data-id="<?php echo $task['author_id']?>">Автор: <?php echo $task['author_name']?></p>
             <p class="task-date-p">Дата: <span class="task-date-span"><?php echo $task['date']?></span></p>
             <button class="task-edit-button edit-button" id="general-task-edit-button_<?php echo $task['id']?>">Редактировать</button>
-            <button class="task-delete-button delete-button" id="general-task-delete-button_<?php echo $task['id']?>">Удалить</button>
+            <button class="delete-button"><a href="../?task-delete=<?php echo $task['id']?>" role="button">Удалить</a></button>
         </div>
     <?php
     }
@@ -115,7 +115,7 @@
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="topic-delete-button delete-button" id="topic-delete-button_<?php echo $topic['id']?>">Удалить</button>
+            <button class="delete-button"><a href="../?topic-delete=<?php echo $topic['id']?>" role="button">Удалить</a></button>
         </div>
         <?php
     }
@@ -133,7 +133,7 @@
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="topic-delete-button delete-button" id="topic-delete-button_<?php echo $topic['id']?>">Удалить</button>
+            <button class="delete-button"><a href="../?topic-delete=<?php echo $topic['id']?>" role="button">Удалить</a></button>
         </div>
         <?php
     }
@@ -151,7 +151,7 @@
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="topic-delete-button delete-button" id="topic-delete-button_<?php echo $topic['id']?>">Удалить</button>
+            <button class="delete-button"><a href="../?topic-delete=<?php echo $topic['id']?>" role="button">Удалить</a></button>
         </div>
         <?php
     }
@@ -169,7 +169,7 @@
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="topic-delete-button delete-button" id="topic-delete-button_<?php echo $topic['id']?>">Удалить</button>
+            <button class="delete-button"><a href="../?topic-delete=<?php echo $topic['id']?>" role="button">Удалить</a></button>
         </div>
         <?php
     }
@@ -187,7 +187,7 @@
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="topic-delete-button delete-button" id="topic-delete-button_<?php echo $topic['id']?>">Удалить</button>
+            <button class="delete-button"><a href="../?topic-delete=<?php echo $topic['id']?>" role="button">Удалить</a></button>
         </div>
         <?php
     }
