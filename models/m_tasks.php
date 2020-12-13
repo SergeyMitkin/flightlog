@@ -26,16 +26,14 @@ function setGeneralTask($task_id = 0, $task_name, $description, $author_id, $dat
             'date' => $date,
         );
 
-        // Если Id полёта больше 0, значит полёт редактируется
+        // Если Id задачи больше 0, значит задача редактируется
         if($task_id > 0) {
             $w = "id =" . $task_id;
             $sql = SQL::getInstance()->Update($t, $v, $w);
-            // Иначе добавляем новый полёт
+            // Иначе добавляем новую задачу
         } else {
             $sql = SQL::getInstance()->Insert($t, $v);
         }
-
-
     }
     catch(PDOException $e){
         die("Error: ".$e->getMessage());

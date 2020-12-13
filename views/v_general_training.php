@@ -110,7 +110,7 @@
         ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
             <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
             <p class="topic-description-p"><?php echo $topic['description']?></p>
-            <p class="topic-type-p" data-type="<?php echo $topic['type']?>"> hidden=""</p>
+            <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
@@ -127,7 +127,7 @@
         ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
             <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
             <p class="topic-description-p"><?php echo $topic['description']?></p>
-            <p class="topic-type-p" data-type="<?php echo $topic['type']?>"> hidden=""</p>
+            <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
@@ -144,7 +144,7 @@
         ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
             <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
             <p class="topic-description-p"><?php echo $topic['description']?></p>
-            <p class="topic-type-p" data-type="<?php echo $topic['type']?>"> hidden=""</p>
+            <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
@@ -161,7 +161,7 @@
         ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
             <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
             <p class="topic-description-p"><?php echo $topic['description']?></p>
-            <p class="topic-type-p" data-type="<?php echo $topic['type']?>"> hidden=""</p>
+            <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
@@ -178,7 +178,7 @@
         ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
             <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
             <p class="topic-description-p"><?php echo $topic['description']?></p>
-            <p class="topic-type-p" data-type="<?php echo $topic['type']?>"> hidden=""</p>
+            <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>

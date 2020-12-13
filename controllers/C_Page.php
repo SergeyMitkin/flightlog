@@ -47,12 +47,13 @@ class C_Page extends C_Base
 
         // Добавляем тему общей подготовки
         if (isset($_POST['topic-name'])){
+            $topic_id = $_POST['topic-id']; // Id
             $topic_name = $_POST['topic-name']; // Имя
             $description = $_POST['description']; // Описание
             $topic_type = $_POST['type']; // Тип
             $author_id = $_POST['author']; // Автор
             $date = $_POST['date']; // Дата
-            setGeneralTopic($topic_name, $description, $topic_type, $author_id, $date);
+            setGeneralTopic($topic_id, $topic_name, $description, $topic_type, $author_id, $date);
         }
 
         // Переменные для селектов с выбором года и месяца

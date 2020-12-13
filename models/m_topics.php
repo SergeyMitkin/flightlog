@@ -17,7 +17,7 @@ function getGeneralTopics($type){
 }
 
 // Создаём новую тему общей подготовки
-function setGeneralTopic($topic_name, $description, $topic_type, $author_id, $date){
+function setGeneralTopic($topic_id = 0, $topic_name, $description, $topic_type, $author_id, $date){
     try {
         $t = 'general_topics';
         $v = array(
@@ -27,7 +27,15 @@ function setGeneralTopic($topic_name, $description, $topic_type, $author_id, $da
             'author_id' => $author_id,
             'date' => $date,
         );
-        $sql = SQL::getInstance()->Insert($t, $v);
+        // Если Id темы больше 0, значит тема редактируется
+        if($topic_id > 0) {
+            $w = "id =" . $topic_id;
+            $sql = SQL::getInstance()->Update($t, $v, $w);
+            // Иначе добавляем новую задачу
+        } else {
+            $sql = SQL::getInstance()->Insert($t, $v);
+        }
+        // $sql = SQL::getInstance()->Insert($t, $v);
     }
     catch(PDOException $e){
         die("Error: ".$e->getMessage());

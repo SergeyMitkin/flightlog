@@ -3,14 +3,15 @@ var elDivTaskCreateForm = document.getElementById("div-task-create-form"); // Di
 var elTaskCreateForm = document.getElementById("task-create-form"); // Форма создания/редактирования задачи
 var elTaskCreateFormButton = document.getElementById("task-create-form-button"); // Кнопка "Создать задачу"
 
+// Прикрепляем событие к кнопке "Создать задачу"
 elTaskCreateFormButton.addEventListener("click", event =>{
-    var elTaskCreateFormSection = document.getElementById("task-create-form-section");
+    var elTaskCreateFormSection = document.getElementById("task-create-form-section"); // Секция для формы создания/редактирования
 
-    elTaskCreateFormSection.appendChild(elDivTaskCreateForm);
-    elDivTaskCreateForm.removeAttribute("hidden");
-    event.target.setAttribute("hidden", "");
-    showEditButton();
-    resetTaskCreateForm();
+    elTaskCreateFormSection.appendChild(elDivTaskCreateForm); // Помещаем форму в соответсвующую секцию
+    elDivTaskCreateForm.removeAttribute("hidden"); // Показываем форму
+    event.target.setAttribute("hidden", ""); // Скрываем кнопку "Создать задачу"
+    showEditButton(); // Показываем кнопку "Редактировать", если была скрыта
+    resetTaskCreateForm(); // Очищаемполя формы
 })
 
 // Показываем кнопку "Создать", если была скрыта
@@ -75,9 +76,15 @@ var elDivTopicCreateForm = document.getElementById("div-topic-create-form"); // 
 var elTopicCreateForm = document.getElementById("topic-create-form"); // Форма создания/редактирования темы
 var elTopicCreateFormButton = document.getElementById('topic-create-form-button'); // Кнопка "Создать тему"
 
+// Прикрепляем событие к кнопке "Создать тему"
 elTopicCreateFormButton.addEventListener("click", event =>{
-    elDivTopicCreateForm.removeAttribute("hidden");
-    event.target.setAttribute("hidden", "");
+    var elTopicCreateFormSection = document.getElementById("topic-create-form-section"); // Секция для формы создания/редактирования
+
+    elTopicCreateFormSection.appendChild(elDivTopicCreateForm); // Помещаем форму создания/редактирования в соответсвующую секцию
+    elDivTopicCreateForm.removeAttribute("hidden"); // Показываем форму
+    event.target.setAttribute("hidden", ""); // Скрываем кнопку "Создать тему"
+    showEditButton(); // Показываем кнопку "Редактировать", если была скрыта
+    resetTopicCreateForm(); // Очищаем поля формы
 })
 
 // Очищаем форму создания/редактирования темы при повторном открытии
@@ -86,7 +93,7 @@ function resetTopicCreateForm() {
     var elTypesSelect = document.getElementById("topic-type-select"); // Select с типами тем
 
     elTopicCreateForm.reset() // Очищаем инпуты
-    elTopicCreateForm.querySelector("#input-topic-id").value = 0; // id задачи = 0
+    elTopicCreateForm.querySelector("#input-topic-id").value = 0; // id темы = 0
 
     // Очищаем select с типами
     for (var i=0; i<elTypesSelect.querySelectorAll("option").length; i++){
