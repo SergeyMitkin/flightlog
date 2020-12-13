@@ -4,6 +4,9 @@ var elTaskCreateForm = document.getElementById("task-create-form"); // Форм�
 var elTaskCreateFormButton = document.getElementById("task-create-form-button"); // Кнопка "Создать задачу"
 
 elTaskCreateFormButton.addEventListener("click", event =>{
+    var elTaskCreateFormSection = document.getElementById("task-create-form-section");
+
+    elTaskCreateFormSection.appendChild(elDivTaskCreateForm);
     elDivTaskCreateForm.removeAttribute("hidden");
     event.target.setAttribute("hidden", "");
     showEditButton();
@@ -35,6 +38,7 @@ function resetTaskCreateForm() {
     var elAuthorsSelect = document.getElementById("task-author-select"); // Select с авторами
 
     elTaskCreateForm.reset() // Очищаем инпуты
+    elTaskCreateForm.querySelector("#input-general-task-id").value = 0; // id задачи = 0
 
     // Очищаем select с авторами
     for (var i=0; i<elAuthorsSelect.querySelectorAll("option").length; i++){

@@ -16,20 +16,5 @@ elRowTasks.addEventListener("click", event =>{
         fillTaskCreateForm(task_id); // Заполняем форму данными полёта
 
         event.target.setAttribute("hidden", ""); // Скрываем кнопку "Редактировать"
-
-
-        /*
-        showEditButton(); // Отображаем кнопку "Редактировать", если была скрыта
-        resetFlightForm(); // Очищаем поля формы
-        var flight_id = event.target.id.split("_")[1]; // Id полёта
-
-        var elFlightItemDiv = document.getElementById("flight-item_" + flight_id); // Карточка полёта
-        fillFlightForm(flight_id); // Заполняем форму данными полёта
-
-        elFlightItemDiv.appendChild(elFlightCreateDiv); // Помещаем форму редактирования в карточку полёта
-
-        elFlightCreateDiv.removeAttribute("hidden");
-        event.target.setAttribute("hidden", ""); // Скрываем кнопку "Редактировать"
-        */
     }
 })
