@@ -36,7 +36,7 @@
 
 <!-- Выводим основные задачи -->
 <h2 id = "general-tasks-title">Основные задачи на</h2>
-<div id="row-tasks" class="row-tasks-and-topics">
+<div id="row-tasks" class="row-tasks">
     <?php
     foreach($general_tasks as $task){
         ?><div class="row-item general-task-item" id="task-item_<?php echo $task['id']?>" data-sort-date="<?php echo substr($task['date'], 0, 7);?>">
@@ -52,7 +52,6 @@
 </div>
 
 <!-- Форма создания задачи -->
-
 <div id="task-create-form-section">
     <div id="div-task-create-form" class="div-create-form" hidden>
         <form role="form" action="" method="post" class="form-horizontal" id="task-create-form">
@@ -105,14 +104,16 @@
 <!-- Выводим темы общей подготовки -->
 <h2>Темы общей подготовки:</h2>
 <h3>Авиационная техника:</h3>
-<div id="row-topics-aviation-technology" class="row-tasks-and-topics">
+<div id="row-topics-aviation-technology" class="row-topics">
     <?php
     foreach($aviation_technology_topics as $topic){
-        ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-            <h4 class="task-title"><?php echo $topic['topic_name'];?></h4>
-            <p><?php echo $topic['description']?></p>
-            <p>Автор: <?php echo $topic['author_name']?></p>
-            <p>Дата: <?php echo $topic['date']?></p>
+        ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+            <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
+            <p class="topic-description-p"><?php echo $topic['description']?></p>
+            <p class="topic-type-p" data-type="<?php echo $topic['type']?>"> hidden=""</p>
+            <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
+            <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
+            <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
         </div>
         <?php
     }
@@ -120,14 +121,16 @@
 </div>
 
 <h3>Аэродинамика:</h3>
-<div id="row-topics-aerodynamics" class="row-tasks-and-topics">
+<div id="row-topics-aerodynamics" class="row-topics">
     <?php
     foreach($aerodynamics_topics as $topic){
-        ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-            <h4><?php echo $topic['topic_name'];?></h4>
-            <p><?php echo $topic['description']?></p>
-            <p>Автор: <?php echo $topic['author_name']?></p>
-            <p>Дата: <?php echo $topic['date']?></p>
+        ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+            <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
+            <p class="topic-description-p"><?php echo $topic['description']?></p>
+            <p class="topic-type-p" data-type="<?php echo $topic['type']?>"> hidden=""</p>
+            <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
+            <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
+            <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
         </div>
         <?php
     }
@@ -135,14 +138,16 @@
 </div>
 
 <h3>Навигация:</h3>
-<div id="row-topics-navigation" class="row-tasks-and-topics">
+<div id="row-topics-navigation" class="row-topics">
     <?php
     foreach($navigation_topics as $topic){
-        ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-            <h4><?php echo $topic['topic_name'];?></h4>
-            <p><?php echo $topic['description']?></p>
-            <p>Автор: <?php echo $topic['author_name']?></p>
-            <p>Дата: <?php echo $topic['date']?></p>
+        ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+            <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
+            <p class="topic-description-p"><?php echo $topic['description']?></p>
+            <p class="topic-type-p" data-type="<?php echo $topic['type']?>"> hidden=""</p>
+            <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
+            <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
+            <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
         </div>
         <?php
     }
@@ -150,14 +155,16 @@
 </div>
 
 <h3>Руководящие документы:</h3>
-<div id="row-topics-guidelines" class="row-tasks-and-topics">
+<div id="row-topics-guidelines" class="row-topics">
     <?php
     foreach($guidelines_topics as $topic){
-        ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-            <h4><?php echo $topic['topic_name'];?></h4>
-            <p><?php echo $topic['description']?></p>
-            <p>Автор: <?php echo $topic['author_name']?></p>
-            <p>Дата: <?php echo $topic['date']?></p>
+        ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+            <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
+            <p class="topic-description-p"><?php echo $topic['description']?></p>
+            <p class="topic-type-p" data-type="<?php echo $topic['type']?>"> hidden=""</p>
+            <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
+            <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
+            <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
         </div>
         <?php
     }
@@ -165,14 +172,16 @@
 </div>
 
 <h3>Тактика:</h3>
-<div id="row-topics-tactics" class="row-tasks-and-topics">
+<div id="row-topics-tactics" class="row-topics">
     <?php
     foreach($tactics_topics as $topic){
-        ?><div class="row-item" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-            <h4><?php echo $topic['topic_name'];?></h4>
-            <p><?php echo $topic['description']?></p>
-            <p>Автор: <?php echo $topic['author_name']?></p>
-            <p>Дата: <?php echo $topic['date']?></p>
+        ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+            <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
+            <p class="topic-description-p"><?php echo $topic['description']?></p>
+            <p class="topic-type-p" data-type="<?php echo $topic['type']?>"> hidden=""</p>
+            <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
+            <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
+            <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
         </div>
         <?php
     }
@@ -180,56 +189,60 @@
 </div>
 
 <!-- Форма создания темы -->
-<div id="div-topic-create-form" class="div-create-form" hidden>
-    <form role="form" action="" method="post" class="form-horizontal" id="topic-create-form">
+<div id="topic-create-form-section">
+    <div id="div-topic-create-form" class="div-create-form" hidden>
+        <form role="form" action="" method="post" class="form-horizontal" id="topic-create-form">
 
-        <div class="form-group">
-            <label for="topic-name">Введите название темы</label>
-            <input required type="text" class="form-control" id="topic-title-input"
-                   placeholder="Название темы" name="topic-name">
-        </div>
+            <!-- При редактировании темы, в скрытый инпут помещаем её id, при создании id темы = 0 -->
+            <input type="hidden" id="input-topic-id" name="topic-id" value="0">
 
-        <div class="form-group">
-            <label for="description">Введите описание темы</label>
-            <textarea class="form-control" id="topic-description-textarea" name="description"
-                      placeholder="Описание задачи">
-            </textarea>
-        </div>
+            <div class="form-group">
+                <label for="topic-name">Введите название темы</label>
+                <input required type="text" class="form-control" id="topic-title-input"
+                       placeholder="Название темы" name="topic-name">
+            </div>
 
-        <div class="form-group">
-            <label for="">Выберите тип</label>
-            <select required id="topic-type-select" name="type">
-                <option value="aviation_technology">Авиационная техника</option>
-                <option value="aerodynamics">Аэродинамика</option>
-                <option value="navigation">Навигация</option>
-                <option value="guidelines">Руководящие докуиенты</option>
-                <option value="tactics">Тактика</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label for="description">Введите описание темы</label>
+                <textarea class="form-control" id="topic-description-textarea" name="description"
+                          placeholder="Описание задачи">
+                </textarea>
+            </div>
 
-        <div class="form-group">
-            <label for="">Выберите автора</label>
-            <select required id="task-author-select" name="author">
-                <?php
-                foreach ($authors as $author) {
-                    echo '<option value="' . $author['id'] . '">'
-                        . $author['name'] . '</option>';
-                }
-                ?>
-            </select>
-        </div>
+            <div class="form-group">
+                <label for="">Выберите тип</label>
+                <select required id="topic-type-select" name="type">
+                    <option value="aviation_technology">Авиационная техника</option>
+                    <option value="aerodynamics">Аэродинамика</option>
+                    <option value="navigation">Навигация</option>
+                    <option value="guidelines">Руководящие докуиенты</option>
+                    <option value="tactics">Тактика</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label for="date">Введите дату: </label>
-            <input class="form-control" type="date" id="task-date-input" name="date" required/>
-        </div>
+            <div class="form-group">
+                <label for="">Выберите автора</label>
+                <select required id="topic-author-select" name="author">
+                    <?php
+                    foreach ($authors as $author) {
+                        echo '<option value="' . $author['id'] . '">'
+                            . $author['name'] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
 
-        <div class="form-footer">
-            <button id="task-create-submit-button" type="submit" class="button">Отправить</button>
-        </div>
-    </form>
+            <div class="form-group">
+                <label for="date">Введите дату: </label>
+                <input class="form-control" type="date" id="topic-date-input" name="date" required/>
+            </div>
+
+            <div class="form-footer">
+                <button id="topic-create-submit-button" type="submit" class="button">Отправить</button>
+            </div>
+        </form>
+    </div>
 </div>
-
 <!-- Кнопка "Создать тему" -->
 <div id="div-topic-create-button">
     <button type="button" class="btn create-button" id="topic-create-form-button">Создать тему</button>
@@ -257,5 +270,6 @@
 <script src="js/gt_calendar.js"></script>
 <script src="js/general_training_page.js"></script>
 <script src="js/general_task_edit.js"></script>
+<script src="js/topic_edit.js"></script>
 
 

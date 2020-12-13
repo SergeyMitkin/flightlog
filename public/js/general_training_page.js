@@ -71,10 +71,60 @@ function fillTaskCreateForm(task_id) {
 }
 
 // Открываем/скрываем форму создания/редакитирования темы
-var elDivTopicCreateForm = document.getElementById("div-topic-create-form");
-var elTopicCreateFormButton = document.getElementById('topic-create-form-button');
+var elDivTopicCreateForm = document.getElementById("div-topic-create-form"); // Div с формой создания/редактирования задачи
+var elTopicCreateForm = document.getElementById("topic-create-form"); // Форма создания/редактирования темы
+var elTopicCreateFormButton = document.getElementById('topic-create-form-button'); // Кнопка "Создать тему"
 
 elTopicCreateFormButton.addEventListener("click", event =>{
     elDivTopicCreateForm.removeAttribute("hidden");
     event.target.setAttribute("hidden", "");
 })
+
+// Очищаем форму создания/редактирования темы при повторном открытии
+function resetTopicCreateForm() {
+    var elAuthorsSelect = document.getElementById("topic-author-select"); // Select с авторами
+    var elTypesSelect = document.getElementById("topic-type-select"); // Select с типами тем
+
+    elTopicCreateForm.reset() // Очищаем инпуты
+    elTopicCreateForm.querySelector("#input-topic-id").value = 0; // id задачи = 0
+
+    // Очищаем select с типами
+    for (var i=0; i<elTypesSelect.querySelectorAll("option").length; i++){
+        elTypesSelect.querySelectorAll("option")[i].removeAttribute("selected");
+    }
+
+    // Очищаем select с авторами
+    for (var i=0; i<elAuthorsSelect.querySelectorAll("option").length; i++){
+        elAuthorsSelect.querySelectorAll("option")[i].removeAttribute("selected");
+    }
+
+    // Очищаем textarea
+    for (var i=0; i<elTopicCreateForm.querySelectorAll("textarea").length; i++){
+        elTopicCreateForm.querySelectorAll("textarea")[i].textContent = "";
+    }
+}
+
+// Заполняем форму создания/редактирования темы при редактировании
+function fillTopicCreateForm(topic_id) {
+
+    // Элементы формы редактирования
+    var elDivTopicItem = document.getElementById("topic-item_" + topic_id); // Карточка задачи
+
+    // Помещаем текущие значения в форму редактирования
+    elTopicCreateForm.querySelector("#input-topic-id").value = topic_id;
+    elTopicCreateForm.querySelector("#topic-title-input").value = elDivTopicItem.querySelector(".topic-title-h").textContent;
+    elTopicCreateForm.querySelector("#topic-description-textarea").textContent = elDivTopicItem.querySelector(".topic-description-p").textContent;
+    elTopicCreateForm.querySelector("#topic-date-input").value = elDivTopicItem.querySelector(".topic-date-span").textContent;
+
+    // Помечаем как выбранный, исходный тип темы
+    var topic_type = elDivTopicItem.querySelector(".topic-type-p").getAttribute("data-type");
+    var elTypesSelect = elTopicCreateForm.querySelector("#topic-type-select");
+    var elTypeOption = elTypesSelect.querySelector("option[value='" + topic_type + "']");
+    elTypeOption.setAttribute("selected", "");
+
+    // Помечаем как выбранного, исходного автора темы
+    var author_id = elDivTopicItem.querySelector(".topic-author-p").getAttribute("data-id");
+    var elAuthorsSelect = elTopicCreateForm.querySelector("#topic-author-select");
+    var elAuthorOption = elAuthorsSelect.querySelector("option[value='" + author_id + "']");
+    elAuthorOption.setAttribute("selected", "");
+}

@@ -4,7 +4,7 @@ include_once 'db.php';
 // Получаем темы общей подготовки по типу
 function getGeneralTopics($type){
     try {
-        $q = "SELECT g.name AS topic_name, g.description, a.name AS author_name, g.date 
+        $q = "SELECT g.id, g.name AS topic_name, g.description, g.type, a.id AS author_id, a.name AS author_name, g.date 
         FROM general_topics g 
         LEFT JOIN authors a on g.author_id = a.id
         WHERE type = '" . $type . "'";
