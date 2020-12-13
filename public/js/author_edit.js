@@ -1,8 +1,20 @@
 var elRowAuthors = document.getElementById("row-authors");
 var elAuthorCreateDiv = document.getElementById("div-author-create-form");
 var elAuthorCreateForm = document.getElementById("author-create-form");
+var elAuthorCreateFormButton = document.getElementById("author-create-form-button");
 
-// Прикрепляем событи к кнопкам "Редактировать"
+// Прикрепляем событие к кнопке "Добавить автора"
+elAuthorCreateFormButton.addEventListener("click", event =>{
+    var elAuthorCreateFormSection = document.getElementById("author-create-form-section"); // Секция для формы создания/редактирования
+
+    elAuthorCreateFormSection.appendChild(elAuthorCreateDiv); // Помещаем форму в соответсвующую секцию
+    elAuthorCreateDiv.removeAttribute("hidden"); // Показываем форму
+    event.target.setAttribute("hidden", ""); // Скрываем кнопку "Создать задачу"
+    showEditButton(); // Показываем кнопку "Редактировать", если была скрыта
+    resetAuthorCreateForm(); // Очищаем поля формы
+})
+
+// Прикрепляем событие к кнопкам "Редактировать"
 elRowAuthors.addEventListener("click", event =>{
 
     if (event.target.classList.contains("edit-button")){
@@ -13,6 +25,7 @@ elRowAuthors.addEventListener("click", event =>{
         showEditButton(); // Отображаем кнопку "Редактировать", если была скрыта
         resetAuthorCreateForm(); // Очищаем поля формы
         fillAuthorCreateForm(author_id); // Заполняем форму
+        elAuthorCreateFormButton.removeAttribute("hidden") // Показываем кнопку "Добавить автора", если была скрыта
 
         elAuthorItemDiv.appendChild(elAuthorCreateDiv); // Помещаем форму редактирования в карточку полёта
 

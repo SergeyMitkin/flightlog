@@ -35,7 +35,7 @@
 
 <!-- Кнопка "Добавить автора" -->
 <div id="div-topic-create-button">
-    <button type="button" class="btn create-button" id="topic-create-form-button">Добавить автора</button>
+    <button type="button" class="btn create-button" id="author-create-form-button">Добавить автора</button>
 </div>
 
 <!-- Подключаем js файлы для страницы -->

@@ -11,7 +11,7 @@ elTaskCreateFormButton.addEventListener("click", event =>{
     elDivTaskCreateForm.removeAttribute("hidden"); // Показываем форму
     event.target.setAttribute("hidden", ""); // Скрываем кнопку "Создать задачу"
     showEditButton(); // Показываем кнопку "Редактировать", если была скрыта
-    resetTaskCreateForm(); // Очищаемполя формы
+    resetTaskCreateForm(); // Очищаем поля формы
 })
 
 // Показываем кнопку "Создать", если была скрыта
