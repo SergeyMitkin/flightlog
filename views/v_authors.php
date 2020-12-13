@@ -4,7 +4,7 @@
 <div id="row-authors">
     <?php
     foreach($authors as $author){
-        ?><div class="author-item" id="author-item_<?php echo $author['id']?>">
+        ?><div class="row-item" id="author-item_<?php echo $author['id']?>">
             <span class="author-name-span"><?php echo $author['name'];?></span>
             <span class="author-id-span" data-id="<?php echo $author['id']?>" hidden=""></span>
 
@@ -35,5 +35,8 @@
 
 <!-- Кнопка "Добавить автора" -->
 <div id="div-topic-create-button">
-    <button type="button" class="btn create-button" id="topic-create-form-button">Создать тему</button>
+    <button type="button" class="btn create-button" id="topic-create-form-button">Добавить автора</button>
 </div>
+
+<!-- Подключаем js файлы для страницы -->
+<script src="../js/author_edit.js"></script>

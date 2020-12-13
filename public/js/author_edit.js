@@ -1,0 +1,50 @@
+var elRowAuthors = document.getElementById("row-authors");
+var elAuthorCreateDiv = document.getElementById("div-author-create-form");
+var elAuthorCreateForm = document.getElementById("author-create-form");
+
+// Прикрепляем событи к кнопкам "Редактировать"
+elRowAuthors.addEventListener("click", event =>{
+
+    if (event.target.classList.contains("edit-button")){
+
+        var author_id = event.target.id.split("_")[1]; // Id автора
+        var elAuthorItemDiv = document.getElementById("author-item_" + author_id); // Карточка автора
+
+        showEditButton(); // Отображаем кнопку "Редактировать", если была скрыта
+        resetAuthorCreateForm(); // Очищаем поля формы
+        fillAuthorCreateForm(author_id); // Заполняем форму
+
+        elAuthorItemDiv.appendChild(elAuthorCreateDiv); // Помещаем форму редактирования в карточку полёта
+
+        elAuthorCreateDiv.removeAttribute("hidden");
+        event.target.setAttribute("hidden", ""); // Скрываем кнопку "Редактировать"
+    }
+})
+
+// Показываем кнопку "Редактировать", если была скрыта
+function showEditButton() {
+    var elEditButtons = document.querySelectorAll(".edit-button"); // Массив с кнопками
+
+    // Удаляем атрибут hidden
+    for (var i=0; i<elEditButtons.length; i++){
+        elEditButtons[i].removeAttribute("hidden");
+    }
+}
+
+// Очищаем форму создания/редактирования автора при повторном открытии
+function resetAuthorCreateForm() {
+    elAuthorCreateForm.reset() // Очищаем инпуты
+    elAuthorCreateForm.querySelector("#input-author-id").value = 0; // id автора = 0
+}
+
+// Заполняем форму создания/редактирования автора при редактировании
+function fillAuthorCreateForm(author_id) {
+
+    // Элементы формы редактирования
+    var elDivAuthorItem = document.getElementById("author-item_" + author_id); // Карточка задачи
+
+    // Помещаем текущие значения в форму редактирования
+    elAuthorCreateForm.querySelector("#input-author-id").value = author_id;
+    elAuthorCreateForm.querySelector("#author-name-input").value = elDivAuthorItem.querySelector(".author-name-span").textContent;
+
+}
