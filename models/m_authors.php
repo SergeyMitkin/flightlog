@@ -35,3 +35,14 @@ function setAuthor($author_id = 0, $author_name){
 
     header("Location: /authors/");
 }
+
+function deleteAuthor($author_id){
+    try{
+        $table = 'authors';
+        $where = "id = " . $author_id;
+        $sql = SQL::getInstance()->Delete($table, $where);
+    }
+    catch(PDOException $e){
+        die("Error: ".$e->getMessage());
+    }
+}

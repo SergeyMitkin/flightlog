@@ -164,6 +164,11 @@ class C_Page extends C_Base
 	        setAuthor($author_id, $author_name);
         }
 
+        // Удаляем автора
+        if (isset($_GET['author-delete'])){
+            deleteAuthor($_GET['author-delete']);
+        }
+
         $authors = getAuthors();
 
         // Подставляем переменные в шаблон страницы
