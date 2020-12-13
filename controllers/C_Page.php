@@ -37,6 +37,7 @@ class C_Page extends C_Base
 
         // Добавляем основную задачу
         if (isset($_POST['task-name'])){
+            $task_id = $_POST['task-id']; // Id задачи
             $task_name = $_POST['task-name']; // Имя задачи
             $description = $_POST['description']; // Описание
             $author_id = $_POST['author']; // Автор

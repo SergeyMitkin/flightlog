@@ -58,7 +58,7 @@
         <form role="form" action="" method="post" class="form-horizontal" id="task-create-form">
 
             <!-- При редактировании задачи, в скрытый инпут помещаем её id, при создании id задачи = 0 -->
-            <input type="hidden" id="input-general-task-id" name="flight-id" value="0">
+            <input type="hidden" id="input-general-task-id" name="task-id" value="0">
 
             <div class="form-group">
                 <label for="task-name">Введите название задачи</label>
