@@ -43,6 +43,9 @@ class C_Page extends C_Base
             $author_id = $_POST['author']; // Автор
             $date = $_POST['date']; // Дата
             setGeneralTask($task_id, $task_name, $description, $author_id, $date);
+
+            $_SESSION['year'] = substr($date, 0, 4); // Сохраняем в сессию год
+            $_SESSION['month'] = substr($date, 5, 2); // Сохраняем в сессию месяц
         }
 
         // Добавляем тему общей подготовки
@@ -54,6 +57,9 @@ class C_Page extends C_Base
             $author_id = $_POST['author']; // Автор
             $date = $_POST['date']; // Дата
             setGeneralTopic($topic_id, $topic_name, $description, $topic_type, $author_id, $date);
+
+            $_SESSION['year'] = substr($date, 0, 4); // Сохраняем в сессию год
+            $_SESSION['month'] = substr($date, 5, 2); // Сохраняем в сессию месяц
         }
 
         // Удаляем задачу
@@ -68,8 +74,14 @@ class C_Page extends C_Base
 
         // Переменные для селектов с выбором года и месяца
         $year_array = range(2000, 2050);
-        $current_year = date('Y');
         $month_array = range(1,12);
+
+        // Если добавляли запись, задаём дату записи, иначе - оставляем текущую дату
+        $current_month = (isset($_SESSION['month'])) ? $_SESSION['month'] : date('m'); // Текущий месяц
+        $current_year = (isset($_SESSION['year'])) ? $_SESSION['year'] : date('Y'); // Текущийи год
+
+        // $current_month = date('m'); // Текущий месяц
+        // $current_year = date('Y'); // Текущийи год
 
         // Подставляем название месяца
         $formatted_month_array = array(
@@ -77,7 +89,7 @@ class C_Page extends C_Base
             "05" => "Май", "06" => "Июнь", "07" => "Июль", "08" => "Август",
             "09" => "Сентябрь", "10" => "Октябрь", "11" => "Ноябрь", "12" => "Декабрь",
         );
-        $current_month = date('m'); // Текущий месяц
+
 		$general_tasks = getGeneralTasks(); // Получаем основные задачи
 		$aviation_technology_topics = getGeneralTopics('aviation_technology'); // Получаем темы по авиации
 		$aerodynamics_topics = getGeneralTopics('aerodynamics'); // Получаем темы по аэродинамике
@@ -158,6 +170,7 @@ class C_Page extends C_Base
 
     public function action_authors(){
 
+	    // Создаём/редактируем автора
 	    if (isset($_POST['author-name'])){
 	        $author_id = $_POST['author-id'];
 	        $author_name = $_POST['author-name'];
@@ -169,13 +182,12 @@ class C_Page extends C_Base
             deleteAuthor($_GET['author-delete']);
         }
 
-        $authors = getAuthors();
+        $authors = getAuthors(); // Данные таблицы "authors"
 
         // Подставляем переменные в шаблон страницы
         $this->content = $this->Template(VIEW_DIR . '/v_authors.php', array(
                 'authors' => $authors,
             )
         );
-
     }
 }

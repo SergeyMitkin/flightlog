@@ -6,6 +6,14 @@ var elSelectYear = document.getElementById("year-task-select"); // Селект 
 var elSelectMonth = document.getElementById("month-task-select"); // Селект для месяца
 var elPrintFormItems = document.getElementById("print-form-items"); // Форма выводастраницы на печать
 
+function getCalendarYear(){
+    return elSelectYear.value;
+}
+
+function getCalendarMonth() {
+    return elSelectMonth.value;
+}
+
 // Получаем текущий месяц
 function getCurrentMonthAndYear(){
 

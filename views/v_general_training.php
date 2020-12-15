@@ -280,3 +280,29 @@
 <script src="js/topic_edit.js"></script>
 
 
+
+<script type="text/javascript">
+
+    var year = getCalendarYear();
+    var month = getCalendarMonth();
+
+</script>
+
+
+<?php
+if (isset($_GET['year']))
+{
+    echo "Значение года: ". $_GET['year'];
+    echo "Значение месяца: ". $_GET['month'];
+}
+
+else
+{
+    echo '<script type="text/javascript">';
+    echo 'document.location.href="' . $_SERVER['REQUEST_URI'] . '?year=" + year + "&month=" + month';
+    echo '</script>';
+    exit();
+}
+?>
+
+
