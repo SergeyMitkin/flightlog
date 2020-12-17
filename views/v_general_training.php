@@ -187,7 +187,15 @@
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="../?topic-delete=<?php echo $topic['id']?>" role="button">Удалить</a></button>
+            <button class="delete-button"><a href="../<?php
+
+                if (empty($_SERVER['REQUEST_URI'])){
+                    echo "?topic-delete=" . $topic['id'];
+                } else {
+                    echo "&topic-delete=" . $topic['id'];
+                }
+
+                ?>" role="button">Удалить</a></button>
         </div>
         <?php
     }
@@ -281,28 +289,6 @@
 
 
 
-<script type="text/javascript">
 
-    var year = getCalendarYear();
-    var month = getCalendarMonth();
-
-</script>
-
-
-<?php
-if (isset($_GET['year']))
-{
-    echo "Значение года: ". $_GET['year'];
-    echo "Значение месяца: ". $_GET['month'];
-}
-
-else
-{
-    echo '<script type="text/javascript">';
-    echo 'document.location.href="' . $_SERVER['REQUEST_URI'] . '?year=" + year + "&month=" + month';
-    echo '</script>';
-    exit();
-}
-?>
 
 

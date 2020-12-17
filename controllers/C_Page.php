@@ -76,6 +76,16 @@ class C_Page extends C_Base
         $year_array = range(2000, 2050);
         $month_array = range(1,12);
 
+
+       var_dump($_GET);
+
+
+        if (isset($_GET['year']) && isset($_GET['month'])){
+            $_SESSION['year'] = $_GET['year'];
+            $_SESSION['month'] = $_GET['month'];
+        }
+
+
         // Если добавляли запись, задаём дату записи, иначе - оставляем текущую дату
         $current_month = (isset($_SESSION['month'])) ? $_SESSION['month'] : date('m'); // Текущий месяц
         $current_year = (isset($_SESSION['year'])) ? $_SESSION['year'] : date('Y'); // Текущийи год

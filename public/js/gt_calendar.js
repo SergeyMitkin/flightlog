@@ -6,13 +6,8 @@ var elSelectYear = document.getElementById("year-task-select"); // Селект 
 var elSelectMonth = document.getElementById("month-task-select"); // Селект для месяца
 var elPrintFormItems = document.getElementById("print-form-items"); // Форма выводастраницы на печать
 
-function getCalendarYear(){
-    return elSelectYear.value;
-}
-
-function getCalendarMonth() {
-    return elSelectMonth.value;
-}
+//var calendar_year = getCalendarYear();
+// var calendar_month = "01";
 
 // Получаем текущий месяц
 function getCurrentMonthAndYear(){
@@ -64,11 +59,38 @@ function getItemsByMonth(classname = "row-item"){
     printTacticsTopics();
 }
 
+function getCalendarYear(){
+    var calendar_year = elSelectYear.value;
+    return calendar_year;
+}
+
+function getCalendarMonth() {
+    var calendar_month = elSelectMonth.value;
+    return calendar_month;
+}
+
+window.addEventListener("unload", event=>{
+    //var window_href = document.location.href;
+    //console.log(window_href.split("?")[1]);
+    //if (typeof document.location.href.split("?")[1] == "undefined"){
+    console.log(getCalendarYear());
+        document.location.href = "?year=" + getCalendarYear() + "&month=" + getCalendarMonth();
+    //}
+})
+
+
 // При загрузке страницы и при смене select года или месяца, выводим задачи по дате
 document.addEventListener("DOMContentLoaded", getItemsByMonth());
+
 elTaskCalendarDiv.addEventListener('change', event => {
     if (event.target.className == 'general-task-select'){
         getItemsByMonth();
+        /*
+        getCalendarYear();
+        getCalendarMonth();
+        console.log(calendar_year);
+        console.log(calendar_month);
+        */
     }
 })
 
