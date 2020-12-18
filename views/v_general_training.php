@@ -46,15 +46,12 @@
             <p class="task-date-p">Дата: <span class="task-date-span"><?php echo $task['date']?></span></p>
             <button class="task-edit-button edit-button" id="general-task-edit-button_<?php echo $task['id']?>">Редактировать</button>
             <button class="delete-button"><a href="
-
-
             <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
                 echo $_SERVER['REQUEST_URI'] . '&task-delete=' . $task['id'];
                 }else{
                 echo '../?task-delete=' . $task['id'];
                 }
                 ?>
-
             " role="button">Удалить</a></button>
         </div>
     <?php
@@ -125,7 +122,14 @@
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="../?topic-delete=<?php echo $topic['id']?>" role="button">Удалить</a></button>
+            <button class="delete-button"><a href="
+            <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
+                    echo $_SERVER['REQUEST_URI'] . '&topic-delete=' . $topic['id'];
+                }else{
+                    echo '../?topic-delete=' . $topic['id'];
+                }
+                ?>
+            " role="button">Удалить</a></button>
         </div>
         <?php
     }
@@ -143,7 +147,14 @@
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="../?topic-delete=<?php echo $topic['id']?>" role="button">Удалить</a></button>
+            <button class="delete-button"><a href="
+            <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
+                    echo $_SERVER['REQUEST_URI'] . '&topic-delete=' . $topic['id'];
+                }else{
+                    echo '../?topic-delete=' . $topic['id'];
+                }
+                ?>
+            " role="button">Удалить</a></button>
         </div>
         <?php
     }
@@ -161,7 +172,14 @@
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="../?topic-delete=<?php echo $topic['id']?>" role="button">Удалить</a></button>
+            <button class="delete-button"><a href="
+            <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
+                    echo $_SERVER['REQUEST_URI'] . '&topic-delete=' . $topic['id'];
+                }else{
+                    echo '../?topic-delete=' . $topic['id'];
+                }
+                ?>
+            " role="button">Удалить</a></button>
         </div>
         <?php
     }
@@ -179,7 +197,14 @@
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="../?topic-delete=<?php echo $topic['id']?>" role="button">Удалить</a></button>
+            <button class="delete-button"><a href="
+            <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
+                    echo $_SERVER['REQUEST_URI'] . '&topic-delete=' . $topic['id'];
+                }else{
+                    echo '../?topic-delete=' . $topic['id'];
+                }
+                ?>
+            " role="button">Удалить</a></button>
         </div>
         <?php
     }
@@ -197,7 +222,14 @@
             <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
             <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
             <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="../?topic-delete=<?php echo $topic['id']?>" role="button">Удалить</a></button>
+            <button class="delete-button"><a href="
+            <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
+                    echo $_SERVER['REQUEST_URI'] . '&topic-delete=' . $topic['id'];
+                }else{
+                    echo '../?topic-delete=' . $topic['id'];
+                }
+                ?>
+            " role="button">Удалить</a></button>
         </div>
         <?php
     }

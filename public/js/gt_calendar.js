@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", event=>{
     getItemsByMonth();
     // Удалеям get-параметр task-delete из url
     var new_url = removeURLParameter(document.location.href, 'task-delete');
+    var new_url = removeURLParameter(new_url, 'topic-delete');
     history.pushState('', '', new_url);
 });
 
