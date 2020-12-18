@@ -45,7 +45,14 @@
             <p class="task-author-p" data-id="<?php echo $task['author_id']?>">Автор: <?php echo $task['author_name']?></p>
             <p class="task-date-p">Дата: <span class="task-date-span"><?php echo $task['date']?></span></p>
             <button class="task-edit-button edit-button" id="general-task-edit-button_<?php echo $task['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="../?task-delete=<?php echo $task['id']?>" role="button">Удалить</a></button>
+            <button class="delete-button"><a href="
+
+
+            <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
+                echo $_SERVER['REQUEST_URI'] . '&task-delete=' . $task['id'];
+                }
+                ?>
+            " role="button">Удалить</a></button>
         </div>
     <?php
     }

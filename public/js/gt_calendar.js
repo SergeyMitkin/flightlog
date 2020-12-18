@@ -100,6 +100,7 @@ elTaskCalendarDiv.addEventListener('change', event => {
         var calendar_year = getCalendarYear();
         var calendar_month = getCalendarMonth();
 
+        // В параметре send-form, указываем, что не отправляем форму
         var new_url = "/?year=" + calendar_year + "&month=" + calendar_month + "&send-form=off";
         history.pushState('', '', new_url);
     }
