@@ -93,23 +93,17 @@ window.addEventListener("unload", event=>{
 // События при загрузке страницы
 document.addEventListener("DOMContentLoaded", event=>{
     getItemsByMonth();
-    // Удалеям get-параметр task-delete из url
+    // Удалеям get-параметры task-delete и topic-delete из url если они были
     var new_url = removeURLParameter(document.location.href, 'task-delete');
     var new_url = removeURLParameter(new_url, 'topic-delete');
     history.pushState('', '', new_url);
 });
 
+// События при смене select года или месяца
 elTaskCalendarDiv.addEventListener('change', event => {
     if (event.target.className == 'general-task-select'){
-        getItemsByMonth(); // При смене select года или месяца, выводим задачи по дате
-
-        // При смене года или, месяца обновляем гет-параметры в url
-        var calendar_year = getCalendarYear();
-        var calendar_month = getCalendarMonth();
-
-        // В параметре send-form, указываем, что не отправляем форму
-        var new_url = "/?year=" + calendar_year + "&month=" + calendar_month + "&send-form=off";
-        history.pushState('', '', new_url);
+        getItemsByMonth(); // Выводим задачи по дате
+        insertDateInUrl(); // Добавляем дату в get-параметры
     }
 })
 
@@ -136,6 +130,7 @@ elTaskButtonBack.addEventListener('click', event => {
 
     elSelectMonth.value = new_value;
     getItemsByMonth();
+    insertDateInUrl(); // Добавляем дату в get-параметры
 
     // Делаем неактивной ссылку "назад" при крайней дате
     if (elSelectYear.value == "2000"){
@@ -169,6 +164,7 @@ elTaskButtonForward.addEventListener('click', event => {
 
     elSelectMonth.value = new_value;
     getItemsByMonth();
+    insertDateInUrl(); // Добавляем дату в get-параметры
 
     // Делаем неактивной ссылку "вперёд" при крайней дате
     if (elSelectYear.value == "2050"){
@@ -178,3 +174,12 @@ elTaskButtonForward.addEventListener('click', event => {
     }
 });
 
+function insertDateInUrl(){
+    // Обновляем гет-параметры в url
+    var calendar_year = getCalendarYear();
+    var calendar_month = getCalendarMonth();
+
+    // В параметре send-form, указываем, что не отправляем форму
+    var new_url = "/?year=" + calendar_year + "&month=" + calendar_month + "&send-form=off";
+    history.pushState('', '', new_url);
+}
