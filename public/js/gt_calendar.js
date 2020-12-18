@@ -68,6 +68,28 @@ function getCalendarMonth() {
     return calendar_month;
 }
 
+/*
+window.addEventListener("unload", event=>{
+
+    // Получаем дату, отображённую на календаре
+    var calendar_year = getCalendarYear();
+    var calendar_month = getCalendarMonth();
+
+    // Если добавляем новую задачу, переходим на дату новой задачи
+    if (typeof(elTaskCreateForm) != "undefined" && elTaskCreateForm !== null){
+        var form_date = elTaskCreateForm.querySelector("#task-date-input").value;
+        if (isEmptyStr(form_date)!== true){
+            console.log(form_date.substr(5, 2));
+            var calendar_year = form_date.substr(0, 4);
+            var calendar_month = form_date.substr(5, 2);
+        }
+    }
+
+    // Задаём get-параметры
+    document.location.href = "?year=" + calendar_year + "&month=" + calendar_month;
+})
+*/
+
 // При загрузке страницы и при смене select года или месяца, выводим задачи по дате
 document.addEventListener("DOMContentLoaded", getItemsByMonth());
 elTaskCalendarDiv.addEventListener('change', event => {
@@ -77,8 +99,8 @@ elTaskCalendarDiv.addEventListener('change', event => {
         // При смене года или, месяца обновляем гет-параметры в url
         var calendar_year = getCalendarYear();
         var calendar_month = getCalendarMonth();
-        var new_url = "/?year=" + calendar_year + "&month=" + calendar_month;
 
+        var new_url = "/?year=" + calendar_year + "&month=" + calendar_month + "&send-form=off";
         history.pushState('', '', new_url);
     }
 })

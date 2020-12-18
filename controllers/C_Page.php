@@ -78,7 +78,7 @@ class C_Page extends C_Base
 
 
         var_dump($_GET);
-        if (isset($_GET['year']) && isset($_GET['month'])){
+        if (isset($_GET['year']) && isset($_GET['month']) && $_GET['send-form'] == 'off'){
             $_SESSION['year'] = $_GET['year'];
             $_SESSION['month'] = $_GET['month'];
         }
