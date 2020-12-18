@@ -50,8 +50,11 @@
 
             <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
                 echo $_SERVER['REQUEST_URI'] . '&task-delete=' . $task['id'];
+                }else{
+                echo '../?task-delete=' . $task['id'];
                 }
                 ?>
+
             " role="button">Удалить</a></button>
         </div>
     <?php

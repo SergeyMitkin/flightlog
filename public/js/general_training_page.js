@@ -136,9 +136,32 @@ function fillTopicCreateForm(topic_id) {
     elAuthorOption.setAttribute("selected", "");
 }
 
+// Проверяем строку на пустоту
 function isEmptyStr(str) {
     if (str.trim() == '')
         return true;
 
     return false;
+}
+
+// Удаляем get-параметр из url
+function removeURLParameter(url, parameter){
+
+    var urlparts= url.split('?');
+
+    if (urlparts.length>=2) {
+        var prefix= encodeURIComponent(parameter)+'=';
+        var pars= urlparts[1].split(/[&;]/g);
+
+        for (var i= pars.length; i-- > 0;) {
+            if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+                pars.splice(i, 1);
+            }
+        }
+        url= urlparts[0] + (pars.length > 0 ? '?' + pars.join('&') : "");
+        return url;
+    } else {
+        return url;
+    }
+
 }

@@ -90,11 +90,17 @@ window.addEventListener("unload", event=>{
 })
 */
 
-// При загрузке страницы и при смене select года или месяца, выводим задачи по дате
-document.addEventListener("DOMContentLoaded", getItemsByMonth());
+// События при загрузке страницы
+document.addEventListener("DOMContentLoaded", event=>{
+    getItemsByMonth();
+    // Удалеям get-параметр task-delete из url
+    var new_url = removeURLParameter(document.location.href, 'task-delete');
+    history.pushState('', '', new_url);
+});
+
 elTaskCalendarDiv.addEventListener('change', event => {
     if (event.target.className == 'general-task-select'){
-        getItemsByMonth();
+        getItemsByMonth(); // При смене select года или месяца, выводим задачи по дате
 
         // При смене года или, месяца обновляем гет-параметры в url
         var calendar_year = getCalendarYear();
