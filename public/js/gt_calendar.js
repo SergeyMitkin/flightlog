@@ -4,10 +4,7 @@ var elTaskButtonBack = document.getElementById("task-button-back"); // Кноп�
 var elTaskButtonForward = document.getElementById("task-button-forward"); // Кнопка "Вперёд"
 var elSelectYear = document.getElementById("year-task-select"); // Селект для года
 var elSelectMonth = document.getElementById("month-task-select"); // Селект для месяца
-var elPrintFormItems = document.getElementById("print-form-items"); // Форма выводастраницы на печать
-
-//var calendar_year = getCalendarYear();
-// var calendar_month = "01";
+var elPrintFormItems = document.getElementById("print-form-items"); // Форма вывода страницы на печать
 
 // Получаем текущий месяц
 function getCurrentMonthAndYear(){
@@ -59,38 +56,30 @@ function getItemsByMonth(classname = "row-item"){
     printTacticsTopics();
 }
 
+// Получаем год, отображённый на календаре
 function getCalendarYear(){
     var calendar_year = elSelectYear.value;
     return calendar_year;
 }
 
+// Получаем месяц, отображённый на календаре
 function getCalendarMonth() {
     var calendar_month = elSelectMonth.value;
     return calendar_month;
 }
 
-window.addEventListener("unload", event=>{
-    //var window_href = document.location.href;
-    //console.log(window_href.split("?")[1]);
-    //if (typeof document.location.href.split("?")[1] == "undefined"){
-    console.log(getCalendarYear());
-        document.location.href = "?year=" + getCalendarYear() + "&month=" + getCalendarMonth();
-    //}
-})
-
-
 // При загрузке страницы и при смене select года или месяца, выводим задачи по дате
 document.addEventListener("DOMContentLoaded", getItemsByMonth());
-
 elTaskCalendarDiv.addEventListener('change', event => {
     if (event.target.className == 'general-task-select'){
         getItemsByMonth();
-        /*
-        getCalendarYear();
-        getCalendarMonth();
-        console.log(calendar_year);
-        console.log(calendar_month);
-        */
+
+        // При смене года или, месяца обновляем гет-параметры в url
+        var calendar_year = getCalendarYear();
+        var calendar_month = getCalendarMonth();
+        var new_url = "/?year=" + calendar_year + "&month=" + calendar_month;
+
+        history.pushState('', '', new_url);
     }
 })
 

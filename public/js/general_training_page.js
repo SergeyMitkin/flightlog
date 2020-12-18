@@ -135,3 +135,10 @@ function fillTopicCreateForm(topic_id) {
     var elAuthorOption = elAuthorsSelect.querySelector("option[value='" + author_id + "']");
     elAuthorOption.setAttribute("selected", "");
 }
+
+function isEmptyStr(str) {
+    if (str.trim() == '')
+        return true;
+
+    return false;
+}
