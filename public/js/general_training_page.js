@@ -1,3 +1,5 @@
+var elMenu = document.getElementById("menu"); // Меню
+
 //  Открываем/скрываем форму создания/редактирования задачи
 var elDivTaskCreateForm = document.getElementById("div-task-create-form"); // Div с формой создания/редактирования задачи
 var elTaskCreateForm = document.getElementById("task-create-form"); // Форма создания/редактирования задачи
@@ -136,6 +138,14 @@ function fillTopicCreateForm(topic_id) {
     elAuthorOption.setAttribute("selected", "");
 }
 
+// При клике на ссылку вменю - учтанавливаем текущую дату
+elMenu.addEventListener("click", event => {
+    event.preventDefault();
+    if (event.target.tagName == "A") {
+        location.href = location.origin + "?current-date=on";
+    }
+})
+
 // Проверяем строку на пустоту
 function isEmptyStr(str) {
     if (str.trim() == '')
@@ -163,5 +173,4 @@ function removeURLParameter(url, parameter){
     } else {
         return url;
     }
-
 }

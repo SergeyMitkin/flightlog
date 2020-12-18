@@ -25,7 +25,7 @@ function getCurrentMonthAndYear(){
     return task_date;
 }
 
-// Получаем элементы по месяцу
+// Получаем записи по месяцу
 function getItemsByMonth(classname = "row-item"){
 
     // Получаем необходимый месяц
@@ -68,28 +68,6 @@ function getCalendarMonth() {
     return calendar_month;
 }
 
-/*
-window.addEventListener("unload", event=>{
-
-    // Получаем дату, отображённую на календаре
-    var calendar_year = getCalendarYear();
-    var calendar_month = getCalendarMonth();
-
-    // Если добавляем новую задачу, переходим на дату новой задачи
-    if (typeof(elTaskCreateForm) != "undefined" && elTaskCreateForm !== null){
-        var form_date = elTaskCreateForm.querySelector("#task-date-input").value;
-        if (isEmptyStr(form_date)!== true){
-            console.log(form_date.substr(5, 2));
-            var calendar_year = form_date.substr(0, 4);
-            var calendar_month = form_date.substr(5, 2);
-        }
-    }
-
-    // Задаём get-параметры
-    document.location.href = "?year=" + calendar_year + "&month=" + calendar_month;
-})
-*/
-
 // События при загрузке страницы
 document.addEventListener("DOMContentLoaded", event=>{
     getItemsByMonth();
@@ -129,7 +107,7 @@ elTaskButtonBack.addEventListener('click', event => {
     }
 
     elSelectMonth.value = new_value;
-    getItemsByMonth();
+    getItemsByMonth(); // Получаем записи на месяц
     insertDateInUrl(); // Добавляем дату в get-параметры
 
     // Делаем неактивной ссылку "назад" при крайней дате
@@ -140,7 +118,7 @@ elTaskButtonBack.addEventListener('click', event => {
     }
 });
 
-// Получаем задачи на следующий месяц
+// Получаем записи на следующий месяц
 elTaskButtonForward.addEventListener('click', event => {
 
     if (elTaskButtonBack.hasAttribute("disabled")){
@@ -163,7 +141,7 @@ elTaskButtonForward.addEventListener('click', event => {
     }
 
     elSelectMonth.value = new_value;
-    getItemsByMonth();
+    getItemsByMonth(); // Получаем записи на месяц
     insertDateInUrl(); // Добавляем дату в get-параметры
 
     // Делаем неактивной ссылку "вперёд" при крайней дате
@@ -174,6 +152,7 @@ elTaskButtonForward.addEventListener('click', event => {
     }
 });
 
+// Добавляем дату в get-параметры
 function insertDateInUrl(){
     // Обновляем гет-параметры в url
     var calendar_year = getCalendarYear();

@@ -83,12 +83,9 @@ class C_Page extends C_Base
             $_SESSION['month'] = $_GET['month'];
         }
 
-        // Если добавляли запись, задаём дату записи, иначе - оставляем текущую дату
-        $current_month = (isset($_SESSION['month'])) ? $_SESSION['month'] : date('m'); // Текущий месяц
-        $current_year = (isset($_SESSION['year'])) ? $_SESSION['year'] : date('Y'); // Текущийи год
-
-        // $current_month = date('m'); // Текущий месяц
-        // $current_year = date('Y'); // Текущийи год
+        // Если в сессии сохранена дата и в параметрах неуказано, что задаём текущуюдату, задаём дату записи, иначе - оставляем текущую дату
+        $current_month = (isset($_SESSION['month']) && $_GET['current-date'] !== 'on') ? $_SESSION['month'] : date('m'); // Текущий месяц
+        $current_year = (isset($_SESSION['year']) && $_GET['current-date'] !== 'on') ? $_SESSION['year'] : date('Y'); // Текущийи год
 
         // Подставляем название месяца
         $formatted_month_array = array(
