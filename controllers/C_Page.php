@@ -50,8 +50,6 @@ class C_Page extends C_Base
             $current_year = substr($date, 0, 4);
             $current_month = substr($date, 5, 2);
 
-            // Переходим на страницу общей подготовки
-            //header("Location: /");
         }
 
         // Добавляем тему общей подготовки
@@ -87,8 +85,6 @@ class C_Page extends C_Base
         // Переменные для селектов с выбором года и месяца
         $year_array = range(2000, 2050);
         $month_array = range(1,12);
-
-
         var_dump($_GET);
 
         if (!isset($_POST['date'])){

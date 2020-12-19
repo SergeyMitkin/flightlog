@@ -78,6 +78,12 @@ document.addEventListener("DOMContentLoaded", event=>{
     history.pushState('', '', new_url);
 
     insertDateInUrl(); // Добавляем дату в get-параметры
+
+    // Добавляем дату в кнопки "Удалить"
+    for (var i=0; i<elRowTasks.querySelectorAll(".delete-href").length; i++){
+        var task_id = elRowTasks.querySelectorAll(".delete-href")[i].id.split("_")[1];
+        elRowTasks.querySelectorAll(".delete-href")[i].href = document.location.href + "&task-delete=" + task_id;
+    }
 });
 
 // События при смене select года или месяца
