@@ -80,9 +80,16 @@ document.addEventListener("DOMContentLoaded", event=>{
     insertDateInUrl(); // Добавляем дату в get-параметры
 
     // Добавляем дату в кнопки "Удалить"
-    for (var i=0; i<elRowTasks.querySelectorAll(".delete-href").length; i++){
-        var task_id = elRowTasks.querySelectorAll(".delete-href")[i].id.split("_")[1];
-        elRowTasks.querySelectorAll(".delete-href")[i].href = document.location.href + "&task-delete=" + task_id;
+    // Для задач
+    for (var i=0; i<elRowTasks.querySelectorAll(".task-delete-href").length; i++){
+        var task_id = elRowTasks.querySelectorAll(".task-delete-href")[i].id.split("_")[1];
+        elRowTasks.querySelectorAll(".task-delete-href")[i].href = document.location.href + "&task-delete=" + task_id;
+    }
+
+    // Для тем
+    for (var i=0; i<elRowAllTopics.querySelectorAll(".topic-delete-href").length; i++){
+        var task_id = elRowAllTopics.querySelectorAll(".topic-delete-href")[i].id.split("_")[1];
+        elRowAllTopics.querySelectorAll(".topic-delete-href")[i].href = document.location.href + "&topic-delete=" + task_id;
     }
 });
 

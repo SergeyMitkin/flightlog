@@ -1,5 +1,6 @@
 var elMenu = document.getElementById("menu"); // Меню
 var elRowTasks = document.getElementById("row-tasks"); // Див с карточками задач
+var elRowAllTopics = document.getElementById("row-all-topics"); // Див с карточками тем
 
 //  Открываем/скрываем форму создания/редактирования задачи
 var elDivTaskCreateForm = document.getElementById("div-task-create-form"); // Div с формой создания/редактирования задачи

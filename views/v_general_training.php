@@ -45,14 +45,7 @@
             <p class="task-author-p" data-id="<?php echo $task['author_id']?>">Автор: <?php echo $task['author_name']?></p>
             <p class="task-date-p">Дата: <span class="task-date-span"><?php echo $task['date']?></span></p>
             <button class="task-edit-button edit-button" id="general-task-edit-button_<?php echo $task['id']?>">Редактировать</button>
-            <button class="delete-button"><a id="general-task-delete-href_<?php echo $task['id']?>" class="delete-href" href="
-            <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
-                echo $_SERVER['REQUEST_URI'] . '&task-delete=' . $task['id'];
-                }else{
-                echo '../?task-delete=' . $task['id'];
-                }
-                ?>
-            " role="button">Удалить</a></button>
+            <button class="delete-button"><a id="general-task-delete-href_<?php echo $task['id']?>" class="task-delete-href" href="" role="button">Удалить</a></button>
         </div>
     <?php
     }
@@ -110,130 +103,97 @@
 </div>
 
 <!-- Выводим темы общей подготовки -->
-<h2>Темы общей подготовки:</h2>
-<h3>Авиационная техника:</h3>
-<div id="row-topics-aviation-technology" class="row-topics">
-    <?php
-    foreach($aviation_technology_topics as $topic){
-        ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-            <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
-            <p class="topic-description-p"><?php echo $topic['description']?></p>
-            <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
-            <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
-            <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
-            <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="
-            <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
-                    echo $_SERVER['REQUEST_URI'] . '&topic-delete=' . $topic['id'];
-                }else{
-                    echo '../?topic-delete=' . $topic['id'];
-                }
-                ?>
-            " role="button">Удалить</a></button>
-        </div>
+<div id="row-all-topics">
+    <h2>Темы общей подготовки:</h2>
+    <h3>Авиационная техника:</h3>
+    <div id="row-topics-aviation-technology" class="row-topics">
         <?php
-    }
-    ?>
-</div>
+        foreach($aviation_technology_topics as $topic){
+            ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+                <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
+                <p class="topic-description-p"><?php echo $topic['description']?></p>
+                <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
+                <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
+                <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
+                <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
+                <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 
-<h3>Аэродинамика:</h3>
-<div id="row-topics-aerodynamics" class="row-topics">
-    <?php
-    foreach($aerodynamics_topics as $topic){
-        ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-            <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
-            <p class="topic-description-p"><?php echo $topic['description']?></p>
-            <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
-            <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
-            <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
-            <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="
-            <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
-                    echo $_SERVER['REQUEST_URI'] . '&topic-delete=' . $topic['id'];
-                }else{
-                    echo '../?topic-delete=' . $topic['id'];
-                }
-                ?>
-            " role="button">Удалить</a></button>
-        </div>
+    <h3>Аэродинамика:</h3>
+    <div id="row-topics-aerodynamics" class="row-topics">
         <?php
-    }
-    ?>
-</div>
+        foreach($aerodynamics_topics as $topic){
+            ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+                <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
+                <p class="topic-description-p"><?php echo $topic['description']?></p>
+                <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
+                <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
+                <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
+                <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
+                <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 
-<h3>Навигация:</h3>
-<div id="row-topics-navigation" class="row-topics">
-    <?php
-    foreach($navigation_topics as $topic){
-        ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-            <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
-            <p class="topic-description-p"><?php echo $topic['description']?></p>
-            <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
-            <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
-            <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
-            <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="
-            <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
-                    echo $_SERVER['REQUEST_URI'] . '&topic-delete=' . $topic['id'];
-                }else{
-                    echo '../?topic-delete=' . $topic['id'];
-                }
-                ?>
-            " role="button">Удалить</a></button>
-        </div>
+    <h3>Навигация:</h3>
+    <div id="row-topics-navigation" class="row-topics">
         <?php
-    }
-    ?>
-</div>
+        foreach($navigation_topics as $topic){
+            ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+                <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
+                <p class="topic-description-p"><?php echo $topic['description']?></p>
+                <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
+                <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
+                <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
+                <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
+                <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 
-<h3>Руководящие документы:</h3>
-<div id="row-topics-guidelines" class="row-topics">
-    <?php
-    foreach($guidelines_topics as $topic){
-        ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-            <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
-            <p class="topic-description-p"><?php echo $topic['description']?></p>
-            <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
-            <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
-            <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
-            <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="
-            <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
-                    echo $_SERVER['REQUEST_URI'] . '&topic-delete=' . $topic['id'];
-                }else{
-                    echo '../?topic-delete=' . $topic['id'];
-                }
-                ?>
-            " role="button">Удалить</a></button>
-        </div>
+    <h3>Руководящие документы:</h3>
+    <div id="row-topics-guidelines" class="row-topics">
         <?php
-    }
-    ?>
-</div>
+        foreach($guidelines_topics as $topic){
+            ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+                <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
+                <p class="topic-description-p"><?php echo $topic['description']?></p>
+                <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
+                <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
+                <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
+                <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
+                <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 
-<h3>Тактика:</h3>
-<div id="row-topics-tactics" class="row-topics">
-    <?php
-    foreach($tactics_topics as $topic){
-        ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
-            <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
-            <p class="topic-description-p"><?php echo $topic['description']?></p>
-            <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
-            <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
-            <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
-            <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="
-            <?php if (isset(explode('?', $_SERVER['REQUEST_URI'])[1])){
-                    echo $_SERVER['REQUEST_URI'] . '&topic-delete=' . $topic['id'];
-                }else{
-                    echo '../?topic-delete=' . $topic['id'];
-                }
-                ?>
-            " role="button">Удалить</a></button>
-        </div>
+    <h3>Тактика:</h3>
+    <div id="row-topics-tactics" class="row-topics">
         <?php
-    }
-    ?>
+        foreach($tactics_topics as $topic){
+            ?><div class="row-item" id="topic-item_<?php echo $topic['id']?>" data-sort-date="<?php echo substr($topic['date'], 0, 7);?>">
+                <h4 class="topic-title-h"><?php echo $topic['topic_name'];?></h4>
+                <p class="topic-description-p"><?php echo $topic['description']?></p>
+                <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
+                <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
+                <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
+                <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
+                <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 </div>
 
 <!-- Форма создания темы -->

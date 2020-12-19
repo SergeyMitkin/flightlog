@@ -65,11 +65,6 @@ class C_Page extends C_Base
             // Дату определяем как дату добавленной темы
             $current_year = substr($date, 0, 4);
             $current_month = substr($date, 5, 2);
-
-            //var_dump($current_year);
-           // header("Location: /");
-            // $_SESSION['year'] = substr($date, 0, 4); // Сохраняем в сессию год
-            // $_SESSION['month'] = substr($date, 5, 2); // Сохраняем в сессию месяц
         }
 
         // Удаляем задачу
@@ -85,7 +80,6 @@ class C_Page extends C_Base
         // Переменные для селектов с выбором года и месяца
         $year_array = range(2000, 2050);
         $month_array = range(1,12);
-        var_dump($_GET);
 
         if (!isset($_POST['date'])){
             $current_year = date('Y');
@@ -96,14 +90,6 @@ class C_Page extends C_Base
             $current_year = $_GET['year'];
             $current_month = $_GET['month'];
         }
-
-
-        //var_dump($current_year);
-        /*
-        // Если в сессии сохранена дата и в параметрах неуказано, что задаём текущуюдату, задаём дату записи, иначе - оставляем текущую дату
-        $current_month = (isset($_SESSION['month']) && $_GET['current-date'] !== 'on') ? $_SESSION['month'] : date('m'); // Текущий месяц
-        $current_year = (isset($_SESSION['year']) && $_GET['current-date'] !== 'on') ? $_SESSION['year'] : date('Y'); // Текущийи год
-        */
 
         // Подставляем название месяца
         $formatted_month_array = array(
