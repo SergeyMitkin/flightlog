@@ -46,12 +46,12 @@ class C_Page extends C_Base
 
             setGeneralTask($task_id, $task_name, $description, $author_id, $date);
 
-            // Дату определяем как датудобавленной задачи
+            // Дату определяем как дату добавленной задачи
             $current_year = substr($date, 0, 4);
             $current_month = substr($date, 5, 2);
 
             // Переходим на страницу общей подготовки
-            header("Location: /");
+            //header("Location: /");
         }
 
         // Добавляем тему общей подготовки
@@ -64,6 +64,12 @@ class C_Page extends C_Base
             $date = $_POST['date']; // Дата
             setGeneralTopic($topic_id, $topic_name, $description, $topic_type, $author_id, $date);
 
+            // Дату определяем как дату добавленной темы
+            $current_year = substr($date, 0, 4);
+            $current_month = substr($date, 5, 2);
+
+            //var_dump($current_year);
+           // header("Location: /");
             // $_SESSION['year'] = substr($date, 0, 4); // Сохраняем в сессию год
             // $_SESSION['month'] = substr($date, 5, 2); // Сохраняем в сессию месяц
         }
@@ -89,7 +95,6 @@ class C_Page extends C_Base
             $current_year = date('Y');
             $current_month = date('m');
         }
-
 
         if (isset($_GET['year']) && isset($_GET['month']) && $_GET['send-form'] == 'off' && !isset($_POST['date'])){
             $current_year = $_GET['year'];
