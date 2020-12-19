@@ -127,7 +127,7 @@ class C_Page extends C_Base
     // Метод генерации страницы подготовки к полётам
     public function action_training(){
 
-	    var_dump('tr');
+	    // var_dump('tr');
 	    // Получаем данные из формы для редактирования/создания или вывода на печать полёта
 	    if (isset($_POST['flight-name'])){
 	        $flight_print = $_POST['flight-print']; // Определяем выводимна печать или редактируем

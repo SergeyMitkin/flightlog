@@ -1,6 +1,6 @@
 var elMenu = document.getElementById("menu"); // Меню
 
-// При клике на ссылку в меню, устанавливаем текущую дату
+// При клике на ссылку в меню, устанавливаем текущую дату, если необходимо
 elMenu.addEventListener("click", event => {
     event.preventDefault();
 
@@ -11,4 +11,9 @@ elMenu.addEventListener("click", event => {
     if (event.target.id == "menu-training-href") {
         location.href = location.origin + "/training/?current-date=on";
     }
+
+    if (event.target.id == "menu-authors-href") {
+        location.href = location.origin + "/authors/";
+    }
 })
+
