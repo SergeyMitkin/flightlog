@@ -78,19 +78,7 @@ document.addEventListener("DOMContentLoaded", event=>{
     history.pushState('', '', new_url);
 
     insertDateInUrl(); // Добавляем дату в get-параметры
-
-    // Добавляем дату в кнопки "Удалить"
-    // Для задач
-    for (var i=0; i<elRowTasks.querySelectorAll(".task-delete-href").length; i++){
-        var task_id = elRowTasks.querySelectorAll(".task-delete-href")[i].id.split("_")[1];
-        elRowTasks.querySelectorAll(".task-delete-href")[i].href = document.location.href + "&task-delete=" + task_id;
-    }
-
-    // Для тем
-    for (var i=0; i<elRowAllTopics.querySelectorAll(".topic-delete-href").length; i++){
-        var task_id = elRowAllTopics.querySelectorAll(".topic-delete-href")[i].id.split("_")[1];
-        elRowAllTopics.querySelectorAll(".topic-delete-href")[i].href = document.location.href + "&topic-delete=" + task_id;
-    }
+    insertDateInDeleteButtons(); // Добавляем дату в кнопки "Удалить"
 });
 
 // События при смене select года или месяца
@@ -98,6 +86,7 @@ elTaskCalendarDiv.addEventListener('change', event => {
     if (event.target.className == 'general-task-select'){
         getItemsByMonth(); // Выводим задачи по дате
         insertDateInUrl(); // Добавляем дату в get-параметры
+        insertDateInDeleteButtons(); // Добавляем дату в кнопки "Удалить"
     }
 })
 
@@ -125,6 +114,7 @@ elTaskButtonBack.addEventListener('click', event => {
     elSelectMonth.value = new_value;
     getItemsByMonth(); // Получаем записи на месяц
     insertDateInUrl(); // Добавляем дату в get-параметры
+    insertDateInDeleteButtons(); // Добавляем дату в кнопки "Удалить"
 
     // Делаем неактивной ссылку "назад" при крайней дате
     if (elSelectYear.value == "2000"){
@@ -159,6 +149,7 @@ elTaskButtonForward.addEventListener('click', event => {
     elSelectMonth.value = new_value;
     getItemsByMonth(); // Получаем записи на месяц
     insertDateInUrl(); // Добавляем дату в get-параметры
+    insertDateInDeleteButtons(); // Добавляем дату в кнопки "Удалить"
 
     // Делаем неактивной ссылку "вперёд" при крайней дате
     if (elSelectYear.value == "2050"){
@@ -177,4 +168,19 @@ function insertDateInUrl(){
     // В параметре send-form, указываем, что не отправляем форму
     var new_url = "/?year=" + calendar_year + "&month=" + calendar_month + "&send-form=off";
     history.pushState('', '', new_url);
+}
+
+// Добавляем дату в кнопки "Удалить"
+function insertDateInDeleteButtons() {
+    // Для задач
+    for (var i=0; i<elRowTasks.querySelectorAll(".task-delete-href").length; i++){
+        var task_id = elRowTasks.querySelectorAll(".task-delete-href")[i].id.split("_")[1];
+        elRowTasks.querySelectorAll(".task-delete-href")[i].href = document.location.href + "&task-delete=" + task_id;
+    }
+
+    // Для тем
+    for (var i=0; i<elRowAllTopics.querySelectorAll(".topic-delete-href").length; i++){
+        var task_id = elRowAllTopics.querySelectorAll(".topic-delete-href")[i].id.split("_")[1];
+        elRowAllTopics.querySelectorAll(".topic-delete-href")[i].href = document.location.href + "&topic-delete=" + task_id;
+    }
 }

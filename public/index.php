@@ -2,8 +2,6 @@
 require_once('../config/config.php'); // Файл конфигураций
 include_once('../controllers/C_Page.php'); // Контроллер страниц
 
-session_start(); // Начинаем сессию
-
 // Получаем страницу из url
 $url_array = explode("/", $_SERVER['REQUEST_URI']);
 

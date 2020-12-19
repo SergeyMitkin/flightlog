@@ -1,4 +1,3 @@
-var elMenu = document.getElementById("menu"); // Меню
 var elRowTasks = document.getElementById("row-tasks"); // Див с карточками задач
 var elRowAllTopics = document.getElementById("row-all-topics"); // Див с карточками тем
 
@@ -139,14 +138,6 @@ function fillTopicCreateForm(topic_id) {
     var elAuthorOption = elAuthorsSelect.querySelector("option[value='" + author_id + "']");
     elAuthorOption.setAttribute("selected", "");
 }
-
-// При клике на ссылку в меню - учтанавливаем текущую дату
-elMenu.addEventListener("click", event => {
-    event.preventDefault();
-    if (event.target.tagName == "A") {
-        location.href = location.origin + "?current-date=on";
-    }
-})
 
 // Проверяем строку на пустоту
 function isEmptyStr(str) {

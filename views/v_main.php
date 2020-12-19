@@ -21,9 +21,9 @@
 
         <!-- Меню -->
         <div id="menu">
-            <a href="../">Тетрадь общей подготовки к полётам</a> |
-            <a href="/training/">Тетрадь подготовки к полётам</a> |
-            <a href="/authors/">Авторы</a>
+            <a id="menu-general-training-href" href="../">Тетрадь общей подготовки к полётам</a> |
+            <a id="menu-training-href" href="/training/">Тетрадь подготовки к полётам</a> |
+            <a id="menu-authors-href" href="/authors/">Авторы</a>
         </div>
 
         <!-- Страницы сайта -->
@@ -35,4 +35,6 @@
             Все права защищены.
         </div>
     </body>
+
+    <script src="js/main.js"></script>
 </html>
