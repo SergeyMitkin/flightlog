@@ -38,7 +38,6 @@ function setGeneralTask($task_id = 0, $task_name, $description, $author_id, $dat
     catch(PDOException $e){
         die("Error: ".$e->getMessage());
     }
-    header("Location: /");
 }
 
 // Удаляем задачу

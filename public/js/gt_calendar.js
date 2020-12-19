@@ -73,8 +73,11 @@ document.addEventListener("DOMContentLoaded", event=>{
     getItemsByMonth();
     // Удалеям get-параметры task-delete и topic-delete из url если они были
     var new_url = removeURLParameter(document.location.href, 'task-delete');
-    var new_url = removeURLParameter(new_url, 'topic-delete');
+    new_url = removeURLParameter(new_url, 'topic-delete');
+    new_url = removeURLParameter(new_url, 'current-date');
     history.pushState('', '', new_url);
+
+    insertDateInUrl(); // Добавляем дату в get-параметры
 });
 
 // События при смене select года или месяца

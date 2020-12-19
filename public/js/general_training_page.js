@@ -138,7 +138,7 @@ function fillTopicCreateForm(topic_id) {
     elAuthorOption.setAttribute("selected", "");
 }
 
-// При клике на ссылку вменю - учтанавливаем текущую дату
+// При клике на ссылку в меню - учтанавливаем текущую дату
 elMenu.addEventListener("click", event => {
     event.preventDefault();
     if (event.target.tagName == "A") {

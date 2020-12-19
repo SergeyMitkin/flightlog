@@ -37,15 +37,21 @@ class C_Page extends C_Base
 
         // Добавляем основную задачу
         if (isset($_POST['task-name'])){
+
             $task_id = $_POST['task-id']; // Id задачи
             $task_name = $_POST['task-name']; // Имя задачи
             $description = $_POST['description']; // Описание
             $author_id = $_POST['author']; // Автор
             $date = $_POST['date']; // Дата
+
             setGeneralTask($task_id, $task_name, $description, $author_id, $date);
 
-            $_SESSION['year'] = substr($date, 0, 4); // Сохраняем в сессию год
-            $_SESSION['month'] = substr($date, 5, 2); // Сохраняем в сессию месяц
+            // Дату определяем как датудобавленной задачи
+            $current_year = substr($date, 0, 4);
+            $current_month = substr($date, 5, 2);
+
+            // Переходим на страницу общей подготовки
+            header("Location: /");
         }
 
         // Добавляем тему общей подготовки
@@ -58,8 +64,8 @@ class C_Page extends C_Base
             $date = $_POST['date']; // Дата
             setGeneralTopic($topic_id, $topic_name, $description, $topic_type, $author_id, $date);
 
-            $_SESSION['year'] = substr($date, 0, 4); // Сохраняем в сессию год
-            $_SESSION['month'] = substr($date, 5, 2); // Сохраняем в сессию месяц
+            // $_SESSION['year'] = substr($date, 0, 4); // Сохраняем в сессию год
+            // $_SESSION['month'] = substr($date, 5, 2); // Сохраняем в сессию месяц
         }
 
         // Удаляем задачу
@@ -78,14 +84,25 @@ class C_Page extends C_Base
 
 
         var_dump($_GET);
-        if (isset($_GET['year']) && isset($_GET['month']) && $_GET['send-form'] == 'off'){
-            $_SESSION['year'] = $_GET['year'];
-            $_SESSION['month'] = $_GET['month'];
+
+        if (!isset($_POST['date'])){
+            $current_year = date('Y');
+            $current_month = date('m');
         }
 
+
+        if (isset($_GET['year']) && isset($_GET['month']) && $_GET['send-form'] == 'off' && !isset($_POST['date'])){
+            $current_year = $_GET['year'];
+            $current_month = $_GET['month'];
+        }
+
+
+        //var_dump($current_year);
+        /*
         // Если в сессии сохранена дата и в параметрах неуказано, что задаём текущуюдату, задаём дату записи, иначе - оставляем текущую дату
         $current_month = (isset($_SESSION['month']) && $_GET['current-date'] !== 'on') ? $_SESSION['month'] : date('m'); // Текущий месяц
         $current_year = (isset($_SESSION['year']) && $_GET['current-date'] !== 'on') ? $_SESSION['year'] : date('Y'); // Текущийи год
+        */
 
         // Подставляем название месяца
         $formatted_month_array = array(
