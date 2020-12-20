@@ -157,8 +157,9 @@ class C_Page extends C_Base
                 setFlight($flight_id, $flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
                     $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation);
 
-                // Дату определяем как дату добавленной темы
+                // Дату определяем как дату добавленного полёта
                 $current_date = $date;
+                var_dump($current_date);
             }
         }
 
@@ -168,13 +169,15 @@ class C_Page extends C_Base
         $flights_crew = getFlightsCrew(); // Члены экипажей полётов
         $crew = getCrew(); // Данные таблицы членов экипжей
 
-        if (!isset($_POST['date'])){
-            $date = date('Y-m-d'); // Дата
+        if (!isset($_POST['flight-date'])){
+            $current_date = date('Y-m-d'); // Дата
         }
+
+        var_dump($current_date);
 
         // Подставляем переменные в шаблон страницы
         $this->content = $this->Template(VIEW_DIR . '/v_training.php', array(
-                'date' => $date,
+                'date' => $current_date,
                 'crew' => $crew,
                 'flights' => $flights,
                 'exercises' => $exercises,
