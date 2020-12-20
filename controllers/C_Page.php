@@ -130,7 +130,7 @@ class C_Page extends C_Base
 	    // var_dump('tr');
 	    // Получаем данные из формы для редактирования/создания или вывода на печать полёта
 	    if (isset($_POST['flight-name'])){
-	        $flight_print = $_POST['flight-print']; // Определяем выводимна печать или редактируем
+	        $flight_print = $_POST['flight-print']; // Определяем выводим на печать или редактируем
 	        $flight_id = $_POST['flight-id']; // Id полёта
             $flight_name = $_POST['flight-name']; // Имя
             $date = $_POST['flight-date']; // Дата
@@ -156,6 +156,9 @@ class C_Page extends C_Base
                 // Редактирвеи или создаём новый полёт
                 setFlight($flight_id, $flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
                     $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation);
+
+                // Дату определяем как дату добавленной темы
+                $current_date = $date;
             }
         }
 
@@ -163,8 +166,11 @@ class C_Page extends C_Base
         $flights = getFlights(); // Полёты
 	    $exercises = getFlightExercises(); // Упражнения
         $flights_crew = getFlightsCrew(); // Члены экипажей полётов
-        $date = date('Y-m-d'); // Дата
         $crew = getCrew(); // Данные таблицы членов экипжей
+
+        if (!isset($_POST['date'])){
+            $date = date('Y-m-d'); // Дата
+        }
 
         // Подставляем переменные в шаблон страницы
         $this->content = $this->Template(VIEW_DIR . '/v_training.php', array(

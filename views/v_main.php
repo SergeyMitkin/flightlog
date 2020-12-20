@@ -37,4 +37,5 @@
     </body>
 
     <script src="../js/main.js"></script>
+    <script src="../js/utilities.js"></script>
 </html>

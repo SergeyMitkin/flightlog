@@ -6,7 +6,8 @@ elRowFlights.addEventListener("click", event => {
         var print = "on";
 
         fillFlightForm(flight_id, print); // Заполняем форму данными полёта
-
         elFlightCreateForm.submit(); // Отправляем форму
+
+        elFlightCreateForm.querySelector("#flight-print-input").value = "off"; // После отправки формы, выключаем возможность печати
     }
 })

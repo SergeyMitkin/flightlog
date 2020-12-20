@@ -147,6 +147,7 @@ function isEmptyStr(str) {
     return false;
 }
 
+/*
 // Удаляем get-параметр из url
 function removeURLParameter(url, parameter){
 
@@ -167,3 +168,4 @@ function removeURLParameter(url, parameter){
         return url;
     }
 }
+*/

@@ -6,6 +6,20 @@ var elFlightFormSection = document.getElementById("flight-form-section"); // Div
 var elFlightExercisesRow = document.getElementById("flight-exercises-row"); // Div с упражнениями в форме создания полёта
 var elEditButtons = document.querySelectorAll(".flight-edit-button"); // Кнопки редактирования полёта
 
+// События при загрузке страницы
+document.addEventListener("DOMContentLoaded", event=>{
+    // getItemsByMonth();
+    // Удалеям get-параметры task-delete и topic-delete из url если они были
+    var new_url = removeURLParameter(document.location.href, 'flight-print');
+    // new_url = removeURLParameter(new_url, 'topic-delete');
+    // new_url = removeURLParameter(new_url, 'current-date');
+    history.pushState('', '', new_url);
+
+    // insertDateInUrl(); // Добавляем дату в get-параметры
+    // insertDateInDeleteButtons(); // Добавляем дату в кнопки "Удалить"
+});
+
+
 // Открываем форму создания/редактирования полёта при нажатии кнопки "Добавить полёт"
 elDivFlightCreateButton.querySelector("button").addEventListener("click", event=>{
 
