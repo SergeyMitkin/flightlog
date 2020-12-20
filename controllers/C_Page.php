@@ -49,7 +49,6 @@ class C_Page extends C_Base
             // Дату определяем как дату добавленной задачи
             $current_year = substr($date, 0, 4);
             $current_month = substr($date, 5, 2);
-
         }
 
         // Добавляем тему общей подготовки
@@ -127,7 +126,6 @@ class C_Page extends C_Base
     // Метод генерации страницы подготовки к полётам
     public function action_training(){
 
-	    // var_dump('tr');
 	    // Получаем данные из формы для редактирования/создания или вывода на печать полёта
 	    if (isset($_POST['flight-name'])){
 	        $flight_print = $_POST['flight-print']; // Определяем выводим на печать или редактируем
@@ -153,13 +151,12 @@ class C_Page extends C_Base
                 printFlight($file_template, $output_file, $date, $dawn_sunset, $time_start, $time_end,
                     $exercise, $crew, $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation);
             } else {
-                // Редактирвеи или создаём новый полёт
+                // Редактируем или создаём новый полёт
                 setFlight($flight_id, $flight_name, $date, $time_start, $time_end, $dawn_sunset, $exercise, $crew,
                     $individual_task, $security_measures, $self_preparation_task, $trainers, $self_preparation);
 
                 // Дату определяем как дату добавленного полёта
                 $current_date = $date;
-                var_dump($current_date);
             }
         }
 
@@ -169,11 +166,15 @@ class C_Page extends C_Base
         $flights_crew = getFlightsCrew(); // Члены экипажей полётов
         $crew = getCrew(); // Данные таблицы членов экипжей
 
+        // Если нет параметров с датой, устанавливаем ткущую дату
         if (!isset($_POST['flight-date'])){
             $current_date = date('Y-m-d'); // Дата
         }
 
-        var_dump($current_date);
+        // Если есть гет-параметр с датой, устанавливаем, передаём её в шаблон
+        if (isset($_GET['calendar-date']) && $_GET['send-form'] == 'off' && !isset($_POST['flight-date'])){
+            $current_date = $_GET['calendar-date'];
+        }
 
         // Подставляем переменные в шаблон страницы
         $this->content = $this->Template(VIEW_DIR . '/v_training.php', array(

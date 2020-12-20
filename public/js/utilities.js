@@ -1,6 +1,6 @@
 // Удаляем get-параметр из url
 function removeURLParameter(url, parameter){
-    // console.log(parameter);
+
     var urlparts= url.split('?');
 
     if (urlparts.length>=2) {

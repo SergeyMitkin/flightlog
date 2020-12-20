@@ -12,6 +12,11 @@ function getDate() {
     return date;
 }
 
+function getCalendarDate() {
+    var calendar_date = elTrainingCalendar.value;
+    return calendar_date;
+}
+
 // Получаем полёты по дате
 function getItemsByDate(classname = "row-item") {
     var date = getDate();
@@ -29,11 +34,27 @@ function getItemsByDate(classname = "row-item") {
     }
 }
 
-// При загрузке страницы и при смене даты, выводим полёты по дате
-document.addEventListener("DOMContentLoaded", getItemsByDate());
+// При загрузке страницы выводим полёты по дате
+document.addEventListener("DOMContentLoaded", event=>{
+    getItemsByDate(); // Выводим записи по дате
+    insertDateInUrl(); // Добавляем дату в get-параметры
+});
+
+// События при смене даты на календаре
 elTrainingCalendar.addEventListener('change', event => {
-    getItemsByDate();
+    getItemsByDate(); // Выводим записи по дате
+    insertDateInUrl(); // Добавляем дату в get-параметры
 })
+
+// Добавляем дату в get-параметры
+function insertDateInUrl(){
+    // Обновляем гет-параметры в url
+    var calendar_date = getCalendarDate();
+
+    // В параметре send-form, указываем, что не отправляем форму
+    var new_url = "/training/?calendar-date=" + calendar_date + "&send-form=off";
+    history.pushState('', '', new_url);
+}
 
 // Получаем полёты на предыдущий день
 elFlightButtonBack.addEventListener('click', event => {
@@ -63,7 +84,8 @@ elFlightButtonBack.addEventListener('click', event => {
     var previous_day = year + '-' + month + '-' + day;
 
     elTrainingCalendar.value = previous_day;
-    getItemsByDate();
+    getItemsByDate(); // Выводим записи по дате
+    insertDateInUrl(); // Добавляем дату в get-параметры
 });
 
 // Получаем задачи на следующий день
@@ -93,7 +115,8 @@ elFlightButtonForward.addEventListener('click', event => {
     var next_day = year + '-' + month + '-' + day;
 
     elTrainingCalendar.value = next_day;
-    getItemsByDate();
+    getItemsByDate(); // Выводим записи по дате
+    insertDateInUrl(); // Добавляем дату в get-параметры
 });
 
 // Форматируем дату
