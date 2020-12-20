@@ -28,6 +28,12 @@ function printFlight($file_template, $output_file, $date, $dawn_sunset, $time_st
     // Создаём таблицу для вывода упражнений
     $table = new Table(array('borderSize' => 6, 'borderColor' => 'green', 'width' => 9000, 'unit' => TblWidth::TWIP));
 
+    // Проверяем на пустоту массив с упражнениями
+    if ($exercise == null){
+        $exercise = array();
+        $exercise[0] = '';
+    }
+
     $ex_array_div = array_chunk($exercise, 6); // Определяем максимум по 6 упражнений в строке
     $str_count = count($ex_array_div); // Определяем количество строк
 

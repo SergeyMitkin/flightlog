@@ -9,7 +9,7 @@ elMenu.addEventListener("click", event => {
     }
 
     if (event.target.id == "menu-training-href") {
-        location.href = location.origin + "/training/?current-date=on";
+        location.href = location.origin + "/training/";
     }
 
     if (event.target.id == "menu-authors-href") {
