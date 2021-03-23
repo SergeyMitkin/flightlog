@@ -3,6 +3,7 @@ include_once 'db.php';
 
 // Получаем данные таблицы 'authors'
 function getAuthors(){
+
     try {
         $q = "SELECT * FROM authors";
         $sql = SQL::getInstance()->Select($q);
@@ -40,6 +41,7 @@ function setAuthor($author_id = 0, $author_name){
 // Удаляем автора
 // При удалении автора удаляются связанные с ним задачи и темы общей подготовки
 function deleteAuthor($author_id){
+
     try{
         $table = 'authors';
         $where = "id = " . $author_id;
