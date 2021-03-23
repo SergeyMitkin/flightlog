@@ -144,5 +144,4 @@ function setFlight($flight_id = 0, $flight_name, $date, $time_start, $time_end, 
         die("Error: ".$e->getMessage());
     }
 
-    //header("Location: /training/");
 }

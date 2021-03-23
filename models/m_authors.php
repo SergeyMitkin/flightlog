@@ -12,6 +12,7 @@ function getAuthors(){
     return $sql;
 }
 
+// Добавляем автора
 function setAuthor($author_id = 0, $author_name){
 
     try {
@@ -36,6 +37,8 @@ function setAuthor($author_id = 0, $author_name){
     header("Location: /authors/");
 }
 
+// Удаляем автора
+// При удалении автора удаляются связанные с ним задачи и темы общей подготовки
 function deleteAuthor($author_id){
     try{
         $table = 'authors';
