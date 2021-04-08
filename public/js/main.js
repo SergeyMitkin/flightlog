@@ -15,5 +15,9 @@ elMenu.addEventListener("click", event => {
     if (event.target.id == "menu-authors-href") {
         location.href = location.origin + "/authors/";
     }
+
+    if (event.target.id == "menu-crew-href") {
+        location.href = location.origin + "/crew/";
+    }
 })
 

@@ -5,6 +5,7 @@ include_once ('../models/m_tasks.php'); // Модель основных зад�
 include_once ('../models/m_topics.php'); // Модель тем общей подготовки
 include_once ('../models/m_flights.php'); // Модель полётов
 include_once ('../models/m_authors.php'); // Модель таблицы "authors"
+include_once ('../models/m_crew.php'); // Модель таблицы "crew"
 include_once ('../models/m_print_docx.php'); // Модель вывода файлов на печать
 
 // Конттроллер страниц
@@ -206,6 +207,29 @@ class C_Page extends C_Base
         // Подставляем переменные в шаблон страницы
         $this->content = $this->Template(VIEW_DIR . '/v_authors.php', array(
                 'authors' => $authors,
+            )
+        );
+    }
+
+    public function action_crew(){
+
+        // Создаём/редактируем члена экипажа
+        if (isset($_POST['crew-name'])){
+            $crew_id = $_POST['crew-id'];
+            $crew_name = $_POST['crew-name'];
+            setCrew($crew_id, $crew_name);
+        }
+
+        // Удаляем члена экипажа
+        if (isset($_GET['crew-delete'])){
+            deleteCrew($_GET['crew-delete']);
+        }
+
+        $crew = getCrew(); // Данные таблицы "crew"
+
+        // Подставляем переменные в шаблон страницы
+        $this->content = $this->Template(VIEW_DIR . '/v_crew.php', array(
+                'crew' => $crew,
             )
         );
     }
