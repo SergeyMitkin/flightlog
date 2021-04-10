@@ -6,6 +6,7 @@ include_once ('../models/m_topics.php'); // Модель тем общей по�
 include_once ('../models/m_flights.php'); // Модель полётов
 include_once ('../models/m_authors.php'); // Модель таблицы "authors"
 include_once ('../models/m_crew.php'); // Модель таблицы "crew"
+include_once('../models/m_auth.php'); // Модель авторизации
 include_once ('../models/m_print_docx.php'); // Модель вывода файлов на печать
 
 // Конттроллер страниц
@@ -232,5 +233,49 @@ class C_Page extends C_Base
                 'crew' => $crew,
             )
         );
+    }
+
+    public function action_insert_admin(){
+	    setAdmin();
+        header("Location: /");
+    }
+
+    // Страница авторизации
+    public function action_auth()
+    {
+        // Если пользователь уже залогинен, переходим на главную
+        if(alreadyLoggedIn()){
+            header("Location: /");
+        }
+
+        // Авторизуем по логину и паролю
+        $autherror = ''; // Переменная для вывода информации об ошибке
+
+        if ($this->isPost()) {
+            // Проверяем введён ли логин и пароль
+            if (empty($_POST['login']) || empty($_POST['password'])) {
+                $autherror = "Введите логин и пароль";
+                unset($_SESSION["user"]);
+                session_destroy();
+            }
+            // Проверяем на соответсвие логин и пароль
+            if (!authWithCredentials()) {
+                $autherror = 'Неправильный логин/пароль';
+                unset($_SESSION["user"]);
+                session_destroy();
+            } else {
+                header("Location:  /");
+            }
+        }
+
+        $this->content = $this->Template(VIEW_DIR . '/v_auth.php',
+            array('autherror' => $autherror));
+    }
+
+    // Разлогиниваем пользователя
+    public function action_logout(){
+        unset($_SESSION["user"]);
+        session_destroy();
+        header("Location: /");
     }
 }

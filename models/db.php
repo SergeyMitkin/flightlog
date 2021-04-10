@@ -23,6 +23,19 @@ class SQL{
         return self::$_instance;
     }
 
+    /*
+    public function createInsertCommand($query){
+        $q = $this->db->prepare($query);
+        $q->execute();
+        // Обработка ошибок
+        if($q->errorCode() != PDO::ERR_NONE){
+            $info = $q->errorInfo();
+            die($info[2]);
+        }
+        return $this->db->lastInsertId();
+    }
+    */
+
     // Read
     public function Select($query){
         $q = $this->db->prepare($query);
@@ -121,7 +134,7 @@ class SQL{
         return $q->rowCount();
     }
 
-    //Delete
+    // Delete
     public function Delete($table, $where){
         $query = "DELETE FROM $table WHERE $where";  // Sql-запрос
         $q = $this->db->prepare($query); // Подготовленное выражение
