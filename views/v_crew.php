@@ -8,8 +8,10 @@
             <span class="crew-name-span"><?php echo $crew_member['name'];?></span>
             <span class="crew-id-span" data-id="<?php echo $crew_member['id']?>" hidden=""></span>
 
-            <button class="crew-edit-button edit-button" id="crew-edit-button_<?php echo $crew_member['id']?>">Редактировать</button>
-            <button class="delete-button"><a href="/crew/?crew-delete=<?php echo $crew_member['id']?>" role="button">Удалить</a></button>
+            <div class="admin-elements">
+                <button class="crew-edit-button edit-button" id="crew-edit-button_<?php echo $crew_member['id']?>">Редактировать</button>
+                <button class="delete-button"><a href="/crew/?crew-delete=<?php echo $crew_member['id']?>" role="button">Удалить</a></button>
+            </div>
         </div>
         <?php
     }
@@ -34,7 +36,7 @@
 </div>
 
 <!-- Кнопка "Добавить члена экипажа" -->
-<div id="div-topic-create-button">
+<div id="div-topic-create-button" class="admin-elements">
     <button type="button" class="btn create-button" id="crew-create-form-button">Добавить члена экипажа</button>
 </div>
 

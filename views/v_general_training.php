@@ -44,8 +44,10 @@
             <p class="task-description-p"><?php echo $task['description']?></p>
             <p class="task-author-p" data-id="<?php echo $task['author_id']?>">Автор: <?php echo $task['author_name']?></p>
             <p class="task-date-p">Дата: <span class="task-date-span"><?php echo $task['date']?></span></p>
-            <button class="task-edit-button edit-button" id="general-task-edit-button_<?php echo $task['id']?>">Редактировать</button>
-            <button class="delete-button"><a id="general-task-delete-href_<?php echo $task['id']?>" class="task-delete-href" href="" role="button">Удалить</a></button>
+            <div class="admin-elements">
+                <button class="task-edit-button edit-button" id="general-task-edit-button_<?php echo $task['id']?>">Редактировать</button>
+                <button class="delete-button"><a id="general-task-delete-href_<?php echo $task['id']?>" class="task-delete-href" href="" role="button">Удалить</a></button>
+            </div>
         </div>
     <?php
     }
@@ -98,7 +100,7 @@
 </div>
 
 <!-- Кнопка "Создать задачу" -->
-<div id="div-task-create-button">
+<div id="div-task-create-button" class="admin-elements">
     <button type="button" class="btn create-button" id="task-create-form-button">Создать задачу</button>
 </div>
 
@@ -115,8 +117,10 @@
                 <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
                 <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
                 <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
-                <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-                <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+                <div class="admin-elements">
+                    <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
+                    <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+                </div>
             </div>
             <?php
         }
@@ -133,8 +137,10 @@
                 <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
                 <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
                 <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
-                <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-                <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+                <div class="admin-elements">
+                    <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
+                    <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+                </div>
             </div>
             <?php
         }
@@ -151,8 +157,10 @@
                 <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
                 <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
                 <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
-                <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-                <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+                <div class="admin-elements">
+                    <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
+                    <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+                </div>
             </div>
             <?php
         }
@@ -169,8 +177,10 @@
                 <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
                 <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
                 <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
-                <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-                <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+                <div class="admin-elements">
+                    <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
+                    <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+                </div>
             </div>
             <?php
         }
@@ -187,8 +197,10 @@
                 <p class="topic-type-p" data-type="<?php echo $topic['type']?>" hidden=""></p>
                 <p class="topic-author-p" data-id="<?php echo $topic['author_id']?>">Автор: <?php echo $topic['author_name']?></p>
                 <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
-                <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-                <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+                <div class="admin-elements">
+                    <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
+                    <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+                </div>
             </div>
             <?php
         }
@@ -253,7 +265,7 @@
 </div>
 
 <!-- Кнопка "Создать тему" -->
-<div id="div-topic-create-button">
+<div id="div-topic-create-button" class="admin-elements">
     <button type="button" class="btn create-button" id="topic-create-form-button">Создать тему</button>
 </div>
 
@@ -269,7 +281,7 @@
         <div id="print-form-items" hidden></div>
 
         <div class="form-footer">
-            <button id="general-training-print-button" type="submit" class="button">Распечатать</button>
+            <button id="general-training-print-button" type="submit" class="button admin-elements">Распечатать</button>
         </div>
     </form>
 </div>

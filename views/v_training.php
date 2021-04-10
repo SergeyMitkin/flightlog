@@ -2,7 +2,6 @@
 ?>
 
 <!-- Шаблон страницы подготовки к полётам -->
-
 <h1>Подготовка к полётам</h1>
 
 <!-- Календарь -->
@@ -95,9 +94,10 @@
                 <p id="self-preparation_<?php echo $flight['id']?>"><?php echo $flight['self_preparation'] ?></p>
             </div>
 
-            <button class="flight-edit-button" id="flight-edit-button_<?php echo $flight['id']?>">Редактировать</button>
-
-            <button class="flight-print-button" id="flight-print-button_<?php echo $flight['id']?>" type="submit">Распечатать</button>
+            <div class="admin-elements">
+                <button class="flight-edit-button" id="flight-edit-button_<?php echo $flight['id']?>">Редактировать</button>
+                <button class="flight-print-button" id="flight-print-button_<?php echo $flight['id']?>" type="submit">Распечатать</button>
+            </div>
 
         </div>
         <?php
@@ -191,7 +191,7 @@
 </div>
 
 <!-- Кнопка "Добавить полёт" -->
-<div id="div-flight-create-button">
+<div id="div-flight-create-button" class="admin-elements">
     <button type="button" class="btn" id="task-create-form-button">Добавить полёт</button>
 </div>
 

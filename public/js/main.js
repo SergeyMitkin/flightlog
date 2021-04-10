@@ -29,3 +29,13 @@ elMenu.addEventListener("click", event => {
     }
 })
 
+// Скрываем элементы для админа от остальных пользователей
+if (sessionUserLogin !== "admin"){
+
+    var adminElements = document.getElementsByClassName("admin-elements");
+
+    for (var i=0; i<adminElements.length; i++){
+        adminElements[i].setAttribute("hidden", "");
+    }
+}
+

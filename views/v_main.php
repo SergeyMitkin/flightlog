@@ -15,6 +15,18 @@
         <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" />
     </head>
     <body>
+
+        <script>
+            <?
+            // Если пользователь - админ, сохраняем его логин в переменную JS
+            if (isset($_SESSION['user']['login']) && $_SESSION['user']['login'] == 'admin'){;?>
+            var sessionUserLogin = "admin";
+            <?} else { ?>
+                var sessionUserLogin = "guest";
+            <?}
+            ?>
+        </script>
+
         <div id="header">
             <h1>Журнал подготовки к полётам беспилотной авиационной системы</h1>
         </div>
