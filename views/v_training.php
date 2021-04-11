@@ -94,7 +94,7 @@
                 <p id="self-preparation_<?php echo $flight['id']?>"><?php echo $flight['self_preparation'] ?></p>
             </div>
 
-            <div class="admin-elements">
+            <div class="admin-elements" hidden="">
                 <button class="flight-edit-button" id="flight-edit-button_<?php echo $flight['id']?>">Редактировать</button>
                 <button class="flight-print-button" id="flight-print-button_<?php echo $flight['id']?>" type="submit">Распечатать</button>
             </div>
@@ -191,7 +191,7 @@
 </div>
 
 <!-- Кнопка "Добавить полёт" -->
-<div id="div-flight-create-button" class="admin-elements">
+<div id="div-flight-create-button" class="admin-elements" hidden="">
     <button type="button" class="btn" id="task-create-form-button">Добавить полёт</button>
 </div>
 

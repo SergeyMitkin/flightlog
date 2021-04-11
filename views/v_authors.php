@@ -8,7 +8,7 @@
             <span class="author-name-span"><?php echo $author['name'];?></span>
             <span class="author-id-span" data-id="<?php echo $author['id']?>" hidden=""></span>
 
-            <div class="admin-elements">
+            <div class="admin-elements" hidden="">
                 <button class="author-edit-button edit-button" id="author-edit-button_<?php echo $author['id']?>">Редактировать</button>
                 <button class="delete-button"><a href="/authors/?author-delete=<?php echo $author['id']?>" role="button">Удалить</a></button>
             </div>
@@ -36,7 +36,7 @@
 </div>
 
 <!-- Кнопка "Добавить автора" -->
-<div id="div-topic-create-button" class="admin-elements">
+<div id="div-topic-create-button" class="admin-elements" hidden="">
     <button type="button" class="btn create-button" id="author-create-form-button">Добавить автора</button>
 </div>
 
