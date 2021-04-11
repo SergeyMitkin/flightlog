@@ -27,17 +27,19 @@
             ?>
         </script>
 
-        <div class="header">
+        <div id="header">
             <h1>Журнал подготовки к полётам беспилотной авиационной системы</h1>
         </div>
 
         <!-- Меню -->
         <div id="menu">
-            <a id="menu-general-training-href" href="../">Тетрадь общей подготовки к полётам</a> |
-            <a id="menu-training-href" href="/training/">Тетрадь подготовки к полётам</a> |
-            <a id="menu-authors-href" href="/authors/">Авторы</a> |
-            <a id="menu-crew-href" href="/crew/">Члены экипажа</a> |
-            <a id="menu-<?=$auth?>-href" href="/<?=$auth?>/"><?=$login?></a> |
+            <div id="navWrap">
+                <a id="menu-general-training-href" href="../">План общей подготовки</a>
+                <a id="menu-training-href" href="/training/">Подготовка к полётам</a>
+                <a id="menu-authors-href" href="/authors/">Авторы</a>
+                <a id="menu-crew-href" href="/crew/">Члены экипажа</a>
+                <a id="menu-<?=$auth?>-href" href="/<?=$auth?>/"><?=$login?></a>
+            </div>
         </div>
 
         <!-- Страницы сайта -->
