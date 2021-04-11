@@ -2,17 +2,19 @@
 ?>
 
 <!-- Шаблон страницы подготовки к полётам -->
-<h1>Подготовка к полётам</h1>
+<div class="page-title">
+    <h1>Подготовка к полётам</h1>
+</div>
 
 <!-- Календарь -->
-<div id="flight-calendar-div">
+<div id="flight-calendar-div" align="center">
     <button id="flight-button-back"><</button>
     <input id="training-calendar" type="date" value="<?php echo $date?>">
     <button id="flight-button-forward">></button>
 </div>
 
 <!-- Выводим полёты -->
-<h2 id="flights-title">Полёты на </h2>
+<h2 class="page-section-title" id="flights-title">Полёты на </h2>
 <div id="row-flights" class="row-flights">
     <!-- Карточка полёта -->
     <?php
@@ -95,8 +97,8 @@
             </div>
 
             <div class="admin-elements" hidden="">
-                <button class="flight-edit-button" id="flight-edit-button_<?php echo $flight['id']?>">Редактировать</button>
-                <button class="flight-print-button" id="flight-print-button_<?php echo $flight['id']?>" type="submit">Распечатать</button>
+                <button class="flight-edit-button edit-button" id="flight-edit-button_<?php echo $flight['id']?>">Редактировать</button>
+                <button class="flight-print-button print-button" id="flight-print-button_<?php echo $flight['id']?>" type="submit">Распечатать</button>
             </div>
 
         </div>
@@ -142,7 +144,7 @@
             <div class="form-group" id="flight-exercises-row"></div>
 
             <div id="div-flight-exercise-button">
-                <button type="button" class="btn" id="add-flight-exercise-button">Добавить упражнение</button>
+                <button type="button" class="btn create-button" id="add-flight-exercise-button">Добавить упражнение</button>
             </div>
 
             <div class="form-group">
@@ -184,7 +186,7 @@
             </div>
 
             <div class="form-footer">
-                <button id="task-create-submit-button" type="submit" class="button">Отправить</button>
+                <button id="task-create-submit-button" type="submit" class="button create-button">Отправить</button>
             </div>
         </form>
     </div>
@@ -192,7 +194,7 @@
 
 <!-- Кнопка "Добавить полёт" -->
 <div id="div-flight-create-button" class="admin-elements" hidden="">
-    <button type="button" class="btn" id="task-create-form-button">Добавить полёт</button>
+    <button type="button" class="btn create-button" id="task-create-form-button">Добавить полёт</button>
 </div>
 
 <!-- Подключаем js файлы для страницы -->

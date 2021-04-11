@@ -68,7 +68,7 @@ function fillFlightForm(flight_id, print = "off"){
 
                 // Создаём div для упражнения
                 var d = document.createElement("div");
-                d.classList = "flight-exercise-div_old_" + exercise_id;
+                d.classList = "flight-exercise-div_old_" + exercise_id + " exercise-div";
                 d.id = "flight-exercise-item_old_" + exercise_id;
 
                 // Создаём лайбл для инпута времени упражнения
@@ -85,9 +85,9 @@ function fillFlightForm(flight_id, print = "off"){
                 // Создаём кнопку удалить упражнение
                 var b = document.createElement("button");
                 b.id = "exercise-remove-button_old_" + exercise_id;
-                b.classList = "button exercise-remove-button-old";
+                b.classList = "button exercise-remove-button-old delete-button";
                 b.type = "button";
-                b.textContent = "Удалить";
+                b.textContent = "х";
 
                 // Помещаем элементы в див с упражнениями
                 d.appendChild(l_t);
@@ -98,7 +98,7 @@ function fillFlightForm(flight_id, print = "off"){
                 // Выводим инпуты с названиями упражнений
             } else if (ex_td[i].id.split("_")[0] == "ex-name-td"){
 
-                d = document.getElementById("flight-exercise-item_old_" + exercise_id);  // div для упражнения
+                d = document.getElementById("flight-exercise-item_old_" + exercise_id); // div для упражнения
 
                 // Создаём элемент для инпута имени упражнения
                 var l_n = document.createElement("label");
@@ -195,7 +195,7 @@ function fillFlightForm(flight_id, print = "off"){
 // Прикрепляем событи к кнопкам "Редактировать"
 elRowFlights.addEventListener("click", event =>{
 
-    if (event.target.className == "flight-edit-button"){
+    if (event.target.classList.contains("edit-button")){
 
         showEditButton(); // Отображаем кнопку "Редактировать", если была скрыта
         resetFlightForm(); // Очищаем поля формы

@@ -43,7 +43,7 @@ elAddFlightExerciseButton.addEventListener("click", event=>{
 
     // Создаём div для упражнения
     var d = document.createElement("div");
-    d.classList = "flight-exercise-div";
+    d.classList = "flight-exercise-div exercise-div";
     d.id = "flight-exercise-item_" + new_exercise_id;
 
     // Создаём лейбл для инпута имени
@@ -71,9 +71,9 @@ elAddFlightExerciseButton.addEventListener("click", event=>{
     // Создаём кнопку "Удалить"
     var b = document.createElement("button");
     b.id = "exercise-remove-button_" + new_exercise_id;
-    b.classList = "button exercise-remove-button";
+    b.classList = "button exercise-remove-button delete-button";
     b.type = "button";
-    b.textContent = "Удалить";
+    b.textContent = "х";
 
     // Объединяем значения из инпутов имени и времени упражнения
     var input3 = document.createElement("input");

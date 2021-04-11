@@ -1,41 +1,44 @@
 <?php
 ?>
 <!-- Шаблон страницы общей подготовки -->
+<div class="page-title">
+    <h1>План общей подготовки на месяц</h1>
+</div>
 
-<h1>План общей подготовки на месяц</h1>
+<!-- Календарь -->
+<div id="task-calendar-parent" align="center">
+    <div id="task-calendar-div">
+        <button id="task-button-back"><</button>
 
-<div id="task-calendar-div">
+        <!-- Выводим выпадающий список месяцев -->
+        <select class="general-task-select" id="month-task-select" name="month">
+            <?php
+            foreach ($month_array as $month) {
+                // Изначально выбран текущий месяц
+                $selected = ($month == $current_month) ? 'selected' : '';
+                $month = str_pad($month, 2, "0", STR_PAD_LEFT);
+                echo '<option '.$selected.' value="'.$month.'">'.$formatted_month_array[$month].'</option>';
+            }
+            ?>
+        </select>
 
-    <button id="task-button-back"><</button>
+        <!-- Выводим выпадающий список годов -->
+        <select class="general-task-select" id="year-task-select" name="year">
+            <?php
+            foreach ($year_array as $year) {
+                // Изначально выбран текущий год
+                $selected = ($year == $current_year) ? 'selected' : '';
+                echo '<option '.$selected.' value="'.$year.'">'.$year.'</option>';
+            }
+            ?>
+        </select>
 
-    <!-- Выводим выпадающий список месяцев -->
-    <select class="general-task-select" id="month-task-select" name="month">
-        <?php
-        foreach ($month_array as $month) {
-            // Изначально выбран текущий месяц
-            $selected = ($month == $current_month) ? 'selected' : '';
-            $month = str_pad($month, 2, "0", STR_PAD_LEFT);
-            echo '<option '.$selected.' value="'.$month.'">'.$formatted_month_array[$month].'</option>';
-        }
-        ?>
-    </select>
-
-    <!-- Выводим выпадающий список годов -->
-    <select class="general-task-select" id="year-task-select" name="year">
-        <?php
-        foreach ($year_array as $year) {
-            // Изначально выбран текущий год
-            $selected = ($year == $current_year) ? 'selected' : '';
-            echo '<option '.$selected.' value="'.$year.'">'.$year.'</option>';
-        }
-        ?>
-    </select>
-
-    <button id="task-button-forward">></button>
+        <button id="task-button-forward">></button>
+    </div>
 </div>
 
 <!-- Выводим основные задачи -->
-<h2 id = "general-tasks-title">Основные задачи на</h2>
+<h2 class="page-section-title" id="general-tasks-title">Основные задачи на</h2>
 <div id="row-tasks" class="row-tasks">
     <?php
     foreach($general_tasks as $task){
@@ -93,7 +96,7 @@
             </div>
 
             <div class="form-footer">
-                <button id="task-create-submit-button" type="submit" class="button">Отправить</button>
+                <button id="task-create-submit-button" type="submit" class="button create-button">Отправить</button>
             </div>
         </form>
     </div>
@@ -106,8 +109,8 @@
 
 <!-- Выводим темы общей подготовки -->
 <div id="row-all-topics">
-    <h2>Темы общей подготовки:</h2>
-    <h3>Авиационная техника:</h3>
+    <h2 class="page-section-title">Темы общей подготовки:</h2>
+    <h3 class="topic-section">Авиационная техника:</h3>
     <div id="row-topics-aviation-technology" class="row-topics">
         <?php
         foreach($aviation_technology_topics as $topic){
@@ -127,7 +130,7 @@
         ?>
     </div>
 
-    <h3>Аэродинамика:</h3>
+    <h3 class="topic-section">Аэродинамика:</h3>
     <div id="row-topics-aerodynamics" class="row-topics">
         <?php
         foreach($aerodynamics_topics as $topic){
@@ -147,7 +150,7 @@
         ?>
     </div>
 
-    <h3>Навигация:</h3>
+    <h3 class="topic-section">Навигация:</h3>
     <div id="row-topics-navigation" class="row-topics">
         <?php
         foreach($navigation_topics as $topic){
@@ -167,7 +170,7 @@
         ?>
     </div>
 
-    <h3>Руководящие документы:</h3>
+    <h3 class="topic-section">Руководящие документы:</h3>
     <div id="row-topics-guidelines" class="row-topics">
         <?php
         foreach($guidelines_topics as $topic){
@@ -187,7 +190,7 @@
         ?>
     </div>
 
-    <h3>Тактика:</h3>
+    <h3 class="topic-section">Тактика:</h3>
     <div id="row-topics-tactics" class="row-topics">
         <?php
         foreach($tactics_topics as $topic){
@@ -258,7 +261,7 @@
             </div>
 
             <div class="form-footer">
-                <button id="topic-create-submit-button" type="submit" class="button">Отправить</button>
+                <button id="topic-create-submit-button" type="submit" class="button create-button">Отправить</button>
             </div>
         </form>
     </div>
@@ -281,7 +284,7 @@
         <div id="print-form-items" hidden></div>
 
         <div class="form-footer">
-            <button id="general-training-print-button" type="submit" class="button admin-elements" hidden="">Распечатать</button>
+            <button id="general-training-print-button" type="submit" class="button admin-elements print-button" hidden="">Распечатать</button>
         </div>
     </form>
 </div>
