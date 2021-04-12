@@ -42,7 +42,7 @@
 
 <!-- Кнопка "Добавить автора" -->
 <div id="div-topic-create-button" class="admin-elements" hidden="">
-    <button type="button" class="btn create-button" id="author-create-form-button">Добавить автора</button>
+    <button type="button" class="btn create-button admin-elements" id="author-create-form-button" hidden="">Добавить автора</button>
 </div>
 
 <!-- Подключаем js файлы для страницы -->

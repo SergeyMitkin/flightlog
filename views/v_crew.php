@@ -41,8 +41,8 @@
 </div>
 
 <!-- Кнопка "Добавить члена экипажа" -->
-<div id="div-topic-create-button" class="admin-elements" hidden>
-    <button type="button" class="btn create-button" id="crew-create-form-button">Добавить члена экипажа</button>
+<div id="div-topic-create-button" class="admin-elements" hidden="">
+    <button type="button" class="btn create-button admin-elements" id="crew-create-form-button" hidden="">Добавить члена экипажа</button>
 </div>
 
 <!-- Подключаем js файлы для страницы -->

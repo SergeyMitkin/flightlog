@@ -11,18 +11,18 @@
     <!-- Форма авторизации -->
     <form method="post">
         <h1>Авторизация</h1>
-        <div class="group">
+        <div class="form-group">
             <label for="login">Введите логин</label>
             <input type="text" id="login" name="login" placeholder="Логин"/>
         </div>
 
-        <div class="group">
+        <div class="form-group">
             <label for="password">Введите пароль</label>
             <input type="password" id="password" name="password" placeholder="Пароль"/>
         </div>
 
-        <div class="group" align="center">
-            <button class="btn btn-dark">Войти</button>
+        <div class="group">
+            <button class="btn create-button">Войти</button>
         </div>
     </form>
 </div>
