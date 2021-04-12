@@ -2,20 +2,25 @@
 ?>
 
 <div id="row-crew">
-    <?php
-    foreach($crew as $crew_member){
-        ?><div class="row-item" id="crew-item_<?php echo $crew_member['id']?>">
-            <span class="crew-name-span"><?php echo $crew_member['name'];?></span>
-            <span class="crew-id-span" data-id="<?php echo $crew_member['id']?>" hidden=""></span>
-
-            <div class="admin-elements" hidden="">
-                <button class="crew-edit-button edit-button" id="crew-edit-button_<?php echo $crew_member['id']?>">Редактировать</button>
-                <button class="delete-button"><a href="/crew/?crew-delete=<?php echo $crew_member['id']?>" role="button">Удалить</a></button>
-            </div>
-        </div>
+    <ol>
         <?php
-    }
-    ?>
+        foreach($crew as $crew_member){
+            ?>
+            <li>
+                <div class="person-item" id="crew-item_<?php echo $crew_member['id']?>">
+                    <span class="crew-name-span"><?php echo $crew_member['name'];?></span>
+                    <span class="crew-id-span" data-id="<?php echo $crew_member['id']?>" hidden=""></span>
+
+                    <div class="admin-elements edit-buttons-block" hidden="">
+                        <button class="admin-elements crew-edit-button edit-button" id="crew-edit-button_<?php echo $crew_member['id']?>" hidden="">&#9998</button>
+                        <button class="admin-elements delete-button" hidden=""><a href="/crew/?crew-delete=<?php echo $crew_member['id']?>" role="button">&#9747</a></button>
+                    </div>
+                </div>
+            </li>
+            <?php
+        }
+        ?>
+    </ol>
 </div>
 
 <div id="crew-create-form-section">
@@ -28,7 +33,7 @@
             <div class="form-group">
                 <label for="crew-name-input">Введите имя: </label>
                 <input required id="crew-name-input" class="form-control" name="crew-name" placeholder="Имя члена экипажа" value="">
-                <button id="crew-create-submit-button" type="submit" class="button">Отправить</button>
+                <button id="crew-create-submit-button" type="submit" class="button create-button">Отправить</button>
             </div>
 
         </form>
