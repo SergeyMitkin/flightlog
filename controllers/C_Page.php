@@ -235,10 +235,13 @@ class C_Page extends C_Base
         );
     }
 
+    // создаём пользователя в БД
+    /*
     public function action_insert_admin(){
 	    setAdmin();
         header("Location: /");
     }
+    */
 
     // Страница авторизации
     public function action_auth()
