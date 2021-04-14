@@ -122,7 +122,7 @@
                 <p>Дата: <span class="topic-date-span"><?php echo $topic['date']?></span></p>
                 <div class="admin-elements" hidden="">
                     <button class="topic-edit-button edit-button" id="topic-edit-button_<?php echo $topic['id']?>">Редактировать</button>
-                    <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="" role="button">Удалить</a></button>
+                    <button class="delete-button"><a id="general-topic-delete-href_<?php echo $topic['id']?>" class="topic-delete-href" href="../?topic-delete=<?php echo $topic['id']?>" role="button">Удалить</a></button>
                 </div>
             </div>
             <?php
@@ -238,7 +238,7 @@
                     <option value="aviation_technology">Авиационная техника</option>
                     <option value="aerodynamics">Аэродинамика</option>
                     <option value="navigation">Навигация</option>
-                    <option value="guidelines">Руководящие докуиенты</option>
+                    <option value="guidelines">Руководящие документы</option>
                     <option value="tactics">Тактика</option>
                 </select>
             </div>

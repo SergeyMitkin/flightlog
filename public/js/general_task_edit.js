@@ -1,6 +1,4 @@
 // Прикрепяем событие к кнопкам "Редактировать"
-var elRowTasks = document.getElementById("row-tasks");
-
 elRowTasks.addEventListener("click", event =>{
 
     if (event.target.classList.contains("task-edit-button")){

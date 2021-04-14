@@ -51,6 +51,8 @@ class C_Page extends C_Base
             // Дату определяем как дату добавленной задачи
             $current_year = substr($date, 0, 4);
             $current_month = substr($date, 5, 2);
+
+            //header("Location: ../?year=" . $current_year . "&month=" . $current_month . "&send-form=off");
         }
 
         // Добавляем тему общей подготовки
